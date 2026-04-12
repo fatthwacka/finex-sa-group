@@ -44,11 +44,15 @@ export default function GlobalPage() {
   return (
     <div data-brand={brand.dataBrand}>
       <HeroSection
+        variant="image-background"
+        eyebrow="Finex SA Global"
         headline="Strategic Expansion and Wealth Protection."
         subline="Scale without borders."
         body="Finex SA Global provides comprehensive tactical outsourcing for mid-cap companies seeking international expansion, supply chain security, and wealth protection."
+        heroImage="/images/lifestyle/imali-construction-workers.webp"
+        heroImageAlt="Global business expansion"
       >
-        <CTAButton label="Speak to Our Global Experts" type="contact" href="/contact" />
+        <CTAButton label="Speak to Our Global Experts" type="contact" href="/contact" variant="white" />
       </HeroSection>
 
       {/* Four Pillars */}

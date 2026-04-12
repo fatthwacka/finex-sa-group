@@ -99,11 +99,15 @@ export default function FinexflowPage() {
   return (
     <div data-brand={brand.dataBrand}>
       <HeroSection
+        variant="image-background"
+        eyebrow="FINEXflow"
         headline="Employer Payments Reimagined."
         subline="Stop the Friction. Start the Flow."
         body="Your workforce is your greatest asset. FINEXflow is the seamless payment ecosystem for employers who mean business."
+        heroImage="/images/heroes/finexflow-hero-executive.webp"
+        heroImageAlt="Business executive using FINEXflow"
       >
-        <CTAButton label="Speak to a FINEXflow Expert" type="contact" href="/contact" />
+        <CTAButton label="Speak to a FINEXflow Expert" type="contact" href="/contact" variant="white" />
       </HeroSection>
 
       {/* The Challenge */}

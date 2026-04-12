@@ -25,9 +25,13 @@ export default function AboutPage() {
   return (
     <>
       <HeroSection
+        variant="image-background"
+        eyebrow="About Us"
         headline="Trusted Heritage. Inclusive Future."
         subline="Decades of financial expertise meets cutting-edge digital technology."
         body="The Finex SA Group unites specialised companies to provide robust, forward-thinking infrastructure for a global market."
+        heroImage="/images/gradients/brand-gradient-cover.webp"
+        heroImageAlt="Finex SA Group brand"
       />
 
       {/* Strategic Objectives */}

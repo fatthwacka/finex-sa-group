@@ -16,8 +16,8 @@ interface HeroSectionProps {
   /** CTA buttons or other children */
   children?: React.ReactNode;
   /** Visual variant controlling background and layout */
-  variant?: 'gradient-centred' | 'split-image' | 'dark' | 'dark-tech' | 'compact' | 'brand-page';
-  /** Hero image for split-image and brand-page variants (path from public/) */
+  variant?: 'gradient-centred' | 'split-image' | 'dark' | 'dark-tech' | 'compact' | 'brand-page' | 'image-background';
+  /** Hero image for split-image, brand-page, and image-background variants (path from public/) */
   heroImage?: string;
   /** Alt text for hero image */
   heroImageAlt?: string;
@@ -29,6 +29,8 @@ interface HeroSectionProps {
   heightClass?: string;
   /** Swoosh brightness level */
   swooshBrightness?: 'normal' | 'bright' | 'ultra';
+  /** Text alignment for image-background variant */
+  textAlign?: 'left' | 'center';
 }
 
 export default function HeroSection({
@@ -44,6 +46,7 @@ export default function HeroSection({
   showSwoosh = true,
   heightClass,
   swooshBrightness = 'bright',
+  textAlign = 'left',
 }: HeroSectionProps) {
   // Background styles per variant - using gradient section classes
   const bgStyles: Record<string, string> = {
@@ -53,6 +56,7 @@ export default function HeroSection({
     'dark-tech': 'section-dark-tech',
     'compact': 'section-sunset',
     'brand-page': 'section-sunset',
+    'image-background': '', // No background class - image handles it
   };
 
   // Text colour styles per variant
@@ -66,19 +70,43 @@ export default function HeroSection({
     'dark-tech': 'min-h-[85vh]',
     'compact': 'min-h-[50vh] max-h-[60vh]',
     'brand-page': 'min-h-[60vh] max-h-[70vh]',
+    'image-background': 'min-h-[70vh]',
   };
 
   // Alignment per variant
-  const isCentred = variant === 'gradient-centred' || variant === 'compact';
+  const isCentred = variant === 'gradient-centred' || variant === 'compact' || (variant === 'image-background' && textAlign === 'center');
   const isSplit = variant === 'split-image';
   const isBrandPage = variant === 'brand-page';
+  const isImageBg = variant === 'image-background';
 
   return (
     <section
       className={`relative flex items-center overflow-hidden ${bgStyles[variant]} ${heightClass || defaultHeights[variant]}`}
     >
-      {/* Background Swoosh - on gradient and brand-page variants */}
-      {showSwoosh && (variant === 'gradient-centred' || variant === 'dark' || variant === 'brand-page') && (
+      {/* Full-width background image for image-background variant */}
+      {isImageBg && heroImage && (
+        <>
+          <Image
+            src={heroImage}
+            alt={heroImageAlt}
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
+        </>
+      )}
+
+      {/* Background Swoosh - only on gradient-centred variant (main landing page) */}
+      {showSwoosh && variant === 'gradient-centred' && (
+        <div className="absolute inset-0 pointer-events-none">
+          <EnergySwoosh variant="background" brightness={swooshBrightness} />
+        </div>
+      )}
+
+      {/* Background Swoosh for dark and brand-page variants */}
+      {showSwoosh && (variant === 'dark' || variant === 'brand-page') && (
         <div className="absolute inset-0 pointer-events-none">
           <EnergySwoosh variant="background" brightness={swooshBrightness} />
         </div>
@@ -246,8 +274,8 @@ export default function HeroSection({
         )}
       </div>
 
-      {/* Bottom Swoosh Divider - not on compact */}
-      {showSwoosh && variant !== 'compact' && (
+      {/* Bottom Swoosh Divider - not on compact or image-background */}
+      {showSwoosh && variant !== 'compact' && variant !== 'image-background' && (
         <div className="absolute bottom-0 left-0 right-0 h-20 pointer-events-none">
           <EnergySwoosh variant="divider" />
         </div>

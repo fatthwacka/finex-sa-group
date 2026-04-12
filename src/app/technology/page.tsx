@@ -59,11 +59,15 @@ export default function TechnologyPage() {
   return (
     <div data-brand={brand.dataBrand}>
       <HeroSection
+        variant="image-background"
+        eyebrow="Technology"
         headline="The Infrastructure of Tomorrow."
         subline="To lead the financial sector, you must own the technology that drives it."
         body="Finex Pay and Finex Technologies are the innovative engine room of the Finex SA Group — secure, scalable, and ahead of the curve."
+        heroImage="/images/heroes/finex-money-card-tap.webp"
+        heroImageAlt="Digital payment technology"
       >
-        <CTAButton label="Speak to Our Technology Team" type="contact" href="/contact" />
+        <CTAButton label="Speak to Our Technology Team" type="contact" href="/contact" variant="white" />
       </HeroSection>
 
       {/* Finex Pay Section */}

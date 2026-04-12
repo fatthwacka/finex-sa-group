@@ -51,9 +51,13 @@ export default function ContactPage() {
   return (
     <>
       <HeroSection
+        variant="image-background"
+        eyebrow="Contact Us"
         headline="We Are Right Where You Need Us."
         subline="Our dedicated teams are ready to help."
         body="Digital support, telephonic solutions, and expert guidance through every process."
+        heroImage="/images/lifestyle/finex-money-man-card-phone.webp"
+        heroImageAlt="Customer service"
       />
 
       {/* Contact Information Grid */}

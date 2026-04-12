@@ -74,14 +74,14 @@ export default function FinexMoneyPage() {
 
   return (
     <div data-brand={brand.dataBrand}>
-      {/* Hero - Gradient background with brand energy */}
+      {/* Hero - Full-width background image */}
       <HeroSection
-        variant="brand-page"
+        variant="image-background"
         eyebrow="Finex Money"
         headline="The Finance Solution."
         subline="Open up a world full of digital banking possibilities."
         body="Finex Money is an inclusive digital wallet built to empower your everyday hustle. Open an account instantly and step into the digital economy with financial dignity."
-        heroImage="/images/heroes/finex-money-hero-man.webp"
+        heroImage="/images/heroes/finex-money-hero-woman.webp"
         heroImageAlt="Young South African person using Finex Money app"
       >
         <CTAButton

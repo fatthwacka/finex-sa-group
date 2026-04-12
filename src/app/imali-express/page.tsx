@@ -43,9 +43,13 @@ export default function ImaliExpressPage() {
     <div data-brand={remitBrand.dataBrand}>
       {/* Intro Hero */}
       <HeroSection
+        variant="image-background"
+        eyebrow="iMali Express"
         headline="Global Reach and Local Presence."
         subline="Mali Yami means taking care of your family and your future."
         body="iMali Express provides fast, safe, and low-cost cross-border financial solutions through two dedicated brands. Fully authorised by the South African Reserve Bank as a Category Two ADLA."
+        heroImage="/images/heroes/imali-hero-mama.webp"
+        heroImageAlt="Woman sending money to family"
       />
 
       {/* iMali Remit Section */}

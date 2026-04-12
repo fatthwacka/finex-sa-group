@@ -56,11 +56,15 @@ export default function TreasuryPage() {
   return (
     <div data-brand={brand.dataBrand}>
       <HeroSection
+        variant="image-background"
+        eyebrow="Finex SA Treasury"
         headline="Timing Is Everything."
         subline="Master global cash flow with tailor-made treasury management."
         body="We apply a merchant bank approach, designing treasury systems built exactly around your operational realities for multinational corporations and high-volume importers and exporters."
+        heroImage="/images/lifestyle/finexflow-collateral-spread.webp"
+        heroImageAlt="Treasury and financial documents"
       >
-        <CTAButton label="Speak to a Treasury Advisor" type="contact" href="/contact" />
+        <CTAButton label="Speak to a Treasury Advisor" type="contact" href="/contact" variant="white" />
       </HeroSection>
 
       {/* Services */}
