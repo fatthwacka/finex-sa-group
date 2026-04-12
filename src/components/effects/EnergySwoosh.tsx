@@ -102,14 +102,31 @@ export default function EnergySwoosh({
   }
 
   if (variant === 'background') {
-    // Static background with CSS-based subtle animation for performance
+    // Animated background using CSS transforms (GPU accelerated)
     return (
       <div ref={containerRef} className={`absolute inset-0 overflow-hidden ${className}`}>
+        <style jsx>{`
+          @keyframes swoosh-float-1 {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-20px) translateX(10px); }
+          }
+          @keyframes swoosh-float-2 {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(15px) translateX(-15px); }
+          }
+          @keyframes swoosh-float-3 {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-10px) translateX(-10px); }
+          }
+          .swoosh-animate-1 { animation: swoosh-float-1 20s ease-in-out infinite; }
+          .swoosh-animate-2 { animation: swoosh-float-2 25s ease-in-out infinite; }
+          .swoosh-animate-3 { animation: swoosh-float-3 18s ease-in-out infinite; }
+        `}</style>
         <svg
           viewBox="0 0 1440 800"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="absolute w-[150%] h-[150%] -top-1/4 -left-1/4 will-change-transform"
+          className="absolute w-[150%] h-[150%] -top-1/4 -left-1/4"
           preserveAspectRatio="none"
           style={{ transform: 'translateZ(0)' }}
         >
@@ -135,48 +152,58 @@ export default function EnergySwoosh({
             </linearGradient>
           </defs>
 
-          {/* Static swoosh paths - no animation for performance */}
-          <path
-            d="M-200,400 Q400,50 800,400 T1640,350"
-            stroke={`url(#${gradientId}-1)`}
-            strokeWidth={12 * strokeMultiplier}
-            fill="none"
-            strokeLinecap="round"
-          />
+          {/* Animated swoosh paths using CSS transforms */}
+          <g className="swoosh-animate-1" style={{ willChange: 'transform' }}>
+            <path
+              d="M-200,400 Q400,50 800,400 T1640,350"
+              stroke={`url(#${gradientId}-1)`}
+              strokeWidth={12 * strokeMultiplier}
+              fill="none"
+              strokeLinecap="round"
+            />
+          </g>
 
-          <path
-            d="M-200,300 Q500,550 1000,280 T1640,320"
-            stroke={`url(#${gradientId}-2)`}
-            strokeWidth={10 * strokeMultiplier}
-            fill="none"
-            strokeLinecap="round"
-          />
+          <g className="swoosh-animate-2" style={{ willChange: 'transform' }}>
+            <path
+              d="M-200,300 Q500,550 1000,280 T1640,320"
+              stroke={`url(#${gradientId}-2)`}
+              strokeWidth={10 * strokeMultiplier}
+              fill="none"
+              strokeLinecap="round"
+            />
+          </g>
 
-          <path
-            d="M-200,550 Q600,200 1100,520 T1640,480"
-            stroke={`url(#${gradientId}-3)`}
-            strokeWidth={8 * strokeMultiplier}
-            fill="none"
-            strokeLinecap="round"
-          />
+          <g className="swoosh-animate-3" style={{ willChange: 'transform' }}>
+            <path
+              d="M-200,550 Q600,200 1100,520 T1640,480"
+              stroke={`url(#${gradientId}-3)`}
+              strokeWidth={8 * strokeMultiplier}
+              fill="none"
+              strokeLinecap="round"
+            />
+          </g>
 
-          <path
-            d="M-200,180 Q350,400 700,160 T1640,200"
-            stroke={`url(#${gradientId}-1)`}
-            strokeWidth={6 * strokeMultiplier}
-            fill="none"
-            strokeLinecap="round"
-            opacity={0.7}
-          />
+          <g className="swoosh-animate-2" style={{ willChange: 'transform' }}>
+            <path
+              d="M-200,180 Q350,400 700,160 T1640,200"
+              stroke={`url(#${gradientId}-1)`}
+              strokeWidth={6 * strokeMultiplier}
+              fill="none"
+              strokeLinecap="round"
+              opacity={0.7}
+            />
+          </g>
 
-          <path
-            d="M-200,650 Q450,450 900,680 T1640,620"
-            stroke={`url(#${gradientId}-2)`}
-            strokeWidth={5 * strokeMultiplier}
-            fill="none"
-            strokeLinecap="round"
-            opacity={0.6}
-          />
+          <g className="swoosh-animate-1" style={{ willChange: 'transform' }}>
+            <path
+              d="M-200,650 Q450,450 900,680 T1640,620"
+              stroke={`url(#${gradientId}-2)`}
+              strokeWidth={5 * strokeMultiplier}
+              fill="none"
+              strokeLinecap="round"
+              opacity={0.6}
+            />
+          </g>
         </svg>
       </div>
     );

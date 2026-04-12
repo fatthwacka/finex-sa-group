@@ -61,8 +61,8 @@ export default function TreasuryPage() {
         headline="Timing Is Everything."
         subline="Master global cash flow with tailor-made treasury management."
         body="We apply a merchant bank approach, designing treasury systems built exactly around your operational realities for multinational corporations and high-volume importers and exporters."
-        heroImage="/images/lifestyle/finexflow-collateral-spread.webp"
-        heroImageAlt="Treasury and financial documents"
+        heroImage="/images/gradients/brand-primary-colors.webp"
+        heroImageAlt="Treasury and corporate finance"
       >
         <CTAButton label="Speak to a Treasury Advisor" type="contact" href="/contact" variant="white" />
       </HeroSection>
