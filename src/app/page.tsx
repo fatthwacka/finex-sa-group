@@ -108,7 +108,7 @@ export default function HomePage() {
           <StatDisplay value="40+" label="Countries Served" />
           <StatDisplay value="2013" label="Founded" />
           <StatDisplay value="8" label="Brands" />
-          <StatDisplay value="FSP 45242" label="Licensed" />
+          <StatDisplay value="45242" label="FSP Licensed" />
         </StatRow>
       </AccentBand>
 

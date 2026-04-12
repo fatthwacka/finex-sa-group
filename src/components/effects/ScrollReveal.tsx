@@ -64,15 +64,16 @@ export default function ScrollReveal({
       whileInView={animate}
       viewport={{
         once: true,
-        // Trigger at 10% visibility (low on page, no dead space)
-        amount: 0.1,
+        // Trigger at 15% visibility
+        amount: 0.15,
       }}
       transition={{
-        duration: 0.8, // Smooth, medium duration
-        delay: delay * 0.03, // Minimal stagger between items in a row
-        ease: timing === 'linear' ? 'linear' : 'easeOut',
+        duration: 0.5, // Faster for snappier feel
+        delay: delay * 0.03,
+        ease: [0.25, 0.1, 0.25, 1], // Smooth cubic bezier
       }}
       className={className}
+      style={{ willChange: 'transform, opacity' }}
     >
       {children}
     </motion.div>
