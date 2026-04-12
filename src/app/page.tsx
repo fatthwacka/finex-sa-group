@@ -1,65 +1,156 @@
-import Image from "next/image";
+import HeroSection from '@/components/sections/HeroSection';
+import EcosystemNav from '@/components/sections/EcosystemNav';
+import BrandCard from '@/components/sections/BrandCard';
+import AccentBand, { StatDisplay, StatRow } from '@/components/sections/AccentBand';
+import SplitSection, { SectionHeading } from '@/components/sections/SplitSection';
+import ScrollReveal from '@/components/effects/ScrollReveal';
+import CTAButton from '@/components/ui/CTAButton';
+import RegulatoryBadge from '@/components/ui/RegulatoryBadge';
+import { BRANDS, GROUP } from '@/config/brands';
 
-export default function Home() {
+const BRAND_DESCRIPTIONS = {
+  finexMoney:
+    'Open an account instantly with just your ID or passport. Digital banking for everyone.',
+  finexflow:
+    'Real-time workforce payments. Zero cash risk. 100% compliance.',
+  imaliRemit:
+    'Send money to 40+ countries or exchange currency at our nationwide branches.',
+  treasury:
+    'Elite FX solutions and currency risk management for multinational corporations.',
+  global:
+    'Strategic partnerships and outsourcing for companies expanding internationally.',
+};
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <>
+      {/* Hero - Pattern A Centred, gradient background */}
+      <HeroSection
+        variant="gradient-centred"
+        eyebrow="Finex SA Group"
+        headline="Financial Power at Every Level."
+        subline="We believe everyone deserves a seat at the financial table."
+        body="The Finex SA Group is a fully integrated fintech banking ecosystem bringing sophisticated technology and financial inclusion to the African market."
+      >
+        <CTAButton
+          label="Explore Our Brands"
+          type="contact"
+          href="#ecosystem"
+          variant="white"
+          size="lg"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+      </HeroSection>
+
+      {/* Ecosystem Logo Navigation - Interactive brand selector with summaries */}
+      <div id="ecosystem">
+        <EcosystemNav />
+      </div>
+
+      {/* Brand Cards Section - Detailed cards with full descriptions */}
+      <section className="section-padding section-navy">
+        <div className="container-max">
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/60 mb-4">
+                Our Ecosystem
+              </p>
+              <h2 className="text-white mb-4">Five Brands. One Vision.</h2>
+              <p className="text-lg text-white/80 max-w-2xl mx-auto">
+                A comprehensive suite of financial solutions designed to serve every level of the
+                market, from individuals to multinational corporations.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {/* 5 cards: 3+2 on desktop, 2+2+1 on tablet, stacked on mobile */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <BrandCard
+              brand={BRANDS.finexMoney}
+              description={BRAND_DESCRIPTIONS.finexMoney}
+              index={0}
+            />
+            <BrandCard
+              brand={BRANDS.finexflow}
+              description={BRAND_DESCRIPTIONS.finexflow}
+              index={1}
+            />
+            <BrandCard
+              brand={BRANDS.imaliRemit}
+              description={BRAND_DESCRIPTIONS.imaliRemit}
+              index={2}
+            />
+            <BrandCard
+              brand={BRANDS.treasury}
+              description={BRAND_DESCRIPTIONS.treasury}
+              index={3}
+            />
+            <BrandCard
+              brand={BRANDS.global}
+              description={BRAND_DESCRIPTIONS.global}
+              index={4}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Market Positioning - Pattern D Accent Band */}
+      <AccentBand variant="navy">
+        <div className="mb-8">
+          <p className="text-4xl md:text-5xl lg:text-6xl font-extrabold gradient-text mb-4">
+            $320 Trillion
+          </p>
+          <p className="text-lg md:text-xl text-white/80">
+            Global cross-border payments market by 2032
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+
+        <StatRow columns={4}>
+          <StatDisplay value="40+" label="Countries Served" />
+          <StatDisplay value="2013" label="Founded" />
+          <StatDisplay value="8" label="Brands" />
+          <StatDisplay value="FSP 45242" label="Licensed" />
+        </StatRow>
+      </AccentBand>
+
+      {/* Trust & Regulation - Pattern B Split */}
+      <SplitSection
+        bgVariant="alt"
+        imagePosition="right"
+        visualContent={
+          <div className="flex flex-col gap-6 items-center lg:items-start">
+            <RegulatoryBadge type="fsp" value={GROUP.fsp} />
+            <RegulatoryBadge type="sarb" value={GROUP.sarb} />
+            <div className="p-4 bg-[var(--color-surface)] rounded-xl border border-[var(--color-border)] max-w-sm">
+              <p className="text-sm text-[var(--color-text-secondary)]">
+                {GROUP.category}
+              </p>
+            </div>
+          </div>
+        }
+      >
+        <SectionHeading
+          title="Safe, Regulated, and Fully Licensed"
+          description="We operate with absolute transparency and rigorous compliance."
+        />
+        <p className="text-[var(--color-text-secondary)] mt-4">
+          As a Category Two Authorised Dealer in Foreign Exchange with Limited Authority, we are regulated by the Financial Sector Conduct Authority as a financial service provider, and by the South African Reserve Bank as a forex exchange intermediary. Your trust is our foundation.
+        </p>
+      </SplitSection>
+
+      {/* Final CTA - Pattern F */}
+      <AccentBand variant="gradient">
+        <h2 className="text-white mb-4">Ready to Explore?</h2>
+        <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
+          Discover how the Finex SA Group can transform the way you move and manage capital.
+        </p>
+        <CTAButton
+          label="Contact Us"
+          type="contact"
+          href="/contact"
+          variant="white"
+          size="lg"
+        />
+      </AccentBand>
+    </>
   );
 }

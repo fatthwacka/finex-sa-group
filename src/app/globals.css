@@ -1,26 +1,1169 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;600;700;800&display=swap');
+
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ============================================
+     COLOUR TOKENS
+     ============================================ */
+
+  /* Primary Brand Palette */
+  --color-orange: #ff7a1a;
+  --color-red: #EE2737;
+  --color-purple: #892890;
+  --color-cyan: #00A9E0;
+  --color-navy: #0f4761;
+
+  /* Subsidiary-Specific Colours */
+  --color-imali-red: #C41230;
+  --color-imali-navy: #1A1A4E;
+
+  /* Neutrals */
+  --color-white: #FFFFFF;
+  --color-off-white: #F8F9FA;
+  --color-light-grey: #E9ECEF;
+  --color-mid-grey: #6C757D;
+  --color-dark-grey: #343A40;
+  --color-black: #111111;
+
+  /* Precious Metals Palette (for Gold/Silver investment cards) */
+  --color-gold-light: #FEF9E7;
+  --color-gold-mid: #FCF3CF;
+  --color-gold-border: #F7DC6F;
+  --color-gold-text: #7D6608;
+  --color-gold-text-dark: #5D4E06;
+  --color-silver-light: #F8F9FA;
+  --color-silver-mid: #E9ECEF;
+  --color-silver-border: #CED4DA;
+  --color-silver-text: #495057;
+  --color-silver-text-dark: #343A40;
+
+  /* Semantic Colours */
+  --color-text-primary: var(--color-black);
+  --color-text-secondary: var(--color-mid-grey);
+  --color-text-on-dark: var(--color-white);
+  --color-text-on-gradient: var(--color-white);
+  --color-surface: var(--color-white);
+  --color-surface-alt: var(--color-off-white);
+  --color-border: var(--color-light-grey);
+
+  /* Feedback/State Colours */
+  --color-success-light: #D1FAE5;
+  --color-success-mid: #A7F3D0;
+  --color-success-border: #6EE7B7;
+  --color-success: #10B981;
+  --color-success-text: #065F46;
+  --color-success-text-light: #047857;
+  --color-error-light: #FEE2E2;
+  --color-error-mid: #FECACA;
+  --color-error-border: #FCA5A5;
+  --color-error: #EF4444;
+  --color-error-text: #991B1B;
+  --color-warning-light: #FEF3C7;
+  --color-warning: #F59E0B;
+  --color-warning-text: #92400E;
+
+  /* Gradient Stop Colors (for SVG gradients that can't use CSS gradients directly) */
+  --gradient-stop-1: var(--color-cyan);
+  --gradient-stop-2: var(--color-purple);
+  --gradient-stop-3: var(--color-red);
+  --gradient-stop-4: var(--color-orange);
+
+  /* Gradients */
+  --gradient-sunset: linear-gradient(135deg, var(--color-cyan) 0%, var(--color-purple) 30%, var(--color-red) 60%, var(--color-orange) 100%);
+  --gradient-sunset-h: linear-gradient(90deg, var(--color-cyan) 0%, var(--color-purple) 30%, var(--color-red) 60%, var(--color-orange) 100%);
+  --gradient-sunset-v: linear-gradient(180deg, var(--color-cyan) 0%, var(--color-purple) 30%, var(--color-red) 60%, var(--color-orange) 100%);
+  --gradient-dark-overlay: linear-gradient(180deg, rgba(15,71,97,0.9) 0%, rgba(17,17,17,0.95) 100%);
+  --gradient-card-hover: linear-gradient(135deg, rgba(0,169,224,0.08) 0%, rgba(255,122,26,0.08) 100%);
+
+  /* ============================================
+     TYPOGRAPHY TOKENS
+     ============================================ */
+
+  /* FONT SWAP: Replace 'Plus Jakarta Sans' with 'Codec Warm' when .woff2 files are added to /public/fonts/ */
+  --font-primary: 'Plus Jakarta Sans', sans-serif;
+  --font-secondary: 'Raleway', sans-serif;
+
+  /* Scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2.25rem;
+  --text-3xl: 3rem;
+  --text-4xl: 3.75rem;
+  --text-hero: clamp(2.5rem, 5vw, 4.5rem);
+
+  /* Weights */
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800;
+
+  /* Leading */
+  --leading-tight: 1.08;
+  --leading-snug: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+
+  /* ============================================
+     SPACING & LAYOUT
+     ============================================ */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+  --space-section: 8rem;
+
+  --container-max: 1280px;
+  --container-narrow: 960px;
+  --container-wide: 1440px;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.15);
+  --shadow-glow-orange: 0 0 30px rgba(255,122,26,0.3);
+  --shadow-glow-cyan: 0 0 30px rgba(0,169,224,0.3);
+
+  /* ============================================
+     SUBSIDIARY BRAND CONTEXTS (default values)
+     Overridden by [data-brand] selectors below
+     ============================================ */
+  --brand-primary: var(--color-navy);
+  --brand-accent: var(--color-orange);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ============================================
+   SUBSIDIARY THEMING
+   Apply data-brand="xxx" to any wrapper element.
+   All children inherit that brand's palette.
+   ============================================ */
+
+[data-brand="finex-money"] {
+  --brand-primary: var(--color-red);
+  --brand-accent: var(--color-navy);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+[data-brand="finexflow"] {
+  --brand-primary: var(--color-navy);
+  --brand-accent: var(--color-orange);
+}
+
+[data-brand="imali"] {
+  --brand-primary: var(--color-imali-red);
+  --brand-accent: var(--color-imali-navy);
+}
+
+[data-brand="treasury"] {
+  --brand-primary: var(--color-navy);
+  --brand-accent: var(--color-cyan);
+}
+
+[data-brand="global"] {
+  --brand-primary: var(--color-navy);
+  --brand-accent: var(--color-purple);
+}
+
+[data-brand="tech"] {
+  --brand-primary: var(--color-black);
+  --brand-accent: var(--color-cyan);
+}
+
+/* ============================================
+   SUBSIDIARY BRAND DIRECT COLORS
+   For components that need brand colors without
+   a data-brand wrapper (e.g., ecosystem cards)
+   ============================================ */
+.brand-finex-money { --this-brand: var(--color-red); }
+.brand-finexflow { --this-brand: var(--color-navy); }
+.brand-imali { --this-brand: var(--color-imali-red); }
+.brand-treasury { --this-brand: var(--color-navy); }
+.brand-global { --this-brand: var(--color-navy); }
+.brand-tech { --this-brand: var(--color-black); }
+
+/* ============================================
+   BASE TYPOGRAPHY RULES
+   ============================================ */
+
+body {
+  font-family: var(--font-primary);
+  font-weight: var(--weight-regular);
+  color: var(--color-text-primary);
+  line-height: var(--leading-normal);
+  background-color: var(--color-surface);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-secondary);
+  line-height: var(--leading-snug);
+}
+
+h1 {
+  font-size: var(--text-hero);
+  font-weight: var(--weight-extrabold);
+}
+
+h2 {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+}
+
+h3 {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-regular);
+}
+
+h4 {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-light);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.container-max {
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+}
+
+.container-narrow {
+  max-width: var(--container-narrow);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+}
+
+.container-wide {
+  max-width: var(--container-wide);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+}
+
+.section-padding {
+  padding-top: var(--space-section);
+  padding-bottom: var(--space-section);
+}
+
+/* ============================================
+   SECTION GRADIENT SYSTEM
+   All sections use 3-colour gradients, never solid.
+   Even "solid" sections use subtle hue variations.
+   Use contrasting card classes on each background.
+   ============================================ */
+
+/* Navy gradient (navy-light → navy → navy-dark) */
+.section-navy {
+  background: linear-gradient(135deg, #1a6b8a 0%, var(--color-navy) 50%, #0a3347 100%);
+  color: var(--color-text-on-dark);
+}
+
+/* Cyan-Navy gradient (cool corporate) */
+.section-cyan-navy {
+  background: linear-gradient(135deg, var(--color-cyan) 0%, #0a6b8a 50%, var(--color-navy) 100%);
+  color: var(--color-text-on-dark);
+}
+
+/* Purple-Navy gradient (premium corporate) */
+.section-purple-navy {
+  background: linear-gradient(135deg, var(--color-purple) 0%, #5a1a6b 50%, var(--color-navy) 100%);
+  color: var(--color-text-on-dark);
+}
+
+/* Red-Orange gradient (warm/energetic - Finex Money style) */
+.section-red-orange {
+  background: linear-gradient(135deg, var(--color-imali-red) 0%, var(--color-red) 50%, var(--color-orange) 100%);
+  color: var(--color-text-on-dark);
+}
+
+/* Orange-Red gradient (reversed warm) */
+.section-orange-red {
+  background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-red) 50%, var(--color-imali-red) 100%);
+  color: var(--color-text-on-dark);
+}
+
+/* Full Sunset gradient (cyan → purple → red → orange) */
+.section-sunset {
+  background: var(--gradient-sunset);
+  color: var(--color-text-on-dark);
+}
+
+/* Mesh gradient for main hero - positioned color blobs */
+.section-hero-mesh {
+  background:
+    /* Teal/Cyan - middle left */
+    radial-gradient(ellipse 80% 100% at -10% 50%, #28A8AD 0%, rgba(40, 168, 173, 0) 70%),
+    /* Vibrant Red-Orange - top-right */
+    radial-gradient(ellipse 90% 90% at 110% -10%, #ED4228 0%, rgba(237, 66, 40, 0) 70%),
+    /* Golden Orange - bottom-right */
+    radial-gradient(ellipse 80% 100% at 110% 110%, #EF8B1D 0%, rgba(239, 139, 29, 0) 70%),
+    /* Deep Magenta/Plum - bottom-left */
+    radial-gradient(ellipse 100% 120% at 0% 100%, #812A6C 0%, rgba(129, 42, 108, 0) 60%),
+    /* Purple base that fills everything */
+    linear-gradient(135deg, #6B2D7B 0%, #892890 50%, #5C2367 100%);
+  color: var(--color-text-on-dark);
+}
+
+/* Sunset Reverse (orange → red → purple → cyan) */
+.section-sunset-reverse {
+  background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-red) 30%, var(--color-purple) 60%, var(--color-cyan) 100%);
+  color: var(--color-text-on-dark);
+}
+
+/* Cross-spectrum: Orange to Blue (high contrast) */
+.section-orange-blue {
+  background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-purple) 50%, var(--color-cyan) 100%);
+  color: var(--color-text-on-dark);
+}
+
+/* Cross-spectrum: Blue to Orange (high contrast reversed) */
+.section-blue-orange {
+  background: linear-gradient(135deg, var(--color-cyan) 0%, var(--color-purple) 50%, var(--color-orange) 100%);
+  color: var(--color-text-on-dark);
+}
+
+/* Subtle light gradients (for "white" sections - never pure white) */
+.section-light {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #f0f2f5 100%);
+  color: var(--color-text-primary);
+}
+
+/* Subtle warm light gradient */
+.section-light-warm {
+  background: linear-gradient(135deg, #fffaf5 0%, #fff8f0 50%, #fff5eb 100%);
+  color: var(--color-text-primary);
+}
+
+/* Subtle cool light gradient */
+.section-light-cool {
+  background: linear-gradient(135deg, #f5faff 0%, #f0f8ff 50%, #ebf5ff 100%);
+  color: var(--color-text-primary);
+}
+
+/* Dark tech gradient (for Technology page) */
+.section-dark-tech {
+  background: linear-gradient(135deg, #0a1a20 0%, var(--color-black) 50%, #1a0a20 100%);
+  color: var(--color-text-on-dark);
+}
+
+/* Green-Navy gradient (for Global/Growth) */
+.section-green-navy {
+  background: linear-gradient(135deg, #1A4D3E 0%, #1A3C34 50%, var(--color-navy) 100%);
+  color: var(--color-text-on-dark);
+}
+
+/* Legacy aliases for backwards compatibility */
+.section-dark {
+  background: linear-gradient(135deg, #1a6b8a 0%, var(--color-navy) 50%, #0a3347 100%);
+  color: var(--color-text-on-dark);
+}
+.section-alt {
+  background: linear-gradient(135deg, #f8f9fa 0%, #f0f2f5 50%, #e9ecef 100%);
+  color: var(--color-text-primary);
+}
+.section-brand {
+  background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-red) 50%, var(--color-imali-red) 100%);
+  color: var(--color-text-on-dark);
+}
+.section-gradient {
+  background: var(--gradient-sunset);
+  color: var(--color-text-on-dark);
+}
+
+/* Gradient text - for dark backgrounds (bright colors) */
+.gradient-text {
+  background: var(--gradient-sunset-h);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient text - for light/white backgrounds (darker, more saturated colors for visibility) */
+.gradient-text-dark {
+  background: linear-gradient(90deg, #007bb5 0%, #6b1f70 30%, #c41230 60%, #d45a00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Auto-detect background and adjust - use on sections that may vary */
+.section-light .gradient-text,
+.section-light-warm .gradient-text,
+.section-light-cool .gradient-text {
+  background: linear-gradient(90deg, #007bb5 0%, #6b1f70 30%, #c41230 60%, #d45a00 100%);
+}
+
+.gradient-bg {
+  background: var(--gradient-sunset);
+}
+
+.gradient-border {
+  position: relative;
+  background: var(--color-surface);
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: var(--gradient-sunset);
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+}
+
+/* Embedded Content */
+.embed-borderless {
+  border: 0;
+}
+
+/* ============================================
+   CARD SYSTEM - CONTRAST VARIANTS
+   Cards must always contrast with their background.
+   Use the appropriate card class based on section background.
+   ============================================ */
+
+/* --- CARDS FOR DARK/NAVY BACKGROUNDS --- */
+/* Use on: section-navy, section-dark, section-cyan-navy, section-purple-navy */
+
+/* Red-Orange gradient card (contrasts with blue/navy) */
+.card-warm {
+  background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-red) 100%);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg) var(--space-xl);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+}
+.card-warm h3, .card-warm h4, .card-warm p { color: var(--color-white); }
+.card-warm p { opacity: 0.9; }
+
+/* Sunset gradient card (full spectrum) */
+.card-sunset {
+  background: linear-gradient(135deg, var(--color-cyan) 0%, var(--color-purple) 40%, var(--color-red) 70%, var(--color-orange) 100%);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg) var(--space-xl);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+}
+.card-sunset h3, .card-sunset h4, .card-sunset p { color: var(--color-white); }
+.card-sunset p { opacity: 0.9; }
+
+/* White card (for dark backgrounds - legacy support) */
+.card-white {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg) var(--space-xl);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  color: var(--color-text-primary);
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- CARDS FOR WARM/RED/ORANGE BACKGROUNDS --- */
+/* Use on: section-red-orange, section-orange-red, section-brand */
+
+/* Blue-Purple gradient card (contrasts with warm colours) */
+.card-cool {
+  background: linear-gradient(135deg, var(--color-cyan) 0%, var(--color-navy) 100%);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg) var(--space-xl);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+}
+.card-cool h3, .card-cool h4, .card-cool p { color: var(--color-white); }
+.card-cool p { opacity: 0.9; }
+
+/* Navy-Purple gradient card */
+.card-navy-purple {
+  background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-purple) 100%);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg) var(--space-xl);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+}
+.card-navy-purple h3, .card-navy-purple h4, .card-navy-purple p { color: var(--color-white); }
+.card-navy-purple p { opacity: 0.9; }
+
+/* --- CARDS FOR LIGHT BACKGROUNDS --- */
+/* Use on: section-light, section-light-warm, section-light-cool */
+
+/* Navy gradient card (for light backgrounds) */
+.card-navy {
+  background: linear-gradient(135deg, #1a6b8a 0%, var(--color-navy) 100%);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg) var(--space-xl);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+}
+.card-navy h3, .card-navy h4, .card-navy p { color: var(--color-white); }
+.card-navy p { opacity: 0.9; }
+
+/* Red gradient card (for light backgrounds) */
+.card-red {
+  background: linear-gradient(135deg, var(--color-red) 0%, var(--color-imali-red) 100%);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg) var(--space-xl);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+}
+.card-red h3, .card-red h4, .card-red p { color: var(--color-white); }
+.card-red p { opacity: 0.9; }
+
+/* --- CARDS FOR SUNSET/SPECTRUM BACKGROUNDS --- */
+/* Use on: section-sunset, section-sunset-reverse, section-orange-blue */
+
+/* Dark translucent card (for gradient backgrounds) */
+.card-glass-dark {
+  background: rgba(17, 17, 17, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-2xl);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+}
+.card-glass-dark h3, .card-glass-dark h4, .card-glass-dark p { color: var(--color-white); }
+.card-glass-dark p { opacity: 0.85; }
+
+/* Light translucent card (for gradient backgrounds) */
+.card-glass-light {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-2xl);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--color-text-primary);
+}
+
+/* --- LEGACY CARD CLASSES (for backwards compatibility) --- */
+.card-feature {
+  background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-red) 100%);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-2xl);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  color: var(--color-white);
+}
+.card-feature h3, .card-feature h4 { color: var(--color-white); }
+.card-feature p { color: rgba(255, 255, 255, 0.9); }
+
+.card-list-item {
+  background: linear-gradient(135deg, var(--color-cyan) 0%, var(--color-navy) 100%);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg) var(--space-xl);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  color: var(--color-white);
+}
+.card-list-item .icon {
+  color: var(--color-white);
+  flex-shrink: 0;
+}
+
+.card-step {
+  background: linear-gradient(135deg, var(--color-purple) 0%, var(--color-navy) 100%);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  color: var(--color-white);
+}
+.card-step .step-number {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-full);
+  background: var(--color-orange);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-secondary);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-xl);
+  margin: 0 auto var(--space-lg);
+}
+
+.card-icon-feature {
+  background: linear-gradient(135deg, var(--color-red) 0%, var(--color-orange) 100%);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl) var(--space-xl);
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  color: var(--color-white);
+}
+.card-icon-feature .icon {
+  color: var(--color-white);
+  width: 48px;
+  height: 48px;
+  margin: 0 auto var(--space-md);
+}
+
+/* Legacy card classes (keep for backward compatibility) */
+.card-base {
+  padding: var(--space-lg);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.card-interactive {
+  transition: all 0.3s ease;
+}
+
+.card-interactive:hover {
+  border-color: color-mix(in srgb, var(--brand-primary) 30%, transparent);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ============================================
+   FORM ELEMENTS
+   Consistent form styling across the site
+   ============================================ */
+
+.form-input {
+  width: 100%;
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  transition: all 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-cyan);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-cyan) 20%, transparent);
+}
+
+.form-input::placeholder {
+  color: var(--color-mid-grey);
+}
+
+.form-label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+/* ============================================
+   BUTTON VARIANTS - CONTRAST SYSTEM
+   Buttons must have solid backgrounds that contrast
+   with their section background. Never use outline
+   buttons without solid fill on gradient backgrounds.
+   ============================================ */
+
+/* --- BUTTONS FOR DARK/NAVY/COOL BACKGROUNDS --- */
+/* Use on: section-navy, section-dark, section-cyan-navy, section-purple-navy */
+
+.btn-warm {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-red) 100%);
+  color: var(--color-white);
+  font-weight: var(--weight-semibold);
+  border: none;
+  box-shadow: 0 4px 15px rgba(238, 39, 55, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-warm:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(238, 39, 55, 0.4);
+}
+
+.btn-sunset {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-full);
+  background: var(--gradient-sunset);
+  color: var(--color-white);
+  font-weight: var(--weight-semibold);
+  border: none;
+  box-shadow: 0 4px 15px rgba(137, 40, 144, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-sunset:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(137, 40, 144, 0.4);
+}
+
+/* --- BUTTONS FOR WARM/RED/ORANGE BACKGROUNDS --- */
+/* Use on: section-red-orange, section-orange-red, section-brand */
+
+.btn-cool {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--color-cyan) 0%, var(--color-navy) 100%);
+  color: var(--color-white);
+  font-weight: var(--weight-semibold);
+  border: none;
+  box-shadow: 0 4px 15px rgba(0, 169, 224, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-cool:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 169, 224, 0.4);
+}
+
+.btn-navy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, #1a6b8a 0%, var(--color-navy) 100%);
+  color: var(--color-white);
+  font-weight: var(--weight-semibold);
+  border: none;
+  box-shadow: 0 4px 15px rgba(15, 71, 97, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-navy:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(15, 71, 97, 0.4);
+}
+
+/* --- BUTTONS FOR LIGHT BACKGROUNDS --- */
+/* Use on: section-light, section-light-warm, section-light-cool */
+
+.btn-gradient {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-full);
+  background: var(--gradient-sunset);
+  color: var(--color-white);
+  font-weight: var(--weight-semibold);
+  border: none;
+  box-shadow: 0 4px 15px rgba(137, 40, 144, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(137, 40, 144, 0.35);
+}
+
+.btn-red {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--color-red) 0%, var(--color-imali-red) 100%);
+  color: var(--color-white);
+  font-weight: var(--weight-semibold);
+  border: none;
+  box-shadow: 0 4px 15px rgba(238, 39, 55, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-red:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(238, 39, 55, 0.35);
+}
+
+/* --- BUTTONS FOR SUNSET/SPECTRUM BACKGROUNDS --- */
+/* Use on: section-sunset, section-sunset-reverse, section-orange-blue */
+
+.btn-glass-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-full);
+  background: rgba(17, 17, 17, 0.8);
+  backdrop-filter: blur(10px);
+  color: var(--color-white);
+  font-weight: var(--weight-semibold);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.btn-glass-dark:hover {
+  transform: translateY(-2px);
+  background: rgba(17, 17, 17, 0.9);
+}
+
+.btn-glass-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  color: var(--color-navy);
+  font-weight: var(--weight-semibold);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.btn-glass-light:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 1);
+}
+
+/* --- HERO WHITE BUTTON (for gradient backgrounds) --- */
+/* Pure white background with cool glow effects - stands out on any gradient */
+
+.btn-hero-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-2xl);
+  border-radius: var(--radius-full);
+  background: var(--color-white);
+  color: var(--color-navy);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-lg);
+  border: none;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.15),
+    0 0 40px rgba(255, 255, 255, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-hero-white::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0, 169, 224, 0.1) 0%, rgba(137, 40, 144, 0.1) 50%, rgba(255, 122, 26, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-hero-white:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.2),
+    0 0 60px rgba(255, 255, 255, 0.5),
+    0 0 20px rgba(0, 169, 224, 0.3);
+}
+
+.btn-hero-white:hover::before {
+  opacity: 1;
+}
+
+.btn-hero-white:active {
+  transform: translateY(-1px) scale(0.98);
+  box-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.15),
+    0 0 30px rgba(255, 255, 255, 0.4);
+}
+
+/* Secondary hero button - outline style for gradient backgrounds */
+.btn-hero-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-2xl);
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: var(--color-white);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-lg);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-hero-outline:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow:
+    0 6px 25px rgba(0, 0, 0, 0.15),
+    0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.btn-hero-outline:active {
+  transform: translateY(0);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* --- OUTLINE BUTTONS (with solid backgrounds for visibility) --- */
+/* These have semi-transparent fills so they're visible on any background */
+
+.btn-outline-warm {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-full);
+  background: rgba(255, 122, 26, 0.15);
+  color: var(--color-white);
+  font-weight: var(--weight-semibold);
+  border: 2px solid var(--color-orange);
+  transition: background 0.2s ease;
+}
+.btn-outline-warm:hover {
+  background: rgba(255, 122, 26, 0.3);
+}
+
+.btn-outline-cool {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-full);
+  background: rgba(0, 169, 224, 0.15);
+  color: var(--color-white);
+  font-weight: var(--weight-semibold);
+  border: 2px solid var(--color-cyan);
+  transition: background 0.2s ease;
+}
+.btn-outline-cool:hover {
+  background: rgba(0, 169, 224, 0.3);
+}
+
+/* Legacy button classes */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-red) 100%);
+  color: var(--color-white);
+  font-weight: var(--weight-semibold);
+  border: none;
+  box-shadow: 0 4px 15px rgba(238, 39, 55, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(238, 39, 55, 0.4);
+}
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ============================================
+   BADGE/TAG STYLES
+   For regulatory badges, status indicators
+   ============================================ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+}
+
+.badge-surface {
+  background-color: var(--color-surface-alt);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+}
+
+.badge-brand {
+  background-color: var(--brand-primary);
+  color: var(--color-white);
+}
+
+/* ============================================
+   ICON CONTAINERS
+   Consistent icon wrapper styling
+   ============================================ */
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+}
+
+.icon-container-sm {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.icon-container-md {
+  width: 3rem;
+  height: 3rem;
+}
+
+.icon-container-lg {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.icon-container-brand {
+  background-color: color-mix(in srgb, var(--brand-primary) 10%, transparent);
+}
+
+.icon-container-brand > svg {
+  color: var(--brand-primary);
+}
+
+/* ============================================
+   TEXT UTILITIES
+   ============================================ */
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-brand {
+  color: var(--brand-primary);
+}
+
+.text-accent {
+  color: var(--brand-accent);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255,122,26,0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255,122,26,0.4);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.8s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface-alt);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-mid-grey);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-dark-grey);
+}
+
+/* ============================================
+   FOCUS STYLES
+   ============================================ */
+
+:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   SELECTION STYLES
+   ============================================ */
+
+::selection {
+  background-color: var(--color-cyan);
+  color: var(--color-white);
 }
