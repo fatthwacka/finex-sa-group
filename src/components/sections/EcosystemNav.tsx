@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import ScrollReveal from '@/components/effects/ScrollReveal';
@@ -22,7 +21,7 @@ const BRAND_ITEMS: BrandItem[] = [
     name: 'Finex Money',
     slug: 'finex-money',
     dataBrand: 'finex-money',
-    logo: '/images/logos/FinexMoneyLogo.png',
+    logo: '/images/logos/finex-money-logo.png',
     heroImage: '/images/heroes/finex-money-hero-woman.webp',
   },
   {
@@ -30,7 +29,7 @@ const BRAND_ITEMS: BrandItem[] = [
     name: 'FINEXflow',
     slug: 'finexflow',
     dataBrand: 'finexflow',
-    logo: '/images/logos/Finex Flow 1.png',
+    logo: '/images/logos/finexflow-logo.png',
     heroImage: '/images/heroes/finexflow-hero-executive.webp',
   },
   {
@@ -38,7 +37,7 @@ const BRAND_ITEMS: BrandItem[] = [
     name: 'iMali Express',
     slug: 'imali-express',
     dataBrand: 'imali',
-    logo: '/images/logos/imali_express.png',
+    logo: '/images/logos/imali-express-logo.png',
     heroImage: '/images/heroes/imali-hero-mama.webp',
   },
   {
@@ -46,7 +45,7 @@ const BRAND_ITEMS: BrandItem[] = [
     name: 'Treasury',
     slug: 'treasury',
     dataBrand: 'treasury',
-    logo: '/images/logos/Finex Flow 2.png',
+    logo: '/images/logos/Finex-SA-treasury-logo-sml.png',
     heroImage: '/images/lifestyle/finexflow-collateral-spread.webp',
   },
   {
@@ -54,7 +53,7 @@ const BRAND_ITEMS: BrandItem[] = [
     name: 'Global',
     slug: 'global',
     dataBrand: 'global',
-    logo: '/images/logos/Finex Flow 3.png',
+    logo: '/images/logos/Finex-Global-logo-sml.png',
     heroImage: '/images/gradients/brand-gradient-cover.webp',
   },
 ];
@@ -64,23 +63,33 @@ export default function EcosystemNav() {
 
   const currentBrand = BRAND_ITEMS.find((b) => b.key === activeBrand) || BRAND_ITEMS[0];
 
+  const scrollToBrands = () => {
+    const el = document.getElementById('brands');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="py-16 md:py-24 section-purple-navy">
       <div className="container-max">
-        {/* Logo Navigation Row */}
+        {/* Logo Navigation Row - always single row, scaled down on mobile */}
         <ScrollReveal>
-          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10 lg:gap-14 mb-12">
+          <div className="flex justify-center items-center gap-3 sm:gap-6 md:gap-10 lg:gap-14 mb-12 overflow-x-auto scrollbar-hide">
             {BRAND_ITEMS.map((brand) => (
               <button
                 key={brand.key}
-                onClick={() => setActiveBrand(brand.key)}
-                className={`relative p-3 rounded-xl transition-all duration-300 ${
+                onClick={() => {
+                  setActiveBrand(brand.key);
+                  scrollToBrands();
+                }}
+                className={`relative p-2 sm:p-3 rounded-xl transition-all duration-300 flex-shrink-0 ${
                   activeBrand === brand.key
                     ? 'bg-white/15 scale-110'
                     : 'bg-white/5 hover:bg-white/10 opacity-60 hover:opacity-100'
                 }`}
               >
-                <div className="relative w-16 h-16 md:w-20 md:h-20">
+                <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-20 md:h-20 lg:w-24 lg:h-24">
                   <Image
                     src={brand.logo}
                     alt={brand.name}
@@ -99,7 +108,7 @@ export default function EcosystemNav() {
           </div>
         </ScrollReveal>
 
-        {/* Large Image Display */}
+        {/* Large Image Display - clicks scroll to brands section */}
         <ScrollReveal delay={0.1}>
           <div className="relative w-full max-w-5xl mx-auto">
             <AnimatePresence mode="wait">
@@ -110,9 +119,9 @@ export default function EcosystemNav() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3, ease: 'easeOut' }}
               >
-                <Link
-                  href={`/${currentBrand.slug}`}
-                  className="block group"
+                <button
+                  onClick={scrollToBrands}
+                  className="block group w-full text-left"
                   data-brand={currentBrand.dataBrand}
                 >
                   <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
@@ -134,7 +143,7 @@ export default function EcosystemNav() {
                       </p>
                     </div>
                   </div>
-                </Link>
+                </button>
               </motion.div>
             </AnimatePresence>
           </div>

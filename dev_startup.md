@@ -1,220 +1,156 @@
 # Dev Startup Guide — Multi-Device Workflow
 
+> Last updated: 2026-04-14
+
+---
+
 ## The Problem
-Developing on both ARM (Apple Silicon Mac) and Intel machines. `node_modules` contains platform-specific native binaries that break across architectures. Syncing these via Dropbox or any file sync service causes build failures.
+
+This project is developed on both ARM (Apple Silicon) and Intel Macs. Several dependencies ship platform-specific native binaries:
+
+| Package | ARM binary | Intel binary |
+|---------|-----------|-------------|
+| Next.js SWC compiler | `@next/swc-darwin-arm64` | `@next/swc-darwin-x64` |
+| Sharp (image processing) | `@img/sharp-darwin-arm64` | `@img/sharp-darwin-x64` |
+| LightningCSS | `lightningcss-darwin-arm64` | `lightningcss-darwin-x64` |
+| Tailwind Oxide | `@tailwindcss/oxide-darwin-arm64` | `@tailwindcss/oxide-darwin-x64` |
+| unrs Resolver | `@unrs/resolver-binding-darwin-arm64` | `@unrs/resolver-binding-darwin-x64` |
+
+These binaries are **not interchangeable**. ARM binaries crash on Intel and vice versa. The project lives in a Dropbox-synced folder, so without proper ignore rules Dropbox will sync the wrong binaries to the other machine.
 
 ## The Solution
-Git handles code. Each machine builds its own `node_modules` locally. Dropbox (if used) is told to ignore build artifacts.
+
+1. **Git handles code.** All source files sync via Git.
+2. **Each machine builds its own `node_modules`.** Never share `node_modules` between architectures.
+3. **Dropbox ignores build artifacts.** Enforced at two levels (see below).
 
 ---
 
-## Initial Project Setup (Run Once)
+## Dropbox Ignore Setup
 
-### 1. Create the project and initialise Git
+### Level 1: Global rules file (new files)
 
-```bash
-# Create Next.js project
-npx create-next-app@latest finex-sa-group --typescript --tailwind --eslint --app --src-dir --use-npm
+Dropbox now supports a `rules.dropboxignore` file at the **Dropbox root** (not per-project). This file prevents Dropbox from syncing *newly created* matching files/folders.
 
-cd finex-sa-group
+**Location:** `/Volumes/KLEANDOC/Dropbox/rules.dropboxignore`
 
-# Initialise Git repo
-git init
-git remote add origin <YOUR_GITHUB_REPO_URL>
-```
+This file already exists and covers `node_modules`, `.next`, `out`, `.vercel`, and other common build artifacts. It applies to all projects in Dropbox.
 
-### 2. Verify .gitignore
+**Important:** This file is local-only — it does not sync between machines. You must create it on each machine. Copy it from the other machine or recreate it.
 
-Next.js generates this by default but confirm it includes:
+### Level 2: xattr flags (existing directories)
 
-```
-node_modules/
-.next/
-out/
-.DS_Store
-*.tsbuildinfo
-.env*.local
-```
+For directories that already exist and are syncing, the `rules.dropboxignore` file has no effect. You must set extended attributes (xattr) to tell Dropbox to stop syncing them.
 
-### 3. Set up Dropbox ignore (if project folder lives in Dropbox)
-
-Dropbox doesn't natively support `.dropboxignore` on all platforms. Use the `xattr` method on macOS:
+The `dev-start.sh` script handles this automatically. To do it manually:
 
 ```bash
-# Run from project root
+# Modern method (macOS 12.5+)
+xattr -w 'com.apple.fileprovider.ignore#P' 1 node_modules
+xattr -w 'com.apple.fileprovider.ignore#P' 1 .next
+xattr -w 'com.apple.fileprovider.ignore#P' 1 out
+xattr -w 'com.apple.fileprovider.ignore#P' 1 .vercel
+
+# Legacy method (macOS ≤12.3, also works on newer versions as fallback)
 xattr -w com.dropbox.ignored 1 node_modules
 xattr -w com.dropbox.ignored 1 .next
 xattr -w com.dropbox.ignored 1 out
-
-# Verify
-xattr -l node_modules | grep dropbox
-# Should show: com.dropbox.ignored: 1
+xattr -w com.dropbox.ignored 1 .vercel
 ```
 
-If `node_modules` doesn't exist yet (fresh clone), create it first then ignore:
-
+Verify with:
 ```bash
-mkdir -p node_modules .next out
-xattr -w com.dropbox.ignored 1 node_modules
-xattr -w com.dropbox.ignored 1 .next
-xattr -w com.dropbox.ignored 1 out
+xattr -l node_modules | grep -E "dropbox|fileprovider"
 ```
 
-### 4. Install dependencies
+### Project .dropboxignore
 
-```bash
-npm install
-npm install framer-motion lucide-react
-```
-
-### 5. Push initial commit
-
-```bash
-git add .
-git commit -m "Initial project setup with design system"
-git push -u origin main
-```
+The `.dropboxignore` file in the project root is **documentation only**. Dropbox does not read per-project ignore files. The actual enforcement is via `rules.dropboxignore` at the Dropbox root and xattr flags.
 
 ---
 
-## Switching Machines
+## Daily Workflow
 
-### Script: `dev-start.sh`
-
-Save this in your project root. Run it every time you sit down at a machine.
+### Starting a session (any machine)
 
 ```bash
-#!/bin/bash
-
-echo "================================================"
-echo "  Finex SA Group — Dev Startup"
-echo "================================================"
-echo ""
-
-# Pull latest code
-echo "[1/4] Pulling latest from Git..."
-git pull origin main
-if [ $? -ne 0 ]; then
-    echo "ERROR: Git pull failed. Resolve conflicts before continuing."
-    exit 1
-fi
-echo "     Done."
-echo ""
-
-# Check for and rebuild node_modules
-echo "[2/4] Checking node_modules..."
-if [ ! -d "node_modules" ] || [ "package.json" -nt "node_modules" ]; then
-    echo "     Installing/updating dependencies..."
-    npm install
-    if [ $? -ne 0 ]; then
-        echo "ERROR: npm install failed."
-        exit 1
-    fi
-else
-    echo "     node_modules up to date."
-fi
-echo ""
-
-# Set Dropbox ignore flags (safe to run repeatedly)
-echo "[3/4] Setting Dropbox ignore flags..."
-if command -v xattr &> /dev/null; then
-    for dir in node_modules .next out; do
-        mkdir -p "$dir"
-        xattr -w com.dropbox.ignored 1 "$dir" 2>/dev/null
-    done
-    echo "     Dropbox ignore flags set."
-else
-    echo "     xattr not available (not macOS). Skipping."
-fi
-echo ""
-
-# Report status
-echo "[4/4] Environment check..."
-echo "     Node:    $(node -v)"
-echo "     npm:     $(npm -v)"
-echo "     Arch:    $(uname -m)"
-echo "     Branch:  $(git branch --show-current)"
-echo "     Status:  $(git status --short | wc -l | tr -d ' ') uncommitted changes"
-echo ""
-echo "================================================"
-echo "  Ready. Run 'npm run dev' to start."
-echo "================================================"
-```
-
-Make it executable:
-
-```bash
-chmod +x dev-start.sh
-```
-
-Usage:
-
-```bash
-# Every time you sit down at either machine
 ./dev-start.sh
+```
 
-# Then start developing
+This script:
+1. Reports machine architecture, Node/npm versions, and Git branch
+2. Pulls latest code from Git
+3. Sets Dropbox ignore xattr flags on `node_modules`, `.next`, `out`, `.vercel`
+4. Detects architecture mismatch (checks if `@next/swc-darwin-{arch}` matches current CPU)
+5. If mismatched or missing: nukes `node_modules`/`.next` and runs `npm install`
+6. Re-applies Dropbox ignore flags after install (since `rm -rf` removes xattrs)
+
+Then start developing:
+```bash
 npm run dev
 ```
 
+### Ending a session / switching machines
+
+```bash
+./dev-stop.sh
+```
+
+This script:
+1. Shows uncommitted changes, prompts for a commit message (or skip)
+2. Pushes any unpushed commits to the remote
+
 ---
 
-## End of Session
+## First-Time Setup on a New Machine
 
-### Script: `dev-stop.sh`
-
-Run before switching machines.
+### 1. Clone the repo (or navigate to the Dropbox-synced folder)
 
 ```bash
-#!/bin/bash
-
-echo "================================================"
-echo "  Finex SA Group — Dev Shutdown"
-echo "================================================"
-echo ""
-
-# Check for uncommitted changes
-CHANGES=$(git status --short | wc -l | tr -d ' ')
-
-if [ "$CHANGES" -gt 0 ]; then
-    echo "Uncommitted changes detected:"
-    echo ""
-    git status --short
-    echo ""
-    read -p "Commit message (or 'skip' to leave uncommitted): " MSG
-
-    if [ "$MSG" != "skip" ]; then
-        git add .
-        git commit -m "$MSG"
-        git push origin main
-        echo ""
-        echo "Pushed to origin/main."
-    else
-        echo "Changes left uncommitted. Remember to commit before switching machines."
-    fi
-else
-    echo "Working tree clean."
-    # Push any unpushed commits
-    UNPUSHED=$(git log origin/main..HEAD --oneline | wc -l | tr -d ' ')
-    if [ "$UNPUSHED" -gt 0 ]; then
-        echo "$UNPUSHED unpushed commit(s). Pushing..."
-        git push origin main
-    else
-        echo "Everything synced with origin."
-    fi
-fi
-
-echo ""
-echo "================================================"
-echo "  Safe to switch machines."
-echo "================================================"
+cd /Volumes/KLEANDOC/Dropbox/APPS/Finex/finex-sa-group
 ```
 
-Make it executable:
+### 2. Create the global Dropbox ignore file
+
+Copy `rules.dropboxignore` from the Dropbox root of another machine, or create it:
 
 ```bash
-chmod +x dev-stop.sh
+cat > /Volumes/KLEANDOC/Dropbox/rules.dropboxignore << 'EOF'
+# Node.js / JavaScript
+node_modules
+.next
+out
+.cache
+.turbo
+.parcel-cache
+*.log
+
+# Build artifacts
+dist
+build
+
+# Environment & secrets
+.env
+.env.*
+
+# Platform / IDE
+.DS_Store
+Thumbs.db
+
+# Deployment
+.vercel
+.netlify
+EOF
 ```
+
+### 3. Run the startup script
+
+```bash
+chmod +x dev-start.sh dev-stop.sh   # first time only
+./dev-start.sh
+```
+
+The script handles everything else: xattr flags, dependency installation, architecture detection.
 
 ---
 
@@ -228,27 +164,39 @@ chmod +x dev-stop.sh
 | Production build | `npm run build` |
 | Check static export output | `ls out/` |
 | Nuke and rebuild deps | `rm -rf node_modules .next && npm install` |
+| Check current architecture | `uname -m` |
+| Check Dropbox ignore status | `xattr -l node_modules \| grep -E "dropbox\|fileprovider"` |
+
+---
 
 ## Troubleshooting
 
-**"Module not found" after switching machines:**
+### "Module not found" or SWC/Sharp binary mismatch after switching machines
+
+The startup script should catch this automatically. If not:
 ```bash
 rm -rf node_modules .next
 npm install
 ```
 
-**Dropbox re-syncing node_modules:**
+### Dropbox re-syncing node_modules
+
+Re-apply xattr flags:
 ```bash
+xattr -w 'com.apple.fileprovider.ignore#P' 1 node_modules
+xattr -w 'com.apple.fileprovider.ignore#P' 1 .next
 xattr -w com.dropbox.ignored 1 node_modules
 xattr -w com.dropbox.ignored 1 .next
 ```
 
-**Git conflicts on package-lock.json:**
-Accept incoming, then run `npm install` to regenerate for your architecture.
+### Git conflicts on package-lock.json
 
-**Sharp/SWC binary mismatch errors:**
-This means node_modules from the other architecture leaked through. Nuke and reinstall:
-```bash
-rm -rf node_modules .next
-npm install
-```
+Accept incoming changes, then run `npm install` to regenerate for your architecture. The lockfile contains entries for *both* architectures — npm will install the correct one.
+
+### dev-start.sh says "Architecture mismatch detected"
+
+This is expected when switching machines. The script will automatically nuke and reinstall. Just let it run.
+
+### Dropbox ignore rules not working on a new machine
+
+Remember: `rules.dropboxignore` is local-only and does not sync. You must create it on each machine. See "First-Time Setup" above.

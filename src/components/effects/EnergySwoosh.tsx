@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useId } from 'react';
 
 interface EnergySwooshProps {
   variant?: 'divider' | 'background' | 'accent';
@@ -39,7 +39,8 @@ export default function EnergySwoosh({
     });
   }, []);
 
-  const gradientId = `swoosh-gradient-${variant}-${Math.random().toString(36).substr(2, 9)}`;
+  const rawId = useId();
+  const gradientId = `swoosh-gradient-${variant}-${rawId.replace(/:/g, '')}`;
 
   if (variant === 'divider') {
     return (
@@ -118,9 +119,9 @@ export default function EnergySwoosh({
             0%, 100% { transform: translateY(0) translateX(0); }
             50% { transform: translateY(-10px) translateX(-10px); }
           }
-          .swoosh-animate-1 { animation: swoosh-float-1 20s ease-in-out infinite; }
-          .swoosh-animate-2 { animation: swoosh-float-2 25s ease-in-out infinite; }
-          .swoosh-animate-3 { animation: swoosh-float-3 18s ease-in-out infinite; }
+          .swoosh-animate-1 { animation: swoosh-float-1 6.7s ease-in-out infinite; }
+          .swoosh-animate-2 { animation: swoosh-float-2 8.3s ease-in-out infinite; }
+          .swoosh-animate-3 { animation: swoosh-float-3 6s ease-in-out infinite; }
         `}</style>
         <svg
           viewBox="0 0 1440 800"
