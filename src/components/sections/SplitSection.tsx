@@ -15,7 +15,7 @@ interface SplitSectionProps {
   /** Custom content for right/left side instead of image */
   visualContent?: React.ReactNode;
   /** Background variant - uses gradient section classes */
-  bgVariant?: 'light' | 'light-warm' | 'light-cool' | 'alt' | 'navy' | 'cyan-navy' | 'purple-navy' | 'sunset' | 'dark-tech' | 'dark';
+  bgVariant?: 'light' | 'light-warm' | 'light-cool' | 'alt' | 'navy' | 'cyan-navy' | 'purple-navy' | 'sunset' | 'dark-tech' | 'dark' | 'dark-warm';
   /** Additional class names */
   className?: string;
   /** Vertical alignment */
@@ -49,6 +49,7 @@ export default function SplitSection({
     'sunset': 'section-sunset',
     'dark-tech': 'section-dark-tech',
     'dark': 'section-dark',
+    'dark-warm': 'section-dark-warm',
   };
 
   const alignStyles: Record<string, string> = {
@@ -58,7 +59,7 @@ export default function SplitSection({
   };
 
   // Dark variants that need light text
-  const darkVariants = ['navy', 'cyan-navy', 'purple-navy', 'sunset', 'dark-tech', 'dark'];
+  const darkVariants = ['navy', 'cyan-navy', 'purple-navy', 'sunset', 'dark-tech', 'dark', 'dark-warm'];
   const textOnDark = darkVariants.includes(bgVariant);
 
   // Determine content order based on image position
@@ -111,7 +112,7 @@ export default function SplitSection({
  * Helper component for section headings within SplitSection
  */
 interface SectionHeadingProps {
-  title: string;
+  title: React.ReactNode;
   subtitle?: string;
   description?: string;
   /** Whether text should be light (for dark backgrounds) */

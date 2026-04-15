@@ -297,6 +297,30 @@ h4 {
   color: var(--color-text-on-dark);
 }
 
+/* Blue → purple → red gradient (cool-to-warm sweep) */
+.section-blue-red {
+  background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-purple) 50%, var(--color-red) 100%);
+  color: var(--color-text-on-dark);
+}
+
+/* Understated navy → blue-grey → muted cyan (calm corporate, darker with hue separation) */
+.section-blue-grey-cyan {
+  background: linear-gradient(135deg, #0a1e3a 0%, #1a2533 45%, #1a5a78 100%);
+  color: var(--color-text-on-dark);
+}
+
+/* Hero radial sunset — medium red centre with dark red glows tight to the corners */
+.section-hero-sunset-radial {
+  background:
+    radial-gradient(ellipse 55% 50% at 50% 50%, #c92030 0%, rgba(201, 32, 48, 0.65) 35%, transparent 75%),
+    radial-gradient(circle at 0% 0%, #7a1020 0%, transparent 18%),
+    radial-gradient(circle at 100% 0%, #7a1020 0%, transparent 18%),
+    radial-gradient(circle at 0% 100%, #7a1020 0%, transparent 18%),
+    radial-gradient(circle at 100% 100%, #7a1020 0%, transparent 18%),
+    #2a1022;
+  color: var(--color-text-on-dark);
+}
+
 /* Red-Orange gradient (warm/energetic - Finex Money style) */
 .section-red-orange {
   background: linear-gradient(135deg, var(--color-imali-red) 0%, var(--color-red) 50%, var(--color-orange) 100%);
@@ -377,6 +401,37 @@ h4 {
 .section-dark-warm {
   background: linear-gradient(135deg, #3a0e2d 0%, #0a0508 50%, #3a0e14 100%);
   color: var(--color-text-on-dark);
+}
+
+/* ============================================
+   FLIP CARD — opacity crossfade between faces
+   (switched from 3D rotateY to avoid backface-visibility
+   quirks on narrow widths / older browsers)
+   ============================================ */
+.flip-card {
+  position: relative;
+  overflow: hidden;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.flip-face {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.4s ease;
+}
+.flip-back {
+  opacity: 0;
+}
+@media (hover: hover) {
+  .flip-card:hover .flip-face:not(.flip-back) {
+    opacity: 0;
+  }
+  .flip-card:hover .flip-back {
+    opacity: 1;
+  }
 }
 
 /* ============================================

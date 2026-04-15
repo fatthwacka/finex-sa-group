@@ -17,7 +17,7 @@ export default function ContactBlock({
   description,
 }: ContactBlockProps) {
   return (
-    <div className="card-warm">
+    <div className="card-warm h-full flex flex-col">
       <h3 className="text-xl font-semibold text-white mb-4">{title}</h3>
 
       {description && (

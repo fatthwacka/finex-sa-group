@@ -250,15 +250,18 @@ export default function FinexMoneyPage() {
           }}
         />
 
-        {/* Pull-quote in right column */}
+        {/* Heading + paragraph in right column */}
         <div className="container-max relative z-10">
           <div className="flex justify-end">
-            <blockquote className="w-full md:w-1/2 lg:w-5/12 relative pl-8 md:pl-12">
-              <span aria-hidden="true" className="absolute left-0 -top-4 text-5xl md:text-7xl font-serif text-white/50 leading-none select-none">&ldquo;</span>
-              <p className="text-lg md:text-xl italic text-white/90 leading-relaxed">
-                Say goodbye to <span className="not-italic font-bold text-white">traditional banking hassles</span> and embrace the convenience of a <span className="not-italic font-bold text-white">true mobile wallet solution</span>. Finex Money is a <span className="not-italic font-bold text-white">secure digital ecosystem</span> built to serve the individual seeking <span className="not-italic font-bold text-white">financial dignity</span>.<span aria-hidden="true" className="font-serif text-white/50 ml-1">&rdquo;</span>
+            <div className="w-full md:w-1/2 lg:w-5/12">
+              <h2 className="text-white mb-4">
+                <span className="italic font-light">Simple,</span> <span className="font-extrabold">secure digital</span><br />
+                <span className="font-light">payments.</span>
+              </h2>
+              <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+                Say goodbye to <span className="font-bold text-white">traditional banking hassles</span> and embrace the convenience of a <span className="font-bold text-white">true mobile wallet solution</span>. Finex Money is a <span className="font-bold text-white">secure digital ecosystem</span> built to serve the individual seeking <span className="font-bold text-white">financial dignity</span>.
               </p>
-            </blockquote>
+            </div>
           </div>
         </div>
       </section>

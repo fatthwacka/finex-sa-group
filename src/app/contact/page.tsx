@@ -73,7 +73,7 @@ export default function ContactPage() {
         <div className="container-max">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Group Contact */}
-            <ScrollReveal delay={0}>
+            <ScrollReveal delay={0} className="h-full">
               <ContactBlock
                 title="Group & Corporate Enquiries"
                 phone={GROUP.phone[0]}
@@ -83,7 +83,7 @@ export default function ContactPage() {
             </ScrollReveal>
 
             {/* Finex Money */}
-            <ScrollReveal delay={0.1}>
+            <ScrollReveal delay={0.1} className="h-full">
               <ContactBlock
                 title="Finex Money Support"
                 phone={BRANDS.finexMoney.support.phone}
@@ -92,7 +92,7 @@ export default function ContactPage() {
             </ScrollReveal>
 
             {/* FINEXflow */}
-            <ScrollReveal delay={0.2}>
+            <ScrollReveal delay={0.2} className="h-full">
               <ContactBlock
                 title="FINEXflow"
                 description="Book a demonstration and see FINEXFlow working with your own workforce data."
@@ -101,7 +101,7 @@ export default function ContactPage() {
             </ScrollReveal>
 
             {/* iMali Remit */}
-            <ScrollReveal delay={0.3}>
+            <ScrollReveal delay={0.3} className="h-full">
               <ContactBlock
                 title="iMali Remit App Support"
                 phone={BRANDS.imaliRemit.support.phone}
@@ -110,7 +110,7 @@ export default function ContactPage() {
             </ScrollReveal>
 
             {/* Treasury */}
-            <ScrollReveal delay={0.4}>
+            <ScrollReveal delay={0.4} className="h-full">
               <ContactBlock
                 title="Finex SA Treasury"
                 phone={BRANDS.treasury.support.phone}
@@ -119,8 +119,8 @@ export default function ContactPage() {
             </ScrollReveal>
 
             {/* Second Group Number */}
-            <ScrollReveal delay={0.5}>
-              <div className="card-warm">
+            <ScrollReveal delay={0.5} className="h-full">
+              <div className="card-warm h-full flex flex-col">
                 <h3 className="text-xl font-semibold text-white mb-4">
                   Alternative Contact
                 </h3>
@@ -152,7 +152,7 @@ export default function ContactPage() {
               </div>
             </ScrollReveal>
 
-            <ScrollReveal delay={0.2}>
+            <ScrollReveal delay={0.2} className="h-full">
               {submitted ? (
                 <div className="p-8 rounded-2xl bg-[var(--color-success-light)] border border-[var(--color-success-border)] text-center">
                   <div className="w-16 h-16 rounded-full bg-[var(--color-success-mid)] flex items-center justify-center mx-auto mb-4">
@@ -275,7 +275,7 @@ export default function ContactPage() {
               <p className="text-white/80">{GROUP.address}</p>
             </div>
           </ScrollReveal>
-          <ScrollReveal delay={0.2}>
+          <ScrollReveal delay={0.2} className="h-full">
             <div className="rounded-2xl overflow-hidden border border-white/20 h-[400px]">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3309.1234567890123!2d18.9567!3d-33.7234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDQzJzI0LjQiUyAxOMKwNTcnMjQuMSJF!5e0!3m2!1sen!2sza!4v1234567890123!5m2!1sen!2sza"

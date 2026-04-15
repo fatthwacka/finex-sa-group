@@ -62,7 +62,7 @@ export default function HeroSection({
 }: HeroSectionProps) {
   // Background styles per variant - using gradient section classes
   const bgStyles: Record<string, string> = {
-    'gradient-centred': 'section-sunset',
+    'gradient-centred': 'section-hero-sunset-radial',
     'split-image': 'section-light',
     'dark': 'section-navy',
     'dark-tech': 'section-dark-tech',

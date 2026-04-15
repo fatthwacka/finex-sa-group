@@ -6,7 +6,7 @@ import ScrollReveal from '@/components/effects/ScrollReveal';
 interface AccentBandProps {
   children: React.ReactNode;
   /** Background variant - uses gradient section classes */
-  variant?: 'gradient' | 'navy' | 'dark' | 'cyan-navy' | 'purple-navy' | 'sunset' | 'red-orange' | 'orange-blue';
+  variant?: 'gradient' | 'navy' | 'dark' | 'cyan-navy' | 'purple-navy' | 'sunset' | 'red-orange' | 'orange-blue' | 'blue-red' | 'blue-grey-cyan';
   /** Additional CSS classes */
   className?: string;
 }
@@ -32,6 +32,8 @@ export default function AccentBand({
     sunset: 'section-sunset',
     'red-orange': 'section-red-orange',
     'orange-blue': 'section-orange-blue',
+    'blue-red': 'section-blue-red',
+    'blue-grey-cyan': 'section-blue-grey-cyan',
   };
 
   return (
