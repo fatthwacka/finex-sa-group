@@ -5,14 +5,20 @@ import { motion } from 'framer-motion';
 import EnergySwoosh from '@/components/effects/EnergySwoosh';
 
 interface HeroSectionProps {
-  /** Main headline text */
-  headline: string;
+  /** Main headline — string or JSX for inline formatting */
+  headline: React.ReactNode;
+  /** Optional logo rendered above eyebrow/headline (transparent, no container) */
+  logoSrc?: string;
+  /** Alt text for the logo */
+  logoAlt?: string;
+  /** Additional Tailwind classes for the logo (e.g. "brightness-0 invert" for pure white) */
+  logoClassName?: string;
   /** Optional eyebrow text above headline (small caps style) */
   eyebrow?: string;
-  /** Optional subline below headline (gradient or accent styled) */
-  subline?: string;
-  /** Body paragraph text */
-  body: string;
+  /** Optional subline below headline — string or JSX */
+  subline?: React.ReactNode;
+  /** Body paragraph — string or JSX */
+  body?: React.ReactNode;
   /** CTA buttons or other children */
   children?: React.ReactNode;
   /** Visual variant controlling background and layout */
@@ -23,8 +29,10 @@ interface HeroSectionProps {
   heroImageAlt?: string;
   /** Position of image in split layout */
   imagePosition?: 'left' | 'right';
-  /** Whether to show energy swooshes */
+  /** Whether to show energy swooshes (background + bottom divider) */
   showSwoosh?: boolean;
+  /** Whether to show the bottom divider swoosh (thin static ribbons) — defaults to true */
+  showBottomDivider?: boolean;
   /** Custom height class override */
   heightClass?: string;
   /** Swoosh brightness level */
@@ -35,6 +43,9 @@ interface HeroSectionProps {
 
 export default function HeroSection({
   headline,
+  logoSrc,
+  logoAlt = 'Brand logo',
+  logoClassName = '',
   eyebrow,
   subline,
   body,
@@ -44,13 +55,14 @@ export default function HeroSection({
   heroImageAlt = 'Hero image',
   imagePosition = 'right',
   showSwoosh = true,
+  showBottomDivider = true,
   heightClass,
   swooshBrightness = 'bright',
   textAlign = 'left',
 }: HeroSectionProps) {
   // Background styles per variant - using gradient section classes
   const bgStyles: Record<string, string> = {
-    'gradient-centred': 'section-hero-mesh',
+    'gradient-centred': 'section-sunset',
     'split-image': 'section-light',
     'dark': 'section-navy',
     'dark-tech': 'section-dark-tech',
@@ -173,6 +185,18 @@ export default function HeroSection({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
+            {/* Logo — transparent, no container */}
+            {logoSrc && (
+              <Image
+                src={logoSrc}
+                alt={logoAlt}
+                width={200}
+                height={200}
+                priority
+                className={`h-20 md:h-24 w-auto mb-6 ${isCentred ? 'mx-auto' : ''} ${logoClassName}`}
+              />
+            )}
+
             {/* Eyebrow */}
             {eyebrow && (
               <p className={`
@@ -201,18 +225,20 @@ export default function HeroSection({
           </motion.div>
 
           {/* Body */}
-          <motion.p
-            className={`
-              text-base md:text-lg leading-relaxed mb-8
-              ${isCentred ? 'max-w-xl mx-auto' : 'max-w-lg'}
-              ${textOnDark ? 'text-white/65 font-light' : 'text-[var(--color-text-secondary)]'}
-            `}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            {body}
-          </motion.p>
+          {body && (
+            <motion.p
+              className={`
+                text-base md:text-lg leading-relaxed mb-8
+                ${isCentred ? 'max-w-xl mx-auto' : 'max-w-lg'}
+                ${textOnDark ? 'text-white/65 font-light' : 'text-[var(--color-text-secondary)]'}
+              `}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              {body}
+            </motion.p>
+          )}
 
           {/* CTAs */}
           {children && (
@@ -220,7 +246,7 @@ export default function HeroSection({
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className={`flex flex-wrap gap-4 ${isCentred ? 'justify-center' : ''}`}
+              className={`flex flex-wrap gap-4 pt-4 md:pt-6 ${isCentred ? 'justify-center' : ''}`}
             >
               {children}
             </motion.div>
@@ -275,7 +301,7 @@ export default function HeroSection({
       </div>
 
       {/* Bottom Swoosh Divider - not on compact or image-background */}
-      {showSwoosh && variant !== 'compact' && variant !== 'image-background' && (
+      {showSwoosh && showBottomDivider && variant !== 'compact' && variant !== 'image-background' && (
         <div className="absolute bottom-0 left-0 right-0 h-20 pointer-events-none">
           <EnergySwoosh variant="divider" />
         </div>

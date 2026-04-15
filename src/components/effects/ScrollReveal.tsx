@@ -11,6 +11,8 @@ interface ScrollRevealProps {
   direction?: 'up' | 'down' | 'left' | 'right';
   /** Delay before animation starts (stagger cards with 0.1 increments) */
   delay?: number;
+  /** Animation duration in seconds (default 0.5) */
+  duration?: number;
   /** Additional CSS classes */
   className?: string;
   /** Animation timing: 'linear' for smooth constant speed, 'ease' for subtle ease-out */
@@ -22,6 +24,7 @@ export default function ScrollReveal({
   type = 'grow',
   direction = 'up',
   delay = 0,
+  duration = 0.5,
   className = '',
   timing = 'linear',
 }: ScrollRevealProps) {
@@ -68,7 +71,7 @@ export default function ScrollReveal({
         amount: 0.15,
       }}
       transition={{
-        duration: 0.5, // Faster for snappier feel
+        duration,
         delay: delay * 0.03,
         ease: [0.25, 0.1, 0.25, 1], // Smooth cubic bezier
       }}

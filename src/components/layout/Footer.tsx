@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import { GROUP } from '@/config/brands';
 import { FOOTER_NAV } from '@/config/navigation';
@@ -14,12 +15,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 rounded-lg gradient-bg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">F</span>
-              </div>
-              <span className="font-semibold text-lg">Finex SA Group</span>
-            </div>
+            <Link href="/" className="inline-block mb-6">
+              <Image
+                src="/images/logos/finexsa-group-logo-web-navbar.png"
+                alt="Finex SA Group"
+                width={180}
+                height={40}
+                className="h-10 lg:h-12 w-auto"
+              />
+            </Link>
             <p className="text-[var(--color-mid-grey)] mb-6 text-sm leading-relaxed">
               Financial Power at Every Level. A fully integrated fintech banking ecosystem bringing
               sophisticated technology and financial inclusion to the African market.

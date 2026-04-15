@@ -14,7 +14,7 @@ interface CTAButtonProps {
    * - white: Pure white button with dark text (use on gradient/dark backgrounds)
    * - outline: Transparent with border (use sparingly, mainly on light backgrounds)
    */
-  variant?: 'primary' | 'secondary' | 'outline' | 'white';
+  variant?: 'primary' | 'secondary' | 'outline' | 'white' | 'gradient';
   size?: 'sm' | 'md' | 'lg';
   className?: string;
   onClick?: () => void;
@@ -49,6 +49,8 @@ export default function CTAButton({
       'bg-white text-[var(--color-navy)] hover:shadow-xl hover:-translate-y-1 shadow-md',
     outline:
       'border-2 border-[var(--brand-primary)] text-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:text-white',
+    gradient:
+      'bg-gradient-to-r from-[var(--color-cyan)] via-[var(--color-purple)] to-[var(--color-orange)] text-white hover:opacity-90 hover:shadow-lg hover:-translate-y-0.5 shadow-md',
   };
 
   const combinedClassName = cn(

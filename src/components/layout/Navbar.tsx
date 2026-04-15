@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { MAIN_NAV } from '@/config/navigation';
 import { cn } from '@/lib/utils';
@@ -15,13 +16,15 @@ export default function Navbar() {
       <nav className="container-max">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg gradient-bg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">F</span>
-            </div>
-            <span className="font-semibold text-lg text-[var(--color-text-primary)]">
-              Finex SA Group
-            </span>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/images/logos/finexsa-group-logo-web-navbar.png"
+              alt="Finex SA Group"
+              width={180}
+              height={40}
+              className="h-10 lg:h-12 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}

@@ -15,6 +15,7 @@ export interface Brand {
   tagline: string;
   slug: string;
   dataBrand: string;
+  logo?: string;
   website: string | null;
   appStore: string | null;
   playStore: string | null;
@@ -29,6 +30,7 @@ export const BRANDS = {
     tagline: 'Banking that welcomes you.',
     slug: 'finex-money',
     dataBrand: 'finex-money',
+    logo: '/images/logos/finex-money-logo.png',
     website: 'https://finexmoney.com',
     appStore: 'https://apps.apple.com/us/app/finex-money/id6456408372',
     playStore: 'https://play.google.com/store/apps/details?id=com.finexmoney.wallet',
@@ -43,6 +45,7 @@ export const BRANDS = {
     tagline: 'Stop the friction. Start the flow.',
     slug: 'finexflow',
     dataBrand: 'finexflow',
+    logo: '/images/logos/finexflow-logo.png',
     website: 'https://finexflow.co.za',
     appStore: null,
     playStore: null,
@@ -57,6 +60,7 @@ export const BRANDS = {
     tagline: 'Keep families connected.',
     slug: 'imali-express',
     dataBrand: 'imali',
+    logo: '/images/logos/imali-remit-logo.png',
     website: 'https://imaliexpress.co.za',
     appStore: 'https://apps.apple.com/za/app/imali-express-remit/id6504567814',
     playStore: 'https://play.google.com/store/apps/details?id=za.co.cloudworks.imali',
@@ -95,6 +99,7 @@ export const BRANDS = {
     tagline: 'Master global cash flow.',
     slug: 'treasury',
     dataBrand: 'treasury',
+    logo: '/images/logos/Finex-SA-treasury-logo-sml.png',
     website: null,
     appStore: null,
     playStore: null,
@@ -109,6 +114,7 @@ export const BRANDS = {
     tagline: 'Scale without borders.',
     slug: 'global',
     dataBrand: 'global',
+    logo: '/images/logos/Finex-Global-logo-sml.png',
     website: null,
     appStore: null,
     playStore: null,

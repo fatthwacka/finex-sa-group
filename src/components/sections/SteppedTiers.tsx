@@ -42,9 +42,9 @@ export default function SteppedTiers({ tiers, title, subtitle }: SteppedTiersPro
         )}
 
         {/* Desktop: Horizontal stepped layout with proper spacing */}
-        <div className="hidden lg:flex items-end gap-6 justify-center">
+        <div className="hidden lg:flex items-stretch gap-6 justify-center">
           {tiers.map((tier, index) => (
-            <ScrollReveal key={tier.level} delay={index * 0.15}>
+            <ScrollReveal key={tier.level} delay={index * 0.15} className="flex">
               <TierCard
                 tier={tier}
                 index={index}
@@ -113,11 +113,10 @@ function TierCard({ tier, index, total, layout }: TierCardProps) {
     return (
       <motion.div
         className={`
-          relative w-72 p-6 rounded-2xl ${bgIntensity} ${shadowIntensity}
+          relative w-72 p-6 rounded-2xl ${bgIntensity} ${shadowIntensity} flex flex-col
         `}
         style={{
           zIndex: index + 1,
-          minHeight: `${280 + index * 40}px`,
         }}
         whileHover={{ y: -8, zIndex: 10 }}
         transition={{ duration: 0.3, ease: 'easeOut' }}

@@ -71,11 +71,37 @@ export default function EcosystemNav() {
   };
 
   return (
-    <section className="py-16 md:py-24 section-purple-navy">
-      <div className="container-max">
+    <section className="relative py-16 md:py-24 overflow-hidden">
+      {/* Background image layer — crossfades on brand change */}
+      <div className="absolute inset-0">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentBrand.key}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={currentBrand.heroImage}
+              alt=""
+              fill
+              className="object-cover"
+              priority
+            />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Purple-navy gradient overlay */}
+      <div className="absolute inset-0 section-purple-navy opacity-75" aria-hidden="true" />
+
+      {/* Content */}
+      <div className="container-max relative z-10">
         {/* Logo Navigation Row - always single row, scaled down on mobile */}
         <ScrollReveal>
-          <div className="flex justify-center items-center gap-3 sm:gap-6 md:gap-10 lg:gap-14 mb-12 overflow-x-auto scrollbar-hide">
+          <div className="flex justify-center items-center gap-3 sm:gap-6 md:gap-10 lg:gap-14 overflow-x-auto scrollbar-hide">
             {BRAND_ITEMS.map((brand) => (
               <button
                 key={brand.key}
@@ -86,10 +112,10 @@ export default function EcosystemNav() {
                 className={`relative p-2 sm:p-3 rounded-xl transition-all duration-300 flex-shrink-0 ${
                   activeBrand === brand.key
                     ? 'bg-white/15 scale-110'
-                    : 'bg-white/5 hover:bg-white/10 opacity-60 hover:opacity-100'
+                    : 'bg-white/5 hover:bg-white/10 opacity-80 hover:opacity-100'
                 }`}
               >
-                <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-20 md:h-20 lg:w-24 lg:h-24">
+                <div className="relative w-16 h-8 sm:w-24 sm:h-12 md:w-32 md:h-16 lg:w-40 lg:h-20">
                   <Image
                     src={brand.logo}
                     alt={brand.name}
@@ -105,47 +131,6 @@ export default function EcosystemNav() {
                 )}
               </button>
             ))}
-          </div>
-        </ScrollReveal>
-
-        {/* Large Image Display - clicks scroll to brands section */}
-        <ScrollReveal delay={0.1}>
-          <div className="relative w-full max-w-5xl mx-auto">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentBrand.key}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
-              >
-                <button
-                  onClick={scrollToBrands}
-                  className="block group w-full text-left"
-                  data-brand={currentBrand.dataBrand}
-                >
-                  <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                    <Image
-                      src={currentBrand.heroImage}
-                      alt={currentBrand.name}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      priority
-                    />
-                    {/* Overlay with brand name */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-                      <h3 className="text-2xl md:text-4xl font-bold text-white mb-2">
-                        {currentBrand.name}
-                      </h3>
-                      <p className="text-white/80 text-sm md:text-base">
-                        Click to learn more
-                      </p>
-                    </div>
-                  </div>
-                </button>
-              </motion.div>
-            </AnimatePresence>
           </div>
         </ScrollReveal>
       </div>

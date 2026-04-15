@@ -44,6 +44,10 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: '/images/logos/finexsa-group-logo-only-no-text.png',
+    apple: '/images/logos/finexsa-group-logo-only-no-text.png',
+  },
 };
 
 export default function RootLayout({

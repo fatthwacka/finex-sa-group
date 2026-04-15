@@ -109,7 +109,7 @@ export default function FeatureGrid({ features, columns = 3, variant = 'default'
             <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center mb-4">
               <IconComponent className="w-6 h-6 text-white" />
             </div>
-            <h3 className="text-lg font-semibold text-white mb-2">
+            <h3 className="text-xl font-extrabold text-white mb-2">
               {feature.title}
             </h3>
             <p className="text-white/80 leading-relaxed">

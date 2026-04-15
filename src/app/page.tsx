@@ -1,25 +1,12 @@
+import Image from 'next/image';
 import HeroSection from '@/components/sections/HeroSection';
-import EcosystemNav from '@/components/sections/EcosystemNav';
-import BrandCard from '@/components/sections/BrandCard';
 import AccentBand, { StatDisplay, StatRow } from '@/components/sections/AccentBand';
 import SplitSection, { SectionHeading } from '@/components/sections/SplitSection';
 import ScrollReveal from '@/components/effects/ScrollReveal';
 import CTAButton from '@/components/ui/CTAButton';
+import AppStoreBadges from '@/components/ui/AppStoreBadges';
 import RegulatoryBadge from '@/components/ui/RegulatoryBadge';
 import { BRANDS, GROUP } from '@/config/brands';
-
-const BRAND_DESCRIPTIONS = {
-  finexMoney:
-    'Open an account instantly with just your ID or passport. Digital banking for everyone.',
-  finexflow:
-    'Real-time workforce payments. Zero cash risk. 100% compliance.',
-  imaliRemit:
-    'Send money to 40+ countries or exchange currency at our nationwide branches.',
-  treasury:
-    'Elite FX solutions and currency risk management for multinational corporations.',
-  global:
-    'Strategic partnerships and outsourcing for companies expanding internationally.',
-};
 
 export default function HomePage() {
   return (
@@ -27,68 +14,245 @@ export default function HomePage() {
       {/* Hero - Pattern A Centred, gradient background */}
       <HeroSection
         variant="gradient-centred"
+        heightClass="min-h-[75vh]"
+        showBottomDivider={false}
+        logoSrc="/images/logos/finexsa-group-logo-only-no-text.png"
+        logoAlt="Finex SA Group"
+        logoClassName="brightness-0 invert"
         eyebrow="Finex SA Group"
-        headline="Financial Power at Every Level."
-        subline="We believe everyone deserves a seat at the financial table."
-        body="The Finex SA Group is a fully integrated fintech banking ecosystem bringing sophisticated technology and financial inclusion to the African market."
+        headline={
+          <>
+            <span className="italic font-light">Financial</span> <span className="font-extrabold">Power</span><br />
+            <span className="font-light">at Every Level.</span>
+          </>
+        }
+        subline={
+          <>
+            We believe <span className="font-bold">everyone</span> deserves a <span className="font-bold">seat</span> at the <span className="font-bold">financial table</span>.
+          </>
+        }
       >
         <CTAButton
           label="Explore Our Brands"
           type="contact"
-          href="#ecosystem"
+          href="#brand-ecosystem"
           variant="white"
           size="lg"
         />
       </HeroSection>
 
-      {/* Ecosystem Logo Navigation - Interactive brand selector with summaries */}
-      <div id="ecosystem">
-        <EcosystemNav />
-      </div>
+      {/* =============================================
+          ATMOSPHERIC IMAGE BREAK — centred body paragraph
+          City-street image, 60vh, gradient overlay
+          ============================================= */}
+      <section className="relative flex items-center h-[60vh] overflow-hidden">
+        <Image
+          src="/images/heroes/guy-walking-in-the-street.jpg"
+          alt=""
+          fill
+          className="object-cover opacity-90"
+          priority
+        />
+        {/* Colour overlay — matches finex-money image-break */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-red)]/40 via-[var(--color-black)]/40 to-[var(--color-purple)]/40" />
 
-      {/* Brand Cards Section - Detailed cards with full descriptions */}
-      <section className="section-padding section-navy">
+        <div className="container-max relative z-10 text-center">
+          <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
+            The Finex SA Group is a <span className="font-bold text-white">fully integrated fintech banking ecosystem</span> bringing <span className="font-bold text-white">sophisticated technology</span> and <span className="font-bold text-white">financial inclusion</span> to the African market.
+          </p>
+        </div>
+      </section>
+
+      {/* =============================================
+          BRAND DETAIL SHOWCASE
+          5 alternating logo/text blocks, one per brand
+          ============================================= */}
+      <section id="brand-ecosystem" className="section-padding section-dark-warm">
         <div className="container-max">
-          <ScrollReveal>
-            <div className="text-center mb-12">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/60 mb-4">
-                Our Ecosystem
-              </p>
-              <h2 className="text-white mb-4">Five Brands. One Vision.</h2>
-              <p className="text-lg text-white/80 max-w-2xl mx-auto">
-                A comprehensive suite of financial solutions designed to serve every level of the
-                market, from individuals to multinational corporations.
-              </p>
-            </div>
-          </ScrollReveal>
+          <div className="space-y-8 md:space-y-10">
 
-          {/* 5 cards: 3+2 on desktop, 2+2+1 on tablet, stacked on mobile */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            <BrandCard
-              brand={BRANDS.finexMoney}
-              description={BRAND_DESCRIPTIONS.finexMoney}
-              index={0}
-            />
-            <BrandCard
-              brand={BRANDS.finexflow}
-              description={BRAND_DESCRIPTIONS.finexflow}
-              index={1}
-            />
-            <BrandCard
-              brand={BRANDS.imaliRemit}
-              description={BRAND_DESCRIPTIONS.imaliRemit}
-              index={2}
-            />
-            <BrandCard
-              brand={BRANDS.treasury}
-              description={BRAND_DESCRIPTIONS.treasury}
-              index={3}
-            />
-            <BrandCard
-              brand={BRANDS.global}
-              description={BRAND_DESCRIPTIONS.global}
-              index={4}
-            />
+            {/* Finex Money — logo left */}
+            <div
+              data-brand="finex-money"
+              className="relative rounded-3xl bg-white/[0.03] border border-white/10 p-8 md:p-12 overflow-hidden"
+              style={{ backgroundImage: 'radial-gradient(ellipse 75% 60% at top left, color-mix(in srgb, var(--brand-primary) 22%, transparent), transparent 70%)' }}
+            >
+            <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+              <ScrollReveal type="slide" direction="left">
+                <div className="flex justify-center">
+                  <Image
+                    src={BRANDS.finexMoney.logo!}
+                    alt="Finex Money"
+                    width={400}
+                    height={160}
+                    className="h-[86px] md:h-[130px] w-auto"
+                  />
+                </div>
+              </ScrollReveal>
+              <ScrollReveal type="slide" direction="up">
+                <div>
+                  <h3 className="text-white text-3xl md:text-4xl font-extrabold mb-4">Finex Money</h3>
+                  <p className="text-white/80 text-base md:text-lg leading-relaxed mb-6">
+                    <span className="italic font-light">Banking</span> that <span className="font-bold text-white">welcomes you.</span> Open up a world full of <span className="font-bold text-white">digital banking possibilities</span>. Finex Money is an <span className="font-bold text-white">inclusive digital wallet</span> built to empower your everyday hustle. Open an account instantly, keep your money secure, and step into the <span className="font-bold text-white">digital economy</span> with absolute <span className="font-bold text-white">financial dignity.</span>
+                  </p>
+                  <div className="flex flex-wrap items-center gap-4">
+                    {BRANDS.finexMoney.website && (
+                      <CTAButton
+                        label="Visit Brand Website"
+                        type="website"
+                        href={BRANDS.finexMoney.website}
+                        variant="gradient"
+                      />
+                    )}
+                    <AppStoreBadges
+                      appStoreUrl={BRANDS.finexMoney.appStore}
+                      playStoreUrl={BRANDS.finexMoney.playStore}
+                    />
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+            </div>
+
+            {/* FINEXflow — logo right */}
+            <div
+              data-brand="finexflow"
+              className="relative rounded-3xl bg-white/[0.03] border border-white/10 p-8 md:p-12 overflow-hidden"
+              style={{ backgroundImage: 'radial-gradient(ellipse 75% 60% at top right, color-mix(in srgb, var(--brand-primary) 22%, transparent), transparent 70%)' }}
+            >
+            <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+              <ScrollReveal type="slide" direction="right" className="md:order-2">
+                <div className="flex justify-center">
+                  <Image
+                    src={BRANDS.finexflow.logo!}
+                    alt="FINEXflow"
+                    width={400}
+                    height={160}
+                    className="h-[120px] md:h-[180px] w-auto"
+                  />
+                </div>
+              </ScrollReveal>
+              <ScrollReveal type="slide" direction="up" className="md:order-1">
+                <div>
+                  <h3 className="text-white text-3xl md:text-4xl font-extrabold mb-4">FINEXflow</h3>
+                  <p className="text-white/80 text-base md:text-lg leading-relaxed mb-6">
+                    <span className="italic font-light">Employer payments</span> <span className="font-bold text-white">reimagined.</span> Stop the friction and <span className="font-bold text-white">start the flow.</span> Discover the premier <span className="font-bold text-white">modular workforce identity and payment platform</span>. FINEXflow is an <span className="font-bold text-white">enterprise-grade executive command centre</span> that enables seamless payment distribution, eradicating <span className="font-bold text-white">cash risks</span> and <span className="font-bold text-white">compliance failures</span>.
+                  </p>
+                  <div className="flex flex-wrap items-center gap-4">
+                    <CTAButton label="Speak to Us" type="contact" href="/contact" variant="gradient" />
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+            </div>
+
+            {/* iMali Express — logo left */}
+            <div
+              data-brand="imali"
+              className="relative rounded-3xl bg-white/[0.03] border border-white/10 p-8 md:p-12 overflow-hidden"
+              style={{ backgroundImage: 'radial-gradient(ellipse 75% 60% at top left, color-mix(in srgb, var(--brand-primary) 22%, transparent), transparent 70%)' }}
+            >
+            <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+              <ScrollReveal type="slide" direction="left">
+                <div className="flex justify-center">
+                  <Image
+                    src={BRANDS.imaliRemit.logo!}
+                    alt="iMali Express"
+                    width={400}
+                    height={160}
+                    className="h-[130px] md:h-[194px] w-auto"
+                  />
+                </div>
+              </ScrollReveal>
+              <ScrollReveal type="slide" direction="up">
+                <div>
+                  <h3 className="text-white text-3xl md:text-4xl font-extrabold mb-4">iMali Express</h3>
+                  <p className="text-white/80 text-base md:text-lg leading-relaxed mb-6">
+                    <span className="italic font-light">Global reach</span> and <span className="font-bold text-white">local presence.</span> iMali Express moves your <span className="font-bold text-white">capital securely</span> through two dedicated brands. Use <span className="font-bold text-white">iMali Remit</span> for seamless international transfers to <span className="font-bold text-white">over 40 countries</span>, and visit <span className="font-bold text-white">iMali Forex</span> at our nationwide Bureau de Change branches for <span className="font-bold text-white">premium physical currency exchange</span> and corporate travel allowances.
+                  </p>
+                  <div className="flex flex-wrap items-center gap-4">
+                    {BRANDS.imaliRemit.website && (
+                      <CTAButton
+                        label="Visit Brand Website"
+                        type="website"
+                        href={BRANDS.imaliRemit.website}
+                        variant="gradient"
+                      />
+                    )}
+                    <AppStoreBadges
+                      appStoreUrl={BRANDS.imaliRemit.appStore}
+                      playStoreUrl={BRANDS.imaliRemit.playStore}
+                    />
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+            </div>
+
+            {/* Finex SA Treasury — logo right */}
+            <div
+              data-brand="treasury"
+              className="relative rounded-3xl bg-white/[0.03] border border-white/10 p-8 md:p-12 overflow-hidden"
+              style={{ backgroundImage: 'radial-gradient(ellipse 75% 60% at top right, color-mix(in srgb, var(--brand-primary) 22%, transparent), transparent 70%)' }}
+            >
+            <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+              <ScrollReveal type="slide" direction="right" className="md:order-2">
+                <div className="flex justify-center">
+                  <Image
+                    src={BRANDS.treasury.logo!}
+                    alt="Finex SA Treasury"
+                    width={400}
+                    height={160}
+                    className="h-[134px] md:h-[202px] w-auto"
+                  />
+                </div>
+              </ScrollReveal>
+              <ScrollReveal type="slide" direction="up" className="md:order-1">
+                <div>
+                  <h3 className="text-white text-3xl md:text-4xl font-extrabold mb-4">Finex SA Treasury</h3>
+                  <p className="text-white/80 text-base md:text-lg leading-relaxed mb-6">
+                    <span className="italic font-light">Master</span> <span className="font-bold text-white">global cash flow.</span> We apply a <span className="font-bold text-white">merchant bank approach</span> to corporate treasury, providing multinational corporations with <span className="font-bold text-white">elite foreign exchange solutions</span>, <span className="font-bold text-white">currency risk management</span>, and <span className="font-bold text-white">regulatory compliance</span>.
+                  </p>
+                  <div className="flex flex-wrap items-center gap-4">
+                    <CTAButton label="Speak to Us" type="contact" href="/contact" variant="gradient" />
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+            </div>
+
+            {/* Finex SA Global — logo left */}
+            <div
+              data-brand="global"
+              className="relative rounded-3xl bg-white/[0.03] border border-white/10 p-8 md:p-12 overflow-hidden"
+              style={{ backgroundImage: 'radial-gradient(ellipse 75% 60% at top left, color-mix(in srgb, var(--brand-primary) 22%, transparent), transparent 70%)' }}
+            >
+            <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+              <ScrollReveal type="slide" direction="left">
+                <div className="flex justify-center">
+                  <Image
+                    src={BRANDS.global.logo!}
+                    alt="Finex SA Global"
+                    width={400}
+                    height={160}
+                    className="h-[134px] md:h-[202px] w-auto"
+                  />
+                </div>
+              </ScrollReveal>
+              <ScrollReveal type="slide" direction="up">
+                <div>
+                  <h3 className="text-white text-3xl md:text-4xl font-extrabold mb-4">Finex SA Global</h3>
+                  <p className="text-white/80 text-base md:text-lg leading-relaxed mb-6">
+                    <span className="italic font-light">Scale</span> <span className="font-bold text-white">without borders.</span> We provide <span className="font-bold text-white">comprehensive tactical outsourcing</span> and <span className="font-bold text-white">strategic global partnerships</span> tailored to the specific needs of <span className="font-bold text-white">mid-cap companies</span> seeking <span className="font-bold text-white">international expansion</span>.
+                  </p>
+                  <div className="flex flex-wrap items-center gap-4">
+                    <CTAButton label="Speak to Us" type="contact" href="/contact" variant="gradient" />
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -117,10 +281,10 @@ export default function HomePage() {
         bgVariant="alt"
         imagePosition="right"
         visualContent={
-          <div className="flex flex-col gap-6 items-center lg:items-start">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 items-start">
             <RegulatoryBadge type="fsp" value={GROUP.fsp} />
             <RegulatoryBadge type="sarb" value={GROUP.sarb} />
-            <div className="p-4 bg-[var(--color-surface)] rounded-xl border border-[var(--color-border)] max-w-sm">
+            <div className="col-span-2 lg:col-span-1 p-4 bg-[var(--color-surface)] rounded-xl border border-[var(--color-border)]">
               <p className="text-sm text-[var(--color-text-secondary)]">
                 {GROUP.category}
               </p>

@@ -3,6 +3,10 @@
 ## Project Overview
 Corporate informational website for Finex SA Group (Pty) Ltd. 9-page static site showcasing 5 subsidiary brands + 2 tech divisions. No auth, no e-commerce, no CMS. Drives visitors to brand websites and app stores.
 
+## Session Startup
+
+Read `dev_startup.md` at the start of every session. This project is developed across ARM (Apple Silicon) and Intel Macs with the project folder synced via Dropbox. The startup guide covers architecture detection, Dropbox ignore setup, and the `dev-start.sh`/`dev-stop.sh` scripts. If the user is starting fresh on a machine, walk them through the first-time setup.
+
 ## Master Spec
 Read `FINEX-SA-GROUP-SITE-SPEC-FINAL.md` in the project root before making any changes. It contains the complete design system, all page content, component architecture, and brand configuration. It is the single source of truth.
 

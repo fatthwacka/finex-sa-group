@@ -78,12 +78,12 @@ export default function ImaliExpressPage() {
                   Let our expert support team review your profile so you can get approved from the
                   comfort of your home and start sending money safely.
                 </p>
-                <div className="flex flex-wrap gap-4">
+                <div className="flex flex-wrap items-center gap-4">
                   <CTAButton
                     label="Visit iMali Remit Website"
                     type="website"
                     href={remitBrand.website || '#'}
-                    variant="primary"
+                    variant="gradient"
                   />
                   <AppStoreBadges
                     appStoreUrl={remitBrand.appStore}

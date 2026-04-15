@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowRight, Wallet, Workflow, Globe, TrendingUp, Network } from 'lucide-react';
 import type { Brand } from '@/config/brands';
@@ -35,6 +36,18 @@ export default function BrandCard({ brand, description, index = 0 }: BrandCardPr
         className="group relative card-warm h-full flex flex-col cursor-pointer"
         style={{ willChange: 'transform, opacity' }}
       >
+        {/* Brand Logo - transparent, above the title */}
+        {brand.logo && (
+          <div className="relative h-14 mb-4 w-full">
+            <Image
+              src={brand.logo}
+              alt={brand.name}
+              fill
+              className="object-contain object-left"
+            />
+          </div>
+        )}
+
         {/* Brand Header with Icon */}
         <div className="flex items-start justify-between mb-3">
           <div className="flex items-center gap-3">

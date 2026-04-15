@@ -69,7 +69,7 @@ export default function SplitSection({
       <div className="container-max">
         <div className={`flex flex-col lg:flex-row ${alignStyles[align]} gap-12 lg:gap-16`}>
           {/* Text Content */}
-          <div className={`w-full lg:w-1/2 ${contentFirst ? 'order-2 lg:order-1' : 'order-2'}`}>
+          <div className={`w-full lg:w-1/2 ${contentFirst ? 'order-1' : 'order-1 lg:order-2'}`}>
             <ScrollReveal>
               <div className={textOnDark ? 'text-white' : ''}>
                 {children}
@@ -78,7 +78,7 @@ export default function SplitSection({
           </div>
 
           {/* Visual Content */}
-          <div className={`w-full lg:w-1/2 ${contentFirst ? 'order-1 lg:order-2' : 'order-1 lg:order-1'}`}>
+          <div className={`w-full lg:w-1/2 ${contentFirst ? 'order-2' : 'order-2 lg:order-1'}`}>
             <ScrollReveal delay={0.2}>
               {visualContent ? (
                 visualContent

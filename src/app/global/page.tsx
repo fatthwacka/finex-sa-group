@@ -87,14 +87,14 @@ export default function GlobalPage() {
             <ScrollReveal delay={0.2}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="p-6 rounded-xl bg-gradient-to-br from-[var(--color-gold-light)] to-[var(--color-gold-mid)] border border-[var(--color-gold-border)]">
-                  <h4 className="text-xl font-semibold text-[var(--color-gold-text-dark)] mb-3">Krugerrands</h4>
+                  <h3 className="text-2xl font-extrabold text-[var(--color-gold-text-dark)] mb-3">Krugerrands</h3>
                   <p className="text-[var(--color-gold-text)]">
                     Invest in globally liquid Krugerrands, which hold legal tender status, for
                     secure wealth protection with guaranteed buyback.
                   </p>
                 </div>
                 <div className="p-6 rounded-xl bg-gradient-to-br from-[var(--color-silver-light)] to-[var(--color-silver-mid)] border border-[var(--color-silver-border)]">
-                  <h4 className="text-xl font-semibold text-[var(--color-silver-text-dark)] mb-3">Gold & Silver Bars</h4>
+                  <h3 className="text-2xl font-extrabold text-[var(--color-silver-text-dark)] mb-3">Gold & Silver Bars</h3>
                   <p className="text-[var(--color-silver-text)]">
                     Guaranteed buyback Gold and Silver bars in various weights to enable flexible
                     investment strategies.
