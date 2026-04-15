@@ -6,9 +6,16 @@ import CTAButton from '@/components/ui/CTAButton';
 import { BRANDS } from '@/config/brands';
 
 export const metadata: Metadata = {
-  title: 'Finex Pay & Finex Technologies | Innovation',
+  title: 'Finex Pay & Technologies | Digital Payments Infrastructure South Africa',
   description:
-    'The innovative engine room of the Finex SA Group. Pioneering alternative payments, digital asset integration, and proprietary software architecture.',
+    'Finex Pay pioneers alternative payment gateways and crypto integrations. Finex Technologies powers the proprietary software backbone behind our entire fintech ecosystem.',
+  keywords: [
+    'fintech payment infrastructure South Africa',
+    'crypto payments South Africa',
+    'alternative payment gateway',
+    'digital asset integration',
+    'fintech software Africa',
+  ],
 };
 
 const finexPayFeatures = [
@@ -60,10 +67,19 @@ export default function TechnologyPage() {
     <div data-brand={brand.dataBrand}>
       <HeroSection
         variant="image-background"
-        eyebrow="Technology"
-        headline="The Infrastructure of Tomorrow."
+        eyebrow="Finex Pay & Technologies"
+        headline={
+          <>
+            <span className="italic font-light">The</span> <span className="font-extrabold">Infrastructure</span><br />
+            <span className="font-light">of Tomorrow.</span>
+          </>
+        }
         subline="To lead the financial sector, you must own the technology that drives it."
-        body="Finex Pay and Finex Technologies are the innovative engine room of the Finex SA Group — secure, scalable, and ahead of the curve."
+        body={
+          <>
+            Finex Pay and Finex Technologies represent the <span className="font-bold text-white">innovative engine room</span> of the Finex SA Group — ensuring our ecosystem remains <span className="font-bold text-white">secure, scalable, and ahead of the curve</span>.
+          </>
+        }
         heroImage="/images/heroes/finex-money-card-tap.webp"
         heroImageAlt="Digital payment technology"
       >

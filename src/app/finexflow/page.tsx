@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { Building2, Users, CreditCard } from 'lucide-react';
 import HeroSection from '@/components/sections/HeroSection';
 import FeatureGrid from '@/components/sections/FeatureGrid';
@@ -106,97 +107,151 @@ export default function FinexflowPage() {
 
   return (
     <div data-brand={brand.dataBrand}>
-      <HeroSection
-        variant="image-background"
-        eyebrow="FINEXFlow"
-        headline={
-          <>
-            <span className="italic font-light">Employer Payments</span> <span className="font-extrabold">Reimagined.</span><br />
-            <span className="font-light">Stop the Friction. Start the Flow.</span>
-          </>
-        }
-        body={
-          <>
-            Your workforce is your <span className="font-bold text-white">greatest asset</span>. Your payment system should not be your <span className="font-bold text-white">greatest risk</span>. FINEXFlow is the <span className="font-bold text-white">seamless payment ecosystem</span> for employers who mean business.
-          </>
-        }
-        heroImage="/images/heroes/finexflow-hero-executive.webp"
-        heroImageAlt="Business executive using FINEXflow"
-      >
-        <CTAButton label="Speak to a FINEXflow Expert" type="contact" href="/contact" variant="white" />
-      </HeroSection>
 
-      {/* The Challenge */}
-      <section className="section-padding section-purple-navy">
-        <div className="container-max">
-          <div className="max-w-4xl mx-auto">
-            <ScrollReveal>
-              <h2 className="text-white mb-6">The Challenge</h2>
-              <p className="text-lg text-white/80 leading-relaxed">
-                The friction high-volume employers experience is expensive and invisible until it
-                becomes catastrophic. Operations are plagued by security exposure from cash wage
-                runs, legislative risks from unverified worker identities, and batch payment
-                failures that only surface after the fact. Ghost workers and identity fraud erode
-                margins, while the administrative burden grows with every new hire.
+      {/* =============================================
+          HERO — gradient (no image) + left-aligned text
+          ============================================= */}
+      <section className="relative flex items-center overflow-hidden min-h-[65vh]">
+        {/* FINEXflow brand sunset gradient — cyan top-left → purple → red → orange bottom-right */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(135deg, var(--color-cyan) 0%, var(--color-purple) 35%, var(--color-red) 65%, var(--color-orange) 100%)',
+          }}
+        />
+        {/* Subtle dark wash on the lower-left to lift text legibility */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-black/35 via-transparent to-transparent pointer-events-none" />
+
+        <div className="container-max relative z-10 py-20 md:py-28">
+          <ScrollReveal type="slide" direction="up">
+            <div className="max-w-2xl">
+              {/* FINEXflow icon mark — pure white */}
+              <Image
+                src="/images/logos/finexflow-logo-no-word.png"
+                alt="FINEXflow"
+                width={120}
+                height={120}
+                className="h-14 md:h-16 w-auto mb-8 brightness-0 invert"
+                priority
+              />
+              <p className="text-sm md:text-base tracking-[0.3em] uppercase font-semibold mb-6 text-white/85">
+                FINEXflow
               </p>
+              <h1 className="text-white mb-8">
+                <span className="italic font-light">Employer Payments</span> <span className="font-extrabold">Reimagined.</span>
+              </h1>
+              <CTAButton label="Speak to a FINEXflow Expert" type="contact" href="/contact" variant="white" size="lg" />
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* =============================================
+          ATMOSPHERIC IMAGE BREAK — executive image + paragraph overlay
+          ============================================= */}
+      <section className="relative flex items-center h-[60vh] overflow-hidden">
+        <Image
+          src="/images/heroes/finexflow-hero-02.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* Tri-stop overlay: transparent left → dark grey centre → dark blue-grey right */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(to right, transparent 0%, rgba(15, 18, 26, 0.4) 50%, rgba(20, 45, 75, 0.7) 100%)',
+          }}
+        />
+
+        {/* Headline + paragraph in right column */}
+        <div className="container-max relative z-10">
+          <div className="flex justify-end">
+            <div className="w-full md:w-1/2 lg:w-5/12">
+              <h2 className="text-white mb-4">
+                <span className="italic font-light">Stop</span> the <span className="font-extrabold">Friction.</span> <span className="italic font-light">Start</span> the <span className="font-extrabold">Flow.</span>
+              </h2>
+              <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+                Your workforce is your <span className="font-bold text-white">greatest asset</span>. Your payment system should not be your <span className="font-bold text-white">greatest risk</span>. FINEXFlow is the <span className="font-bold text-white">seamless payment ecosystem</span> for employers who mean business.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* The Challenge — 2-column text + image */}
+      <section className="section-padding section-dark-warm">
+        <div className="container-max">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+            <ScrollReveal type="slide" direction="left">
+              <div>
+                <h2 className="text-white mb-6">
+                  <span className="italic font-light">The</span> <span className="font-extrabold">Challenge.</span>
+                </h2>
+                <p className="text-lg text-white/85 leading-relaxed mb-6">
+                  The friction high-volume employers experience is <span className="font-bold text-white">expensive and invisible</span> — until it becomes <span className="font-bold text-white">catastrophic</span>:
+                </p>
+                <ul className="space-y-3 text-white/80">
+                  <li className="flex gap-3"><span className="text-[var(--color-red)] font-bold">•</span><span><span className="font-bold text-white">Security exposure</span> from cash wage runs</span></li>
+                  <li className="flex gap-3"><span className="text-[var(--color-red)] font-bold">•</span><span><span className="font-bold text-white">Legislative risks</span> from unverified worker identities</span></li>
+                  <li className="flex gap-3"><span className="text-[var(--color-red)] font-bold">•</span><span><span className="font-bold text-white">Batch payment failures</span> that only surface after the fact</span></li>
+                  <li className="flex gap-3"><span className="text-[var(--color-red)] font-bold">•</span><span><span className="font-bold text-white">Ghost workers</span> and identity fraud eroding margins</span></li>
+                  <li className="flex gap-3"><span className="text-[var(--color-red)] font-bold">•</span><span>Growing <span className="font-bold text-white">administrative burden</span> with every new hire</span></li>
+                </ul>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal type="slide" direction="right">
+              <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/10">
+                <Image
+                  src="/images/backgrounds/finexflow-challenge.jpg"
+                  alt="FINEXflow challenge — workforce payment risks"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* The Solution */}
-      <section className="section-padding section-light-cool">
+      {/* The Seamless Solution — flipped to dark-warm */}
+      <section className="section-padding section-dark-warm">
         <div className="container-max">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <h2 className="mb-4">The Seamless Solution</h2>
-              <p className="text-lg text-[var(--color-text-secondary)] max-w-3xl mx-auto">
-                FINEXFlow is an advanced technology that enables seamless payment distribution. It
-                acts as the secure final layer between an employer payroll and the bank. This is not
-                a basic payment portal. It is a paid, enterprise-grade infrastructure designed to
-                keep the business totally in control of finances around the clock.
+              <h2 className="text-white mb-4">
+                <span className="italic font-light">The</span> <span className="font-extrabold">Seamless</span> <span className="font-light">Solution.</span>
+              </h2>
+              <p className="text-lg text-white/75 max-w-3xl mx-auto">
+                FINEXFlow acts as the <span className="font-bold text-white">secure final layer</span> between your payroll and the bank. <span className="font-bold text-white">Enterprise-grade infrastructure</span> that keeps your business in total control, around the clock — real time, at scale, with <span className="font-bold text-white">full compliance</span> built in from day one.
               </p>
             </div>
           </ScrollReveal>
 
-          {/* Three Components */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            <ScrollReveal delay={0}>
-              <div className="card-cool text-center">
-                <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-4">
-                  <Building2 className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-white">The Employer Dashboard</h3>
-                <p className="text-white/80">
-                  Real-time payment management, worker profiles, compliance records, and business
-                  intelligence, all housed in one secure portal.
-                </p>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={0.1}>
-              <div className="card-cool text-center">
-                <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-white">The Worker App & Wallet</h3>
-                <p className="text-white/80">
-                  Instant payment notifications, account balance visibility, and financial tools
-                  designed for simplicity and built for every worker.
-                </p>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={0.2}>
-              <div className="card-cool text-center">
-                <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-4">
-                  <CreditCard className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-white">The Branded Debit Card</h3>
-                <p className="text-white/80">
-                  A physical Mastercard linked directly to the worker profile, allowing immediate
-                  access to funds at any ATM or point of sale.
-                </p>
-              </div>
-            </ScrollReveal>
+          {/* Three Components — translucent cards on dark */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+            {[
+              { Icon: Building2, title: 'The Employer Dashboard', body: 'Real-time payment management, worker profiles, compliance records, and business intelligence — all in one secure portal.' },
+              { Icon: Users, title: 'The Worker App & Wallet', body: 'Instant payment notifications, account balance visibility, and financial tools built for every worker — regardless of banking history.' },
+              { Icon: CreditCard, title: 'The Branded Debit Card', body: 'A physical Mastercard linked directly to the worker profile, allowing immediate access to funds at any ATM or point of sale.' },
+            ].map((card, i) => {
+              const { Icon } = card;
+              return (
+                <ScrollReveal key={card.title} delay={i * 2}>
+                  <div className="h-full bg-white/5 rounded-xl p-6 border border-white/10 text-center hover:bg-white/10 transition-colors duration-300">
+                    <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-4">
+                      <Icon className="w-8 h-8 text-[var(--color-red)]" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-3 text-white">{card.title}</h3>
+                    <p className="text-white/70 leading-relaxed">{card.body}</p>
+                  </div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -216,14 +271,16 @@ export default function FinexflowPage() {
         </div>
       </section>
 
-      {/* Core Features */}
-      <section className="section-padding section-navy">
+      {/* Core Features — flipped to dark-warm */}
+      <section className="section-padding section-dark-warm">
         <div className="container-max">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <h2 className="text-white mb-4">Core Features & Benefits</h2>
-              <p className="text-lg text-white/80">
-                Built to solve the problems that keep you up at night.
+              <h2 className="text-white mb-4">
+                <span className="italic font-light">Core</span> <span className="font-extrabold">Features</span> <span className="font-light">&amp; Benefits.</span>
+              </h2>
+              <p className="text-lg text-white/75">
+                Built to solve the problems that <span className="font-bold text-white">keep you up at night</span>.
               </p>
             </div>
           </ScrollReveal>
@@ -269,32 +326,35 @@ export default function FinexflowPage() {
         </div>
       </section>
 
-      {/* Industries */}
-      <section className="section-padding section-light-warm">
+      {/* Industries — flipped to dark-warm */}
+      <section className="section-padding section-dark-warm">
         <div className="container-max">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <h2 className="mb-4">Engineered for Universal Application</h2>
-              <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
-                FINEXFlow is a universal engine built for any industry that relies on a wage-based or
-                shift-based workforce.
+              <h2 className="text-white mb-4">
+                <span className="italic font-light">Engineered</span> for <span className="font-extrabold">Universal Application.</span>
+              </h2>
+              <p className="text-lg text-white/75 max-w-2xl mx-auto">
+                FINEXFlow is a <span className="font-bold text-white">universal engine</span> built for any industry that relies on a wage-based or shift-based workforce.
               </p>
             </div>
           </ScrollReveal>
-          <FeatureGrid features={industries} columns={4} variant="on-warm" />
+          <FeatureGrid features={industries} columns={4} variant="on-dark" />
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="section-padding section-cyan-navy">
+      {/* CTA — flipped to sunset spectrum */}
+      <section className="section-padding section-sunset">
         <div className="container-max">
           <div className="text-center">
             <ScrollReveal>
-              <h2 className="text-white mb-4">Ready to Transform Your Payroll?</h2>
-              <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
-                Book a demonstration and see FINEXFlow working with your own workforce data.
+              <h2 className="text-white mb-4">
+                <span className="italic font-light">Ready to</span> <span className="font-extrabold">Transform</span> <span className="font-light">Your Payroll?</span>
+              </h2>
+              <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+                Book a demonstration and see <span className="font-bold text-white">FINEXFlow working with your own workforce data</span>.
               </p>
-              <CTAButton label="Speak to a FINEXflow Expert" type="contact" href="/contact" size="lg" />
+              <CTAButton label="Speak to a FINEXflow Expert" type="contact" href="/contact" variant="white" size="lg" />
             </ScrollReveal>
           </div>
         </div>

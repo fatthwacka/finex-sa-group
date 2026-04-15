@@ -14,7 +14,7 @@ interface CTAButtonProps {
    * - white: Pure white button with dark text (use on gradient/dark backgrounds)
    * - outline: Transparent with border (use sparingly, mainly on light backgrounds)
    */
-  variant?: 'primary' | 'secondary' | 'outline' | 'white' | 'gradient' | 'bronze' | 'gold';
+  variant?: 'primary' | 'secondary' | 'outline' | 'white' | 'gradient' | 'bronze' | 'gold' | 'red';
   size?: 'sm' | 'md' | 'lg';
   className?: string;
   onClick?: () => void;
@@ -55,6 +55,8 @@ export default function CTAButton({
       'bg-gradient-to-r from-[#8B5E28] via-[#C88A3D] to-[#E4A24E] text-white hover:opacity-90 hover:shadow-lg hover:-translate-y-0.5 shadow-md',
     gold:
       'bg-gradient-to-r from-[#9C7A2E] via-[#D4A844] to-[#F0C76B] text-[#1a0f05] hover:opacity-90 hover:shadow-xl hover:-translate-y-0.5 shadow-md',
+    red:
+      'bg-gradient-to-r from-[var(--color-red)] via-[var(--color-red)] to-[var(--color-orange)] text-white hover:opacity-90 hover:shadow-lg hover:-translate-y-0.5 shadow-md',
   };
 
   const combinedClassName = cn(
@@ -65,8 +67,14 @@ export default function CTAButton({
   );
 
   if (href) {
+    // External URLs open in a new tab with secure rel attribute
+    const isExternal = /^https?:\/\//i.test(href);
     return (
-      <Link href={href} className={combinedClassName}>
+      <Link
+        href={href}
+        className={combinedClassName}
+        {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+      >
         {label}
         <Icon className="w-4 h-4" />
       </Link>
