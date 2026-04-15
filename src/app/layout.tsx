@@ -7,20 +7,17 @@ import WhatsAppButton from '@/components/ui/WhatsAppButton';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Finex SA Group | Financial Power at Every Level',
+    default: 'Finex SA Group | Integrated Fintech Banking Ecosystem for Africa',
     template: '%s | Finex SA Group',
   },
   description:
-    'Finex SA Group is a fully integrated fintech banking ecosystem bringing sophisticated technology and financial inclusion to the African market.',
+    'A fully integrated fintech banking ecosystem for Africa - digital wallets, workforce payments, remittance, forex, and treasury solutions for individuals and corporations.',
   keywords: [
-    'fintech',
-    'digital banking',
-    'mobile wallet',
-    'remittance',
-    'forex',
-    'treasury',
-    'South Africa',
-    'financial inclusion',
+    'fintech banking ecosystem South Africa',
+    'digital wallet South Africa',
+    'cross border payments Africa',
+    'corporate treasury',
+    'mobile banking Africa',
   ],
   authors: [{ name: 'Finex SA Group' }],
   creator: 'Finex SA Group',
@@ -30,15 +27,15 @@ export const metadata: Metadata = {
     locale: 'en_ZA',
     url: 'https://finex.co.za',
     siteName: 'Finex SA Group',
-    title: 'Finex SA Group | Financial Power at Every Level',
+    title: 'Finex SA Group | Integrated Fintech Banking Ecosystem for Africa',
     description:
-      'A fully integrated fintech banking ecosystem bringing sophisticated technology and financial inclusion to the African market.',
+      'A fully integrated fintech banking ecosystem for Africa - digital wallets, workforce payments, remittance, forex, and treasury solutions for individuals and corporations.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Finex SA Group | Financial Power at Every Level',
+    title: 'Finex SA Group | Integrated Fintech Banking Ecosystem for Africa',
     description:
-      'A fully integrated fintech banking ecosystem bringing sophisticated technology and financial inclusion to the African market.',
+      'A fully integrated fintech banking ecosystem for Africa - digital wallets, workforce payments, remittance, forex, and treasury solutions for individuals and corporations.',
   },
   robots: {
     index: true,

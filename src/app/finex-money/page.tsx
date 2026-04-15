@@ -26,9 +26,16 @@ import {
 import { BRANDS } from '@/config/brands';
 
 export const metadata: Metadata = {
-  title: 'Finex Money | Digital Wallet for Everyone',
+  title: 'Finex Money | Digital Wallet South Africa',
   description:
-    'Open up a world full of digital banking possibilities. Finex Money is an inclusive digital wallet built to empower your everyday hustle.',
+    'Open a Finex Money digital wallet instantly - no proof of address required. Get your Mastercard, shop online, withdraw at any ATM. Financial dignity for everyone.',
+  keywords: [
+    'digital wallet South Africa',
+    'mobile banking South Africa',
+    'no proof of address bank account',
+    'inclusive banking',
+    'FICA digital wallet',
+  ],
 };
 
 // Feature cards for "Everything You Need" section
@@ -200,19 +207,22 @@ export default function FinexMoneyPage() {
 
         <div className="container-max relative z-10 py-20 md:py-32">
           <ScrollReveal>
-            <div className="max-w-2xl">
-              {/* Finex Money logo — transparent, no background container */}
+            <div className="max-w-3xl mx-auto text-center">
+              {/* Finex Money icon logo — transparent, centred */}
               <Image
-                src="/images/logos/finex-money-logo-white.png"
+                src="/images/logos/Finex-Money-red-white-icon.png"
                 alt="Finex Money"
-                width={320}
-                height={96}
-                className="h-20 md:h-24 w-auto mb-14 md:mb-20"
+                width={200}
+                height={200}
+                className="h-14 md:h-16 w-auto mx-auto mb-10 md:mb-14"
                 priority
               />
+              <p className="text-sm md:text-base tracking-[0.3em] uppercase font-semibold mb-6 text-white/85">
+                Finex Money
+              </p>
               <h1 className="text-white mb-6">
-                <span className="italic font-light">A</span> world of <span className="font-extrabold">digital banking</span><br />
-                <span className="font-light">possibilities.</span>
+                <span className="italic font-light">The</span> <span className="font-extrabold">Digital Finance</span><br />
+                <span className="font-light">Solution.</span>
               </h1>
             </div>
           </ScrollReveal>
@@ -223,22 +233,32 @@ export default function FinexMoneyPage() {
           SECTION 1B: ATMOSPHERIC IMAGE BREAK
           City-sunset image with subtitle paragraph overlay
           ============================================= */}
-      <section className="relative flex items-center h-[50vh] overflow-hidden">
+      <section className="relative flex items-center h-[58vh] overflow-hidden">
         <Image
-          src="/images/heroes/guy-walking-sideways-across-city-sunset.jpg"
+          src="/images/heroes/guy-in-coffee-shop.jpg"
           alt=""
           fill
-          className="object-cover opacity-90"
+          className="object-cover"
         />
-        {/* Colour overlay — bridges hero (red) to section below (purple/black/red) */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-red)]/40 via-[var(--color-black)]/40 to-[var(--color-purple)]/40" />
+        {/* Gentle tri-tone overlay — red → navy → black (deepens into the right where text sits) */}
+        {/* Tri-stop overlay: transparent left → 50% dark purple center → near-solid dark purple right */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(to right, transparent 0%, rgba(12, 6, 20, 0.5) 50%, rgba(12, 6, 20, 0.95) 100%)',
+          }}
+        />
 
-        {/* Subtitle paragraph — aligned to hero text above */}
+        {/* Pull-quote in right column */}
         <div className="container-max relative z-10">
-          <div className="max-w-2xl">
-            <p className="text-lg md:text-xl text-white/90 max-w-lg">
-              From <span className="font-bold text-white">airtime top-ups</span> to <span className="font-bold text-white">money transfers</span> and <span className="font-bold text-white">online shopping</span>, your Finex Money wallet is your all-in-one financial companion.
-            </p>
+          <div className="flex justify-end">
+            <blockquote className="w-full md:w-1/2 lg:w-5/12 relative pl-8 md:pl-12">
+              <span aria-hidden="true" className="absolute left-0 -top-4 text-5xl md:text-7xl font-serif text-white/50 leading-none select-none">&ldquo;</span>
+              <p className="text-lg md:text-xl italic text-white/90 leading-relaxed">
+                Say goodbye to <span className="not-italic font-bold text-white">traditional banking hassles</span> and embrace the convenience of a <span className="not-italic font-bold text-white">true mobile wallet solution</span>. Finex Money is a <span className="not-italic font-bold text-white">secure digital ecosystem</span> built to serve the individual seeking <span className="not-italic font-bold text-white">financial dignity</span>.<span aria-hidden="true" className="font-serif text-white/50 ml-1">&rdquo;</span>
+              </p>
+            </blockquote>
           </div>
         </div>
       </section>
@@ -512,11 +532,23 @@ export default function FinexMoneyPage() {
       <HeroSection
         variant="image-background"
         eyebrow="Finex Money"
-        headline="The Finance Solution."
-        subline="Open up a world full of digital banking possibilities."
-        body="Finex Money is an inclusive digital wallet built to empower your everyday hustle. Open an account instantly and step into the digital economy with financial dignity."
-        heroImage="/images/heroes/finex-money-hero-woman.webp"
-        heroImageAlt="Young South African person using Finex Money app"
+        headline={
+          <>
+            <span className="italic font-light">The</span> <span className="font-extrabold">Finance</span> <span className="font-light">Solution.</span>
+          </>
+        }
+        subline={
+          <>
+            <span className="font-bold">Open up</span> <span className="italic font-light">a world full of</span> <span className="font-bold">digital banking possibilities.</span>
+          </>
+        }
+        body={
+          <>
+            Finex Money is an <span className="font-bold text-white">inclusive digital wallet</span> built to empower your everyday hustle. Open an account instantly and step into the <span className="font-bold text-white">digital economy</span> with <span className="font-bold text-white">financial dignity</span>.
+          </>
+        }
+        heroImage="/images/heroes/Hero-2440.jpg"
+        heroImageAlt="Finex Money — digital banking for everyone"
       >
         <CTAButton
           label="Download the App"
@@ -527,14 +559,16 @@ export default function FinexMoneyPage() {
         />
       </HeroSection>
 
-      {/* Everyday Utility - Navy section with warm cards */}
-      <section className="section-padding section-navy">
+      {/* Everyday Utility - Dark-warm with translucent cards */}
+      <section className="section-padding section-dark-warm">
         <div className="container-max">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <h2 className="text-white mb-4">Everyday Utility. Zero Hassle.</h2>
-              <p className="text-lg text-white/80 max-w-2xl mx-auto">
-                From airtime top-ups to online shopping, your Finex Money wallet is your all-in-one financial companion.
+              <h2 className="text-white mb-4">
+                <span className="italic font-light">Everyday</span> <span className="font-extrabold">Utility.</span> <span className="font-light">Zero Hassle.</span>
+              </h2>
+              <p className="text-lg text-white/70 max-w-2xl mx-auto">
+                From <span className="font-bold text-white">airtime top-ups</span> to <span className="font-bold text-white">online shopping</span>, your Finex Money wallet is your all-in-one financial companion.
               </p>
             </div>
           </ScrollReveal>
@@ -544,9 +578,9 @@ export default function FinexMoneyPage() {
               const Icon = feature.icon;
               return (
                 <ScrollReveal key={feature.label} delay={index} className="flex">
-                  <div className="card-warm text-center p-4 flex flex-col items-center flex-1">
-                    <div className="w-16 h-16 mx-auto mb-3 rounded-full bg-white/20 flex items-center justify-center">
-                      <Icon className="w-8 h-8 text-white" />
+                  <div className="bg-white/5 rounded-xl p-4 border border-white/10 text-center flex flex-col items-center flex-1 hover:bg-white/10 transition-colors duration-300">
+                    <div className="w-16 h-16 mx-auto mb-3 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
+                      <Icon className="w-8 h-8 text-[var(--color-red)]" />
                     </div>
                     <p className="text-base font-bold text-white mb-1">{feature.label}</p>
                     <p className="text-xs text-white/70">{feature.description}</p>
@@ -586,27 +620,42 @@ export default function FinexMoneyPage() {
         </div>
       </AccentBand>
 
-      {/* FICA Tiers - Light section for contrast */}
+      {/* FICA Tiers - Dark-warm section */}
       <SteppedTiers
         tiers={ficaTiers}
-        title="Three Levels. Endless Possibilities."
+        variant="dark-warm"
+        titleContent={
+          <>
+            <span className="italic font-light">Three</span> <span className="font-extrabold">Levels.</span> <span className="font-light">Endless Possibilities.</span>
+          </>
+        }
         subtitle="Start with Entry FICA and upgrade as your needs grow. No proof of address required to get started."
       />
 
-      {/* App Download CTA - Cyan-Navy gradient */}
-      <section id="download" className="section-padding section-cyan-navy">
-        <div className="container-max">
+      {/* App Download CTA — heavy red-black bookend matching the hero */}
+      <section id="download" className="relative section-padding overflow-hidden">
+        {/* Red → black gradient (same as hero) */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-red)] via-[#1a0a12] to-[var(--color-black)]" />
+        {/* Red energy overlays */}
+        <div className="absolute inset-0 opacity-30 pointer-events-none">
+          <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-[var(--color-red)]/40 to-transparent" />
+          <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-[var(--color-red)]/30 to-transparent" />
+        </div>
+
+        <div className="container-max relative z-10">
           <div className="text-center">
             <ScrollReveal>
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/60 mb-4">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70 mb-4">
                 Get Started
               </p>
-              <h2 className="text-white mb-2">Open Your Account in 3 Minutes</h2>
+              <h2 className="text-white mb-2">
+                <span className="italic font-light">Open</span> your account in <span className="font-extrabold">3 minutes.</span>
+              </h2>
               <p className="text-white/90 text-xl font-medium mb-4">
-                No branch visits. No paperwork. No waiting.
+                <span className="font-bold">No branch visits.</span> <span className="italic font-light">No paperwork.</span> <span className="font-bold">No waiting.</span>
               </p>
-              <p className="text-white/70 text-base mb-8 max-w-xl mx-auto">
-                Download the Finex Money app and complete a quick selfie verification to start transacting immediately.
+              <p className="text-white/75 text-base mb-8 max-w-xl mx-auto">
+                Download the Finex Money app and complete a <span className="font-bold text-white">quick selfie verification</span> to start transacting immediately.
               </p>
               <div className="flex flex-wrap justify-center items-center gap-4">
                 {brand.website && (

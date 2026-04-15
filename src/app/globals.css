@@ -32,6 +32,11 @@
   --color-gold-border: #F7DC6F;
   --color-gold-text: #7D6608;
   --color-gold-text-dark: #5D4E06;
+
+  /* Executive premium accent — copper/amber (Treasury + Global brands) */
+  --color-exec-accent: #C88A3D;
+  --color-exec-accent-light: #E4A24E;
+  --color-exec-accent-dark: #8B5E28;
   --color-silver-light: #F8F9FA;
   --color-silver-mid: #E9ECEF;
   --color-silver-border: #CED4DA;
@@ -169,13 +174,13 @@
 }
 
 [data-brand="treasury"] {
-  --brand-primary: var(--color-navy);
-  --brand-accent: var(--color-cyan);
+  --brand-primary: var(--color-exec-accent);
+  --brand-accent: var(--color-exec-accent-light);
 }
 
 [data-brand="global"] {
-  --brand-primary: var(--color-navy);
-  --brand-accent: var(--color-purple);
+  --brand-primary: var(--color-exec-accent);
+  --brand-accent: var(--color-exec-accent-light);
 }
 
 [data-brand="tech"] {
@@ -372,6 +377,49 @@ h4 {
 .section-dark-warm {
   background: linear-gradient(135deg, #3a0e2d 0%, #0a0508 50%, #3a0e14 100%);
   color: var(--color-text-on-dark);
+}
+
+/* ============================================
+   EXECUTIVE PREMIUM THEME
+   Used by Treasury + Global brand pages.
+   Aesthetic: pure black + warm copper/amber accents
+   ============================================ */
+
+/* Base near-black section */
+.section-exec {
+  background: #050302;
+  color: var(--color-text-on-dark);
+  position: relative;
+}
+
+/* Exec section with copper ribbon glow at bottom edge */
+.section-exec-ribbon {
+  background: #050302;
+  color: var(--color-text-on-dark);
+  position: relative;
+  overflow: hidden;
+}
+.section-exec-ribbon::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  right: 0;
+  height: 160px;
+  background: radial-gradient(ellipse 85% 100% at 50% 100%, rgba(228, 162, 78, 0.5) 0%, rgba(200, 138, 61, 0.2) 40%, transparent 78%);
+  pointer-events: none;
+}
+
+/* Exec hero — amber diagonal wash over black */
+.section-exec-hero {
+  background: radial-gradient(ellipse 75% 65% at 50% 100%, rgba(228, 162, 78, 0.35) 0%, rgba(200, 138, 61, 0.12) 50%, transparent 75%), #050302;
+  color: var(--color-text-on-dark);
+  position: relative;
+}
+
+/* Copper accent colour utility for headings and highlights */
+.text-exec-accent {
+  color: var(--color-exec-accent);
 }
 
 /* Green-Navy gradient (for Global/Growth) */

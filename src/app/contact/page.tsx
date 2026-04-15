@@ -53,9 +53,17 @@ export default function ContactPage() {
       <HeroSection
         variant="image-background"
         eyebrow="Contact Us"
-        headline="We Are Right Where You Need Us."
-        subline="Our dedicated teams are ready to help."
-        body="Digital support, telephonic solutions, and expert guidance through every process."
+        headline={
+          <>
+            <span className="italic font-light">We Are</span> <span className="font-extrabold">Right Where</span><br />
+            <span className="font-light">You Need Us.</span>
+          </>
+        }
+        body={
+          <>
+            Our dedicated digital teams and call centre consultants are ready to provide <span className="font-bold text-white">telephonic solutions</span> and guide you through our processes.
+          </>
+        }
         heroImage="/images/lifestyle/finex-money-man-card-phone.webp"
         heroImageAlt="Customer service"
       />

@@ -5,9 +5,16 @@ import ScrollReveal from '@/components/effects/ScrollReveal';
 import { GROUP, BRANDS } from '@/config/brands';
 
 export const metadata: Metadata = {
-  title: 'About | Finex SA Group',
+  title: 'About Finex SA Group | Trusted African Fintech Since 2013',
   description:
-    'The Finex SA Group unites a powerhouse of specialised companies to merge decades of trusted financial heritage with cutting-edge digital payment technology.',
+    'Since 2013, Finex SA Group has united specialised financial companies to deliver inclusion, dignity, and elite corporate solutions across Africa. Regulated, licensed, and growing.',
+  keywords: [
+    'about Finex SA Group',
+    'African fintech company',
+    'regulated fintech South Africa',
+    'FSCA registered',
+    'financial services since 2013',
+  ],
 };
 
 const subsidiaries = [
@@ -27,9 +34,17 @@ export default function AboutPage() {
       <HeroSection
         variant="image-background"
         eyebrow="About Us"
-        headline="Trusted Heritage. Inclusive Future."
-        subline="Decades of financial expertise meets cutting-edge digital technology."
-        body="The Finex SA Group unites specialised companies to provide robust, forward-thinking infrastructure for a global market."
+        headline={
+          <>
+            <span className="italic font-light">Trusted Heritage.</span><br />
+            <span className="font-extrabold">Inclusive Future.</span>
+          </>
+        }
+        body={
+          <>
+            The Finex SA Group unites a <span className="font-bold text-white">powerhouse of specialised companies</span> — merging decades of trusted financial heritage with <span className="font-bold text-white">cutting-edge digital payment technology</span>. We provide the robust, forward-thinking infrastructure required to thrive in a global market that demands <span className="font-bold text-white">absolute sophistication</span>.
+          </>
+        }
         heroImage="/images/gradients/brand-gradient-cover.webp"
         heroImageAlt="Finex SA Group brand"
       />

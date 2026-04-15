@@ -9,9 +9,17 @@ import AppStoreBadges from '@/components/ui/AppStoreBadges';
 import { BRANDS } from '@/config/brands';
 
 export const metadata: Metadata = {
-  title: 'iMali Express | Remittance & Forex',
+  title: 'iMali Express | International Remittance & Forex Exchange South Africa',
   description:
-    'iMali Express provides fast, safe, and low-cost cross-border financial solutions. Send money to 40+ countries or exchange currency at our nationwide branches.',
+    'Send money to over 40 countries with iMali Remit, or exchange foreign currency at our Bureau de Change branches nationwide. Fast, safe, low-cost - SARB-approved ADLA.',
+  keywords: [
+    'international money transfer South Africa',
+    'Bureau de Change South Africa',
+    'send money abroad',
+    'forex exchange Cape Town',
+    'remittance app',
+    'ADLA South Africa',
+  ],
 };
 
 const remitFeatures = [
@@ -45,9 +53,18 @@ export default function ImaliExpressPage() {
       <HeroSection
         variant="image-background"
         eyebrow="iMali Express"
-        headline="Global Reach and Local Presence."
+        headline={
+          <>
+            <span className="italic font-light">Fast,</span> <span className="font-extrabold">Safe,</span> and Low-Cost<br />
+            <span className="font-light">Cross-Border Finance.</span>
+          </>
+        }
         subline="Mali Yami means taking care of your family and your future."
-        body="iMali Express provides fast, safe, and low-cost cross-border financial solutions through two dedicated brands. Fully authorised by the South African Reserve Bank as a Category Two ADLA."
+        body={
+          <>
+            iMali Express provides <span className="font-bold text-white">fast, safe, and low-cost</span> cross-border financial solutions through <span className="font-bold text-white">two dedicated brands</span>. As a South African Reserve Bank-approved <span className="font-bold text-white">Category Two ADLA</span>, we are fully authorised to deal in foreign exchange and international remittances.
+          </>
+        }
         heroImage="/images/heroes/imali-hero-mama.webp"
         heroImageAlt="Woman sending money to family"
       />

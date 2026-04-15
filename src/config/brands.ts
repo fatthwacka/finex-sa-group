@@ -97,7 +97,7 @@ export const BRANDS = {
   treasury: {
     name: 'Finex SA Treasury',
     tagline: 'Master global cash flow.',
-    slug: 'treasury',
+    slug: 'finex-sa-treasury',
     dataBrand: 'treasury',
     logo: '/images/logos/Finex-SA-treasury-logo-sml.png',
     website: null,
@@ -112,7 +112,7 @@ export const BRANDS = {
   global: {
     name: 'Finex SA Global',
     tagline: 'Scale without borders.',
-    slug: 'global',
+    slug: 'finex-sa-global',
     dataBrand: 'global',
     logo: '/images/logos/Finex-Global-logo-sml.png',
     website: null,
@@ -127,7 +127,7 @@ export const BRANDS = {
   finexPay: {
     name: 'Finex Pay',
     tagline: 'Pioneering alternative payments.',
-    slug: 'technology',
+    slug: 'finex-pay-and-technologies',
     dataBrand: 'tech',
     website: null,
     appStore: null,
@@ -138,7 +138,7 @@ export const BRANDS = {
   finexTech: {
     name: 'Finex Technologies',
     tagline: 'The proprietary backbone.',
-    slug: 'technology',
+    slug: 'finex-pay-and-technologies',
     dataBrand: 'tech',
     website: null,
     appStore: null,

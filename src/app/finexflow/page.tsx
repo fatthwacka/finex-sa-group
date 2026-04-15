@@ -7,9 +7,17 @@ import CTAButton from '@/components/ui/CTAButton';
 import { BRANDS } from '@/config/brands';
 
 export const metadata: Metadata = {
-  title: 'FINEXflow | Employer Payments Reimagined',
+  title: 'FINEXFlow | Workforce Payment Platform for Employers South Africa',
   description:
-    'FINEXflow is an enterprise-grade payment platform enabling seamless workforce payment distribution, eradicating cash risks and compliance failures.',
+    'FINEXFlow is an enterprise-grade workforce payment ecosystem. Eliminate cash risk, verify worker identities in real time, and guarantee 100% on-time payment for your entire workforce.',
+  keywords: [
+    'workforce payment platform South Africa',
+    'employer payroll solution',
+    'ghost worker prevention',
+    'cashless wage payment',
+    'digital workforce identity',
+    'batch payment South Africa',
+  ],
 };
 
 const strategicPillars = [
@@ -100,10 +108,18 @@ export default function FinexflowPage() {
     <div data-brand={brand.dataBrand}>
       <HeroSection
         variant="image-background"
-        eyebrow="FINEXflow"
-        headline="Employer Payments Reimagined."
-        subline="Stop the Friction. Start the Flow."
-        body="Your workforce is your greatest asset. FINEXflow is the seamless payment ecosystem for employers who mean business."
+        eyebrow="FINEXFlow"
+        headline={
+          <>
+            <span className="italic font-light">Employer Payments</span> <span className="font-extrabold">Reimagined.</span><br />
+            <span className="font-light">Stop the Friction. Start the Flow.</span>
+          </>
+        }
+        body={
+          <>
+            Your workforce is your <span className="font-bold text-white">greatest asset</span>. Your payment system should not be your <span className="font-bold text-white">greatest risk</span>. FINEXFlow is the <span className="font-bold text-white">seamless payment ecosystem</span> for employers who mean business.
+          </>
+        }
         heroImage="/images/heroes/finexflow-hero-executive.webp"
         heroImageAlt="Business executive using FINEXflow"
       >

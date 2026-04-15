@@ -14,8 +14,8 @@ const BRAND_TABS: BrandTab[] = [
   { name: 'Finex Money', slug: '/finex-money', dataBrand: 'finex-money' },
   { name: 'FINEXflow', slug: '/finexflow', dataBrand: 'finexflow' },
   { name: 'iMali Express', slug: '/imali-express', dataBrand: 'imali' },
-  { name: 'Treasury', slug: '/treasury', dataBrand: 'treasury' },
-  { name: 'Global', slug: '/global', dataBrand: 'global' },
+  { name: 'Treasury', slug: '/finex-sa-treasury', dataBrand: 'treasury' },
+  { name: 'Global', slug: '/finex-sa-global', dataBrand: 'global' },
 ];
 
 export default function BrandTabs() {

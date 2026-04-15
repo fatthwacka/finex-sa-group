@@ -58,7 +58,7 @@ export default function HomePage() {
 
         <div className="container-max relative z-10 text-center">
           <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
-            The Finex SA Group is a <span className="font-bold text-white">fully integrated fintech banking ecosystem</span> bringing <span className="font-bold text-white">sophisticated technology</span> and <span className="font-bold text-white">financial inclusion</span> to the African market.
+            The global cross-border payments market is projected to reach <span className="font-bold text-white">$320 trillion by 2032</span>. The Finex SA Group is positioned at the forefront of this evolution — a <span className="font-bold text-white">fully integrated fintech banking ecosystem</span> bringing <span className="font-bold text-white">sophisticated technology</span> and <span className="font-bold text-white">financial inclusion</span> to the African market.
           </p>
         </div>
       </section>
