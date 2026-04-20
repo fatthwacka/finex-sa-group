@@ -16,6 +16,9 @@ export default function HomePage() {
       <HeroSection
         variant="gradient-centred"
         heightClass="min-h-[75vh]"
+        heroImage="/images/heroes/glowing-map-africa.jpg"
+        heroImageAlt="Glowing circuit-board map of Africa"
+        showSwoosh={false}
         showBottomDivider={false}
         logoSrc="/images/logos/finexsa-group-logo-only-no-text.png"
         logoAlt="Finex SA Group"

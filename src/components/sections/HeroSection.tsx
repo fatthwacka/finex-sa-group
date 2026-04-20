@@ -93,8 +93,39 @@ export default function HeroSection({
 
   return (
     <section
-      className={`relative flex items-center overflow-hidden ${bgStyles[variant]} ${heightClass || defaultHeights[variant]}`}
+      className={`relative flex items-center overflow-hidden ${
+        /* When gradient-centred has a heroImage, skip the solid bg class — the gradient becomes an overlay */
+        variant === 'gradient-centred' && heroImage ? '' : bgStyles[variant]
+      } ${heightClass || defaultHeights[variant]}`}
+      style={variant === 'gradient-centred' && heroImage ? { backgroundColor: '#2a1022' } : undefined}
     >
+      {/* Full-width background image for gradient-centred variant (e.g. homepage Africa map) */}
+      {variant === 'gradient-centred' && heroImage && (
+        <>
+          <Image
+            src={heroImage}
+            alt={heroImageAlt}
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Sunset-radial overlay — matches section-hero-sunset-radial but semi-transparent to let image show */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `
+                radial-gradient(ellipse 55% 50% at 50% 50%, rgba(201, 32, 48, 0.55) 0%, rgba(201, 32, 48, 0.35) 35%, transparent 75%),
+                radial-gradient(circle at 0% 0%, rgba(122, 16, 32, 0.7) 0%, transparent 18%),
+                radial-gradient(circle at 100% 0%, rgba(122, 16, 32, 0.7) 0%, transparent 18%),
+                radial-gradient(circle at 0% 100%, rgba(122, 16, 32, 0.7) 0%, transparent 18%),
+                radial-gradient(circle at 100% 100%, rgba(122, 16, 32, 0.7) 0%, transparent 18%),
+                rgba(42, 16, 34, 0.45)
+              `,
+            }}
+          />
+        </>
+      )}
+
       {/* Full-width background image for image-background variant */}
       {isImageBg && heroImage && (
         <>
@@ -110,8 +141,8 @@ export default function HeroSection({
         </>
       )}
 
-      {/* Background Swoosh - only on gradient-centred variant (main landing page) */}
-      {showSwoosh && variant === 'gradient-centred' && (
+      {/* Background Swoosh - only on gradient-centred variant without heroImage */}
+      {showSwoosh && variant === 'gradient-centred' && !heroImage && (
         <div className="absolute inset-0 pointer-events-none">
           <EnergySwoosh variant="background" brightness={swooshBrightness} />
         </div>

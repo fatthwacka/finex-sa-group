@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Building2, Users, CreditCard } from 'lucide-react';
 import HeroSection from '@/components/sections/HeroSection';
+import EnergySwoosh from '@/components/effects/EnergySwoosh';
 import FeatureGrid from '@/components/sections/FeatureGrid';
 import ScrollReveal from '@/components/effects/ScrollReveal';
 import CTAButton from '@/components/ui/CTAButton';
@@ -123,6 +124,11 @@ export default function FinexflowPage() {
         {/* Subtle dark wash on the lower-left to lift text legibility */}
         <div className="absolute inset-0 bg-gradient-to-tr from-black/35 via-transparent to-transparent pointer-events-none" />
 
+        {/* Energy swoosh ribbons — background layer */}
+        <div className="absolute inset-0 pointer-events-none">
+          <EnergySwoosh variant="background" brightness="bright" />
+        </div>
+
         <div className="container-max relative z-10 py-20 md:py-28">
           <ScrollReveal type="slide" direction="up">
             <div className="max-w-2xl">
@@ -145,14 +151,15 @@ export default function FinexflowPage() {
             </div>
           </ScrollReveal>
         </div>
+
       </section>
 
       {/* =============================================
           ATMOSPHERIC IMAGE BREAK — executive image + paragraph overlay
           ============================================= */}
-      <section className="relative flex items-center h-[60vh] overflow-hidden">
+      <section className="relative flex items-center h-[69vh] overflow-hidden">
         <Image
-          src="/images/heroes/finexflow-hero-02.jpg"
+          src="/images/heroes/finexflow-farm-worker-02.jpg"
           alt=""
           fill
           className="object-cover"
@@ -182,76 +189,61 @@ export default function FinexflowPage() {
         </div>
       </section>
 
-      {/* The Challenge — 2-column text + image */}
+      {/* The Challenge + The Seamless Solution — combined section */}
       <section className="section-padding section-dark-warm">
         <div className="container-max">
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
-            <ScrollReveal type="slide" direction="left">
-              <div>
-                <h2 className="text-white mb-6">
-                  <span className="italic font-light">The</span> <span className="font-extrabold">Challenge.</span>
-                </h2>
-                <p className="text-lg text-white/85 leading-relaxed mb-6">
-                  The friction high-volume employers experience is <span className="font-bold text-white">expensive and invisible</span> — until it becomes <span className="font-bold text-white">catastrophic</span>:
-                </p>
-                <ul className="space-y-3 text-white/80">
-                  <li className="flex gap-3"><span className="text-[var(--color-red)] font-bold">•</span><span><span className="font-bold text-white">Security exposure</span> from cash wage runs</span></li>
-                  <li className="flex gap-3"><span className="text-[var(--color-red)] font-bold">•</span><span><span className="font-bold text-white">Legislative risks</span> from unverified worker identities</span></li>
-                  <li className="flex gap-3"><span className="text-[var(--color-red)] font-bold">•</span><span><span className="font-bold text-white">Batch payment failures</span> that only surface after the fact</span></li>
-                  <li className="flex gap-3"><span className="text-[var(--color-red)] font-bold">•</span><span><span className="font-bold text-white">Ghost workers</span> and identity fraud eroding margins</span></li>
-                  <li className="flex gap-3"><span className="text-[var(--color-red)] font-bold">•</span><span>Growing <span className="font-bold text-white">administrative burden</span> with every new hire</span></li>
-                </ul>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal type="slide" direction="right">
-              <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/10">
-                <Image
-                  src="/images/backgrounds/finexflow-challenge.jpg"
-                  alt="FINEXflow challenge — workforce payment risks"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* The Seamless Solution — flipped to dark-warm */}
-      <section className="section-padding section-dark-warm">
-        <div className="container-max">
+          {/* Challenge — centre-aligned */}
           <ScrollReveal>
-            <div className="text-center mb-12">
+            <div className="text-center max-w-2xl mx-auto">
               <h2 className="text-white mb-4">
-                <span className="italic font-light">The</span> <span className="font-extrabold">Seamless</span> <span className="font-light">Solution.</span>
+                <span className="italic font-light">The</span> <span className="font-extrabold">Challenge.</span>
               </h2>
-              <p className="text-lg text-white/75 max-w-3xl mx-auto">
-                FINEXFlow acts as the <span className="font-bold text-white">secure final layer</span> between your payroll and the bank. <span className="font-bold text-white">Enterprise-grade infrastructure</span> that keeps your business in total control, around the clock — real time, at scale, with <span className="font-bold text-white">full compliance</span> built in from day one.
+              <p className="text-lg text-white/85 leading-relaxed mb-6">
+                The friction high-volume employers experience is <span className="font-bold text-white">expensive and invisible</span> — until it becomes <span className="font-bold text-white">catastrophic</span>:
               </p>
+              <ul className="space-y-2.5 text-white/80 inline-block text-left">
+                <li className="flex gap-3"><span className="text-[var(--color-red)] font-bold">•</span><span><span className="font-bold text-white">Security exposure</span> from cash wage runs</span></li>
+                <li className="flex gap-3"><span className="text-[var(--color-red)] font-bold">•</span><span><span className="font-bold text-white">Legislative risks</span> from unverified worker identities</span></li>
+                <li className="flex gap-3"><span className="text-[var(--color-red)] font-bold">•</span><span><span className="font-bold text-white">Batch payment failures</span> that only surface after the fact</span></li>
+                <li className="flex gap-3"><span className="text-[var(--color-red)] font-bold">•</span><span><span className="font-bold text-white">Ghost workers</span> and identity fraud eroding margins</span></li>
+                <li className="flex gap-3"><span className="text-[var(--color-red)] font-bold">•</span><span>Growing <span className="font-bold text-white">administrative burden</span> with every new hire</span></li>
+              </ul>
             </div>
           </ScrollReveal>
 
-          {/* Three Components — translucent cards on dark */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-            {[
-              { Icon: Building2, title: 'The Employer Dashboard', body: 'Real-time payment management, worker profiles, compliance records, and business intelligence — all in one secure portal.' },
-              { Icon: Users, title: 'The Worker App & Wallet', body: 'Instant payment notifications, account balance visibility, and financial tools built for every worker — regardless of banking history.' },
-              { Icon: CreditCard, title: 'The Branded Debit Card', body: 'A physical Mastercard linked directly to the worker profile, allowing immediate access to funds at any ATM or point of sale.' },
-            ].map((card, i) => {
-              const { Icon } = card;
-              return (
-                <ScrollReveal key={card.title} delay={i * 2}>
-                  <div className="h-full bg-white/5 rounded-xl p-6 border border-white/10 text-center hover:bg-white/10 transition-colors duration-300">
-                    <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-4">
-                      <Icon className="w-8 h-8 text-[var(--color-red)]" />
+          {/* Seamless Solution — heading + 3 component cards */}
+          <div className="mt-16 md:mt-20">
+            <ScrollReveal>
+              <div className="text-center max-w-2xl mx-auto mb-12">
+                <h2 className="text-white mb-4">
+                  <span className="italic font-light">The</span> <span className="font-extrabold">Seamless</span> <span className="font-light">Solution.</span>
+                </h2>
+                <p className="text-lg text-white/75">
+                  FINEXFlow acts as the <span className="font-bold text-white">secure final layer</span> between your payroll and the bank. <span className="font-bold text-white">Enterprise-grade infrastructure</span> that keeps your business in total control, around the clock — real time, at scale, with <span className="font-bold text-white">full compliance</span> built in from day one.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+              {[
+                { Icon: Building2, title: 'The Employer Dashboard', body: 'Real-time payment management, worker profiles, compliance records, and business intelligence — all in one secure portal.' },
+                { Icon: Users, title: 'The Worker App & Wallet', body: 'Instant payment notifications, account balance visibility, and financial tools built for every worker — regardless of banking history.' },
+                { Icon: CreditCard, title: 'The Branded Debit Card', body: 'A physical Mastercard linked directly to the worker profile, allowing immediate access to funds at any ATM or point of sale.' },
+              ].map((card, i) => {
+                const { Icon } = card;
+                return (
+                  <ScrollReveal key={card.title} delay={i * 2}>
+                    <div className="h-full bg-white/5 rounded-xl p-6 border border-white/10 text-center hover:bg-white/10 transition-colors duration-300">
+                      <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-4">
+                        <Icon className="w-8 h-8 text-[var(--color-red)]" />
+                      </div>
+                      <h3 className="text-xl font-bold mb-3 text-white">{card.title}</h3>
+                      <p className="text-white/70 leading-relaxed">{card.body}</p>
                     </div>
-                    <h3 className="text-xl font-bold mb-3 text-white">{card.title}</h3>
-                    <p className="text-white/70 leading-relaxed">{card.body}</p>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
+                  </ScrollReveal>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
@@ -271,7 +263,7 @@ export default function FinexflowPage() {
         </div>
       </section>
 
-      {/* Core Features — flipped to dark-warm */}
+      {/* Core Features — 2×2 cards + image */}
       <section className="section-padding section-dark-warm">
         <div className="container-max">
           <ScrollReveal>
@@ -284,7 +276,32 @@ export default function FinexflowPage() {
               </p>
             </div>
           </ScrollReveal>
-          <FeatureGrid features={coreFeatures} columns={4} variant="on-dark" />
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            {/* 2×2 compact cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {coreFeatures.map((feature, i) => (
+                <ScrollReveal key={feature.title} delay={i * 1.5}>
+                  <div className="h-full bg-white/5 rounded-xl p-4 border border-white/10 hover:bg-white/10 transition-colors duration-300">
+                    <h3 className="text-base font-bold mb-2 text-white">{feature.title}</h3>
+                    <p className="text-white/70 text-sm leading-relaxed">{feature.description}</p>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+
+            {/* Image */}
+            <ScrollReveal type="slide" direction="right">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10">
+                <Image
+                  src="/images/backgrounds/finexflow-collaborative.jpeg"
+                  alt="FINEXflow collaborative workforce solution"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 
@@ -326,7 +343,7 @@ export default function FinexflowPage() {
         </div>
       </section>
 
-      {/* Industries — flipped to dark-warm */}
+      {/* Industries */}
       <section className="section-padding section-dark-warm">
         <div className="container-max">
           <ScrollReveal>
