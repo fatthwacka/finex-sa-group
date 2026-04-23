@@ -1,31 +1,31 @@
-import type { Metadata } from 'next';
-import { Building, TrendingUp, Shield, Target } from 'lucide-react';
-import HeroSection from '@/components/sections/HeroSection';
-import ScrollReveal from '@/components/effects/ScrollReveal';
-import { GROUP, BRANDS } from '@/config/brands';
+import type { Metadata } from "next";
+import { Building, TrendingUp, Shield, Target } from "lucide-react";
+import HeroSection from "@/components/sections/HeroSection";
+import ScrollReveal from "@/components/effects/ScrollReveal";
+import { GROUP, BRANDS } from "@/config/brands";
 
 export const metadata: Metadata = {
-  title: 'About Finex SA Group | Trusted African Fintech Since 2013',
+  title: "About Finex SA Group | Trusted African Fintech Since 2013",
   description:
-    'Since 2013, Finex SA Group has united specialised financial companies to deliver inclusion, dignity, and elite corporate solutions across Africa. Regulated, licensed, and growing.',
+    "Since 2013, Finex SA Group has united specialised financial companies to deliver inclusion, dignity, and elite corporate solutions across Africa. Regulated, licensed, and growing.",
   keywords: [
-    'about Finex SA Group',
-    'African fintech company',
-    'regulated fintech South Africa',
-    'FSCA registered',
-    'financial services since 2013',
+    "about Finex SA Group",
+    "African fintech company",
+    "regulated fintech South Africa",
+    "FSCA registered",
+    "financial services since 2013",
   ],
 };
 
 const subsidiaries = [
-  { name: 'Finex Money', dataBrand: 'finex-money' },
-  { name: 'FINEXflow SaaS', dataBrand: 'finexflow' },
-  { name: 'iMali Express Remit', dataBrand: 'imali' },
-  { name: 'iMali Express Forex', dataBrand: 'imali' },
-  { name: 'Finex SA Treasury', dataBrand: 'treasury' },
-  { name: 'Finex SA Global', dataBrand: 'global' },
-  { name: 'Finex Pay', dataBrand: 'tech' },
-  { name: 'Finex Technologies', dataBrand: 'tech' },
+  { name: "Finex Money", dataBrand: "finex-money" },
+  { name: "FINEXflow SaaS", dataBrand: "finexflow" },
+  { name: "iMali Express Remit", dataBrand: "imali" },
+  { name: "iMali Express Forex", dataBrand: "imali" },
+  { name: "Finex SA Treasury", dataBrand: "treasury" },
+  { name: "Finex SA Global", dataBrand: "global" },
+  { name: "Finex Pay", dataBrand: "tech" },
+  { name: "Finex Technologies", dataBrand: "tech" },
 ] as const;
 
 export default function AboutPage() {
@@ -36,13 +36,27 @@ export default function AboutPage() {
         eyebrow="About Us"
         headline={
           <>
-            <span className="italic font-light">Trusted Heritage.</span><br />
+            <span className="italic font-light">Trusted Heritage.</span>
+            <br />
             <span className="font-extrabold">Inclusive Future.</span>
           </>
         }
         body={
           <>
-            The Finex SA Group unites a <span className="font-bold text-white">powerhouse of specialised companies</span> — merging decades of trusted financial heritage with <span className="font-bold text-white">cutting-edge digital payment technology</span>. We provide the robust, forward-thinking infrastructure required to thrive in a global market that demands <span className="font-bold text-white">absolute sophistication</span>.
+            The Finex SA Group unites a{" "}
+            <span className="font-bold text-white">
+              powerhouse of specialised companies
+            </span>{" "}
+            — merging decades of trusted financial heritage with{" "}
+            <span className="font-bold text-white">
+              cutting-edge digital payment technology
+            </span>
+            . We provide the robust, forward-thinking infrastructure required to
+            thrive in a global market that demands{" "}
+            <span className="font-bold text-white">
+              absolute sophistication
+            </span>
+            .
           </>
         }
         heroImage="/images/gradients/brand-gradient-cover.webp"
@@ -60,45 +74,48 @@ export default function AboutPage() {
                   <h2 className="text-white">Our Strategic Objectives</h2>
                 </div>
                 <p className="text-lg text-white/80 mb-6">
-                  We are not just participating in the market. We are actively shaping its future.
+                  We are not just participating in the market. We are actively
+                  shaping its future.
                 </p>
                 <p className="text-white/80 leading-relaxed mb-6">
-                  Our strategic growth focus for 2025 and 2026 is anchored in expanding our
-                  regulatory and operational footprint. We are actively pursuing a Category 4
-                  Licence Application while advancing our core objective to secure our own Third
-                  Party Payment Provider status and direct Bank Sponsorship.
+                  Our strategic growth focus for 2025 and 2026 is anchored in
+                  expanding our regulatory and operational footprint. We are
+                  actively pursuing a Category 4 Licence Application while
+                  advancing our core objective to secure our own Third Party
+                  Payment Provider status and direct Bank Sponsorship.
                 </p>
                 <p className="text-white/80 leading-relaxed">
-                  This will solidify our independence and enhance our capacity to deliver
-                  unparalleled financial solutions and drive financial dignity across the continent.
+                  This will solidify our independence and enhance our capacity
+                  to deliver unparalleled financial solutions and drive
+                  financial dignity across the continent.
                 </p>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
               <div className="grid grid-cols-2 gap-4">
                 <div className="card-warm text-center">
-                  <div className="text-3xl font-bold text-white mb-2">Cat 4</div>
+                  <div className="text-3xl font-bold text-white mb-2">
+                    Cat 4
+                  </div>
                   <div className="text-sm text-white/80">
                     Licence Application
                   </div>
                 </div>
                 <div className="card-cool text-center">
                   <div className="text-3xl font-bold text-white mb-2">TPP</div>
-                  <div className="text-sm text-white/80">
-                    Provider Status
-                  </div>
+                  <div className="text-sm text-white/80">Provider Status</div>
                 </div>
                 <div className="card-sunset text-center">
-                  <div className="text-3xl font-bold text-white mb-2">Direct</div>
-                  <div className="text-sm text-white/80">
-                    Bank Sponsorship
+                  <div className="text-3xl font-bold text-white mb-2">
+                    Direct
                   </div>
+                  <div className="text-sm text-white/80">Bank Sponsorship</div>
                 </div>
                 <div className="card-navy text-center">
-                  <div className="text-3xl font-bold text-white mb-2">Pan-African</div>
-                  <div className="text-sm text-white/80">
-                    Expansion
+                  <div className="text-3xl font-bold text-white mb-2">
+                    Pan-African
                   </div>
+                  <div className="text-sm text-white/80">Expansion</div>
                 </div>
               </div>
             </ScrollReveal>
@@ -116,14 +133,17 @@ export default function AboutPage() {
                 <h2>A Track Record of Growth</h2>
               </div>
               <p className="text-lg text-[var(--color-text-secondary)] leading-relaxed mb-6">
-                Since our inception in {GROUP.founded}, we have continuously expanded, marked by our
-                strategic acquisition of iMali Express Forex in 2018.
+                Since our inception in {GROUP.founded}, we have continuously
+                expanded, marked by our strategic acquisition of iMali Express
+                Forex in 2018.
               </p>
               <p className="text-[var(--color-text-secondary)] leading-relaxed mb-6">
-                We are bringing a layer of sophistication and financial inclusion to the market in a
-                way never seen before. Our goal is to build strong interpersonal relationships that
-                provide individual and corporate clients with a partner they can approach, knowing
-                they will be heard, understood, and powerfully supported.
+                We are bringing a layer of sophistication and financial
+                inclusion to the market in a way never seen before. Our goal is
+                to build strong interpersonal relationships that provide
+                individual and corporate clients with a partner they can
+                approach, knowing they will be heard, understood, and powerfully
+                supported.
               </p>
             </ScrollReveal>
 
@@ -138,7 +158,9 @@ export default function AboutPage() {
                     </div>
                     <div>
                       <div className="text-xl font-bold">{GROUP.founded}</div>
-                      <div className="text-[var(--color-text-secondary)]">Finex SA Group founded</div>
+                      <div className="text-[var(--color-text-secondary)]">
+                        Finex SA Group founded
+                      </div>
                     </div>
                   </div>
                   <div className="flex gap-6 items-start">
@@ -189,7 +211,9 @@ export default function AboutPage() {
                   data-brand={sub.dataBrand}
                   className="card-glass-dark text-center"
                 >
-                  <span className="font-medium text-sm text-white">{sub.name}</span>
+                  <span className="font-medium text-sm text-white">
+                    {sub.name}
+                  </span>
                 </div>
               </ScrollReveal>
             ))}
@@ -204,13 +228,17 @@ export default function AboutPage() {
             <ScrollReveal>
               <div className="flex items-center justify-center gap-3 mb-4">
                 <Shield className="w-8 h-8 text-white" />
-                <h2 className="text-white">Safe, Regulated, and Fully Licensed</h2>
+                <h2 className="text-white">
+                  Safe, Regulated, and Fully Licensed
+                </h2>
               </div>
               <p className="text-white/80 text-lg mb-8">
-                We operate with absolute transparency and rigorous compliance. We are a{' '}
-                {GROUP.category}. As an Accountable Institution, we are regulated by the Financial
-                Sector Conduct Authority as a financial service provider under {GROUP.fsp}, and by
-                the South African Reserve Bank as a forex exchange intermediary under number 2264.
+                We operate with absolute transparency and rigorous compliance.
+                We are a {GROUP.category}. As an Accountable Institution, we are
+                regulated by the Financial Sector Conduct Authority as a
+                financial service provider under {GROUP.fsp}, and by the South
+                African Reserve Bank as a forex exchange intermediary under
+                number 2264.
               </p>
               <div className="flex flex-wrap justify-center gap-4 mb-8">
                 <div className="card-glass-dark inline-block">
@@ -226,8 +254,8 @@ export default function AboutPage() {
               {/* Bank Zero Partnership */}
               <div className="pt-6 border-t border-white/20">
                 <p className="text-white/70 text-sm">
-                  Finex Money (PTY) LTD is a registered credit provider NCRCP27865 — powered by{' '}
-                  <span className="text-white font-medium">Bank Zero</span> mutual bank.
+                  Finex Money (PTY) LTD is a registered credit provider
+                  NCRCP27865
                 </p>
               </div>
             </ScrollReveal>

@@ -21,7 +21,7 @@ export default function HomePage() {
       <HeroSection
         variant="gradient-centred"
         heightClass="min-h-[75vh]"
-        heroImage="/images/heroes/glowing-map-africa.jpg"
+        heroImage="/images/heroes/glowing-map-africa.png"
         heroImageAlt="Glowing circuit-board map of Africa"
         showSwoosh={false}
         showBottomDivider={false}
@@ -227,7 +227,7 @@ export default function HomePage() {
           ============================================= */}
       <section className="relative w-full">
         <Image
-          src="/images/heroes/glowing-map-africa.jpg"
+          src="/images/heroes/glowing-map-africa.png"
           alt=""
           width={1920}
           height={1080}
@@ -756,7 +756,6 @@ export default function HomePage() {
 
         <CTAButton
           label="Contact Us"
-          type="contact"
           href="/contact"
           variant="white"
           size="lg"

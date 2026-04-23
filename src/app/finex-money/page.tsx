@@ -1,11 +1,11 @@
-import type { Metadata } from 'next';
-import Image from 'next/image';
-import HeroSection from '@/components/sections/HeroSection';
-import AccentBand from '@/components/sections/AccentBand';
-import SteppedTiers from '@/components/sections/SteppedTiers';
-import ScrollReveal from '@/components/effects/ScrollReveal';
-import CTAButton from '@/components/ui/CTAButton';
-import AppStoreBadges from '@/components/ui/AppStoreBadges';
+import type { Metadata } from "next";
+import Image from "next/image";
+import HeroSection from "@/components/sections/HeroSection";
+import AccentBand from "@/components/sections/AccentBand";
+import SteppedTiers from "@/components/sections/SteppedTiers";
+import ScrollReveal from "@/components/effects/ScrollReveal";
+import CTAButton from "@/components/ui/CTAButton";
+import AppStoreBadges from "@/components/ui/AppStoreBadges";
 import {
   CreditCard,
   Banknote,
@@ -22,19 +22,19 @@ import {
   ShoppingBag,
   Wrench,
   Store,
-} from 'lucide-react';
-import { BRANDS } from '@/config/brands';
+} from "lucide-react";
+import { BRANDS } from "@/config/brands";
 
 export const metadata: Metadata = {
-  title: 'Finex Money | Digital Wallet South Africa',
+  title: "Finex Money | Digital Wallet South Africa",
   description:
-    'Open a Finex Money digital wallet instantly - no proof of address required. Get your Mastercard, shop online, withdraw at any ATM. Financial dignity for everyone.',
+    "Open a Finex Money digital wallet instantly - no proof of address required. Get your Mastercard, shop online, withdraw at any ATM. Financial dignity for everyone.",
   keywords: [
-    'digital wallet South Africa',
-    'mobile banking South Africa',
-    'no proof of address bank account',
-    'inclusive banking',
-    'FICA digital wallet',
+    "digital wallet South Africa",
+    "mobile banking South Africa",
+    "no proof of address bank account",
+    "inclusive banking",
+    "FICA digital wallet",
   ],
 };
 
@@ -42,61 +42,61 @@ export const metadata: Metadata = {
 const pocketFeatures = [
   {
     icon: Send,
-    title: 'Send Money',
-    description: 'Instant transfers to anyone, anywhere in South Africa.',
+    title: "Send Money",
+    description: "Instant transfers to anyone, anywhere in South Africa.",
   },
   {
     icon: Globe,
-    title: 'Cross-Border Payments',
-    description: 'Send money across SADC borders with low fees.',
+    title: "Cross-Border Payments",
+    description: "Send money across SADC borders with low fees.",
   },
   {
     icon: CreditCard,
-    title: 'Finex Money Card',
-    description: 'A global Mastercard accepted everywhere.',
+    title: "Finex Money Card",
+    description: "A global Mastercard accepted everywhere.",
   },
   {
     icon: Wallet,
-    title: 'Digital Wallet',
-    description: 'Secure wallet with zero daily costs on the app.',
+    title: "Digital Wallet",
+    description: "Secure wallet with zero daily costs on the app.",
   },
   {
     icon: QrCode,
-    title: 'Pay by QR',
-    description: 'Scan and pay merchants instantly with QR codes.',
+    title: "Pay by QR",
+    description: "Scan and pay merchants instantly with QR codes.",
   },
   {
     icon: Users,
-    title: 'Group Wallets',
-    description: 'Digital stokvels — pool and save as a community.',
+    title: "Group Wallets",
+    description: "Digital stokvels — pool and save as a community.",
   },
 ];
 
 // Vision cards for "Moving Beyond Bank-Poor" section
 const visionCards = [
   {
-    title: 'Ziyakhale!',
+    title: "Ziyakhale!",
     subtitle: "It's happening now!",
-    description: 'Breaking down barriers for the unbanked.',
-    color: 'bg-[var(--color-red)]',
+    description: "Breaking down barriers for the unbanked.",
+    color: "bg-[var(--color-red)]",
   },
   {
-    title: 'Vuka',
-    subtitle: 'Wake up / Rise',
-    description: 'Professionalising the hustle with digital tools.',
-    color: 'bg-[var(--color-navy)]',
+    title: "Vuka",
+    subtitle: "Wake up / Rise",
+    description: "Professionalising the hustle with digital tools.",
+    color: "bg-[var(--color-navy)]",
   },
   {
-    title: 'Kunjalo',
-    subtitle: 'That\'s it',
-    description: 'A Digital Safe Haven against cash risk.',
-    color: 'bg-[var(--color-purple)]',
+    title: "Kunjalo",
+    subtitle: "That's it",
+    description: "A Digital Safe Haven against cash risk.",
+    color: "bg-[var(--color-purple)]",
   },
   {
-    title: 'Kopanin',
-    subtitle: 'Unite',
-    description: 'Collective financial power through community.',
-    color: 'bg-[var(--color-orange)]',
+    title: "Kopanin",
+    subtitle: "Unite",
+    description: "Collective financial power through community.",
+    color: "bg-[var(--color-orange)]",
   },
 ];
 
@@ -104,76 +104,100 @@ const visionCards = [
 const personaCards = [
   {
     icon: Truck,
-    title: 'The Bakkie Boss',
-    subtitle: 'Your Money, Your Rules.',
-    challenge: 'Manages high-risk site teams, pays wages in cash.',
-    solution: 'Automates payroll & SARB/SARS compliance.',
+    title: "The Bakkie Boss",
+    subtitle: "Your Money, Your Rules.",
+    challenge: "Manages high-risk site teams, pays wages in cash.",
+    solution: "Automates payroll & SARB/SARS compliance.",
   },
   {
     icon: Store,
-    title: 'The Kasi Anchor',
-    subtitle: 'Bank on Yourself.',
-    challenge: 'Spaza owner facing protection and cash handling risk.',
-    solution: 'Digital Safe Haven secures savings against physical risk.',
+    title: "The Kasi Anchor",
+    subtitle: "Bank on Yourself.",
+    challenge: "Spaza owner facing protection and cash handling risk.",
+    solution: "Digital Safe Haven secures savings against physical risk.",
   },
   {
     icon: Wrench,
-    title: 'The Road Warrior',
-    subtitle: 'Your Money, Your Border.',
-    challenge: 'SADC trucker facing exploitative service borders.',
-    solution: 'Receive pay & Digital Rand savings from theft.',
+    title: "The Road Warrior",
+    subtitle: "Your Money, Your Border.",
+    challenge: "SADC trucker facing exploitative service borders.",
+    solution: "Receive pay & Digital Rand savings from theft.",
   },
   {
     icon: ShoppingBag,
-    title: 'The Mall Assistant',
-    subtitle: 'Finance, Made Fair.',
-    challenge: 'Dignity counts but also retail workers.',
-    solution: 'Gets a free app and a low-fee transactional account.',
+    title: "The Mall Assistant",
+    subtitle: "Finance, Made Fair.",
+    challenge: "Dignity counts but also retail workers.",
+    solution: "Gets a free app and a low-fee transactional account.",
   },
 ];
 
 // Everyday utility features with icons
 const everydayFeatures = [
-  { label: 'Tap to Pay', icon: CreditCard, description: 'Use your Finex Money card at any Mastercard terminal.' },
-  { label: 'ATM Access', icon: Banknote, description: 'Withdraw cash at any ATM nationwide.' },
-  { label: 'Airtime & Data', icon: Smartphone, description: 'Top up any network directly from the app.' },
-  { label: 'Electricity', icon: Zap, description: 'Buy prepaid electricity tokens instantly.' },
-  { label: 'EFT Transfers', icon: ArrowRightLeft, description: 'Send money to any South African bank account.' },
-  { label: 'Online Shopping', icon: ShoppingCart, description: 'Shop online with your virtual or physical card.' },
+  {
+    label: "Tap to Pay",
+    icon: CreditCard,
+    description: "Use your Finex Money card at any Mastercard terminal.",
+  },
+  {
+    label: "ATM Access",
+    icon: Banknote,
+    description: "Withdraw cash at any ATM nationwide.",
+  },
+  {
+    label: "Airtime & Data",
+    icon: Smartphone,
+    description: "Top up any network directly from the app.",
+  },
+  {
+    label: "Electricity",
+    icon: Zap,
+    description: "Buy prepaid electricity tokens instantly.",
+  },
+  {
+    label: "EFT Transfers",
+    icon: ArrowRightLeft,
+    description: "Send money to any South African bank account.",
+  },
+  {
+    label: "Online Shopping",
+    icon: ShoppingCart,
+    description: "Shop online with your virtual or physical card.",
+  },
 ];
 
 // FICA tier data
 const ficaTiers = [
   {
     level: 1,
-    name: 'Entry FICA',
-    limit: 'Up to R25,000',
-    description: 'Get started quickly with minimal documentation',
+    name: "Entry FICA",
+    limit: "Up to R25,000",
+    description: "Get started quickly with minimal documentation",
     requirements: [
-      'SA ID, Foreign Passport, or Asylum Seeker document',
-      'Selfie verification',
-      'No proof of address required',
+      "SA ID, Foreign Passport, or Asylum Seeker document",
+      "Selfie verification",
+      "No proof of address required",
     ],
   },
   {
     level: 2,
-    name: 'Mid FICA',
-    limit: 'Up to R100,000',
-    description: 'Unlock higher limits with additional verification',
+    name: "Mid FICA",
+    limit: "Up to R100,000",
+    description: "Unlock higher limits with additional verification",
     requirements: [
-      'All Level 1 requirements',
-      'Proof of residence (utility bill or bank statement)',
+      "All Level 1 requirements",
+      "Proof of residence (utility bill or bank statement)",
     ],
   },
   {
     level: 3,
-    name: 'Full FICA',
-    limit: 'Up to R500,000',
-    description: 'Complete verification for maximum flexibility',
+    name: "Full FICA",
+    limit: "Up to R500,000",
+    description: "Complete verification for maximum flexibility",
     requirements: [
-      'All Level 2 requirements',
-      'Proof of income',
-      'Enhanced due diligence',
+      "All Level 2 requirements",
+      "Proof of income",
+      "Enhanced due diligence",
     ],
     highlight: true,
   },
@@ -181,9 +205,12 @@ const ficaTiers = [
 
 // Accepted document types
 const acceptedDocs = [
-  { label: 'SA ID', description: 'South African ID book or smart card' },
-  { label: 'Foreign Passport', description: 'Valid passport from any country' },
-  { label: 'Asylum Seeker Permit', description: 'Section 22 or Section 24 permit' },
+  { label: "SA ID", description: "South African ID book or smart card" },
+  { label: "Foreign Passport", description: "Valid passport from any country" },
+  {
+    label: "Asylum Seeker Permit",
+    description: "Section 22 or Section 24 permit",
+  },
 ];
 
 export default function FinexMoneyPage() {
@@ -191,7 +218,6 @@ export default function FinexMoneyPage() {
 
   return (
     <div data-brand={brand.dataBrand}>
-
       {/* =============================================
           SECTION 1: HERO
           Red-tinted hero with placeholder background
@@ -221,7 +247,9 @@ export default function FinexMoneyPage() {
                 Finex Money
               </p>
               <h1 className="text-white mb-6">
-                <span className="italic font-light">The</span> <span className="font-extrabold">Digital Finance</span><br />
+                <span className="italic font-light">The</span>{" "}
+                <span className="font-extrabold">Digital Finance</span>
+                <br />
                 <span className="font-light">Solution.</span>
               </h1>
             </div>
@@ -246,7 +274,7 @@ export default function FinexMoneyPage() {
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(to right, transparent 0%, rgba(12, 6, 20, 0.5) 50%, rgba(12, 6, 20, 0.95) 100%)',
+              "linear-gradient(to right, transparent 0%, rgba(12, 6, 20, 0.5) 50%, rgba(12, 6, 20, 0.95) 100%)",
           }}
         />
 
@@ -255,11 +283,26 @@ export default function FinexMoneyPage() {
           <div className="flex justify-end">
             <div className="w-full md:w-1/2 lg:w-5/12">
               <h2 className="text-white mb-4">
-                <span className="italic font-light">Simple,</span> <span className="font-extrabold">secure digital</span><br />
+                <span className="italic font-light">Simple,</span>{" "}
+                <span className="font-extrabold">secure digital</span>
+                <br />
                 <span className="font-light">payments.</span>
               </h2>
               <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-                Say goodbye to <span className="font-bold text-white">traditional banking hassles</span> and embrace the convenience of a <span className="font-bold text-white">true mobile wallet solution</span>. Finex Money is a <span className="font-bold text-white">secure digital ecosystem</span> built to serve the individual seeking <span className="font-bold text-white">financial dignity</span>.
+                Say goodbye to{" "}
+                <span className="font-bold text-white">
+                  traditional banking hassles
+                </span>{" "}
+                and embrace the convenience of a{" "}
+                <span className="font-bold text-white">
+                  true mobile wallet solution
+                </span>
+                . Finex Money is a{" "}
+                <span className="font-bold text-white">
+                  secure digital ecosystem
+                </span>{" "}
+                built to serve the individual seeking{" "}
+                <span className="font-bold text-white">financial dignity</span>.
               </p>
             </div>
           </div>
@@ -275,11 +318,13 @@ export default function FinexMoneyPage() {
           <ScrollReveal>
             <div className="text-center mb-16">
               <h2 className="mb-4">
-                Everything You Need,<br />
+                Everything You Need,
+                <br />
                 <span className="gradient-text-dark">In Your Pocket</span>
               </h2>
               <p className="text-lg text-white/70 max-w-2xl mx-auto">
-                A complete digital finance ecosystem built for the way Africa moves money.
+                A complete digital finance ecosystem built for the way Africa
+                moves money.
               </p>
             </div>
           </ScrollReveal>
@@ -294,7 +339,9 @@ export default function FinexMoneyPage() {
                       <Icon className="w-6 h-6 text-[var(--color-red)]" />
                     </div>
                     <h4 className="font-bold mb-2">{feature.title}</h4>
-                    <p className="text-sm text-white/70">{feature.description}</p>
+                    <p className="text-sm text-white/70">
+                      {feature.description}
+                    </p>
                   </div>
                 </ScrollReveal>
               );
@@ -328,11 +375,25 @@ export default function FinexMoneyPage() {
               <ScrollReveal>
                 <div className="max-w-lg">
                   <h2 className="text-white mb-4">
-                    <span className="italic font-light">Simple,</span> Secure Digital<br />
-                    <span className="font-extrabold">Payments</span> <span className="font-light">for Africa</span>
+                    <span className="italic font-light">Simple,</span> Secure
+                    Digital
+                    <br />
+                    <span className="font-extrabold">Payments</span>{" "}
+                    <span className="font-light">for Africa</span>
                   </h2>
                   <p className="text-lg text-white/90 max-w-md">
-                    To <span className="font-bold text-white">empower individuals</span> and <span className="font-bold text-white">small businesses</span> with accessible <span className="font-bold text-white">digital finance.</span>
+                    To{" "}
+                    <span className="font-bold text-white">
+                      empower individuals
+                    </span>{" "}
+                    and{" "}
+                    <span className="font-bold text-white">
+                      small businesses
+                    </span>{" "}
+                    with accessible{" "}
+                    <span className="font-bold text-white">
+                      digital finance.
+                    </span>
                   </p>
                 </div>
               </ScrollReveal>
@@ -340,7 +401,12 @@ export default function FinexMoneyPage() {
 
             {/* Phone image — left, vertically centred — delayed slower entrance */}
             <div className="flex-1 flex items-center py-8">
-              <ScrollReveal type="slide" direction="up" delay={25} duration={1.4}>
+              <ScrollReveal
+                type="slide"
+                direction="up"
+                delay={25}
+                duration={1.4}
+              >
                 <div className="relative w-[200px] sm:w-[260px] md:w-[320px] lg:w-[380px]">
                   <Image
                     src="/images/app-screenshots/finex-money-phone-screenshot-and-card.png"
@@ -368,10 +434,14 @@ export default function FinexMoneyPage() {
                 Our Vision
               </p>
               <h2 className="text-white mb-6">
-                Moving Beyond <span className="gradient-text">&ldquo;Bank-Poor&rdquo;</span>
+                Moving Beyond{" "}
+                <span className="gradient-text">&ldquo;Bank-Poor&rdquo;</span>
               </h2>
               <p className="text-base text-white/70 max-w-3xl mx-auto mb-12">
-                From &lsquo;Cash-Rich but Bank-Poor&rsquo; to Digital Dignity. We&apos;re building South Africa&apos;s premier unified fintech ecosystem — a trusted, reliable Digital Safe Haven for every South African.
+                From &lsquo;Cash-Rich but Bank-Poor&rsquo; to Digital Dignity.
+                We&apos;re building South Africa&apos;s premier unified fintech
+                ecosystem — a trusted, reliable Digital Safe Haven for every
+                South African.
               </p>
             </div>
           </ScrollReveal>
@@ -379,7 +449,9 @@ export default function FinexMoneyPage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {visionCards.map((card, index) => (
               <ScrollReveal key={card.title} delay={index}>
-                <div className={`${card.color} rounded-xl p-5 md:p-6 text-white min-h-[160px] flex flex-col`}>
+                <div
+                  className={`${card.color} rounded-xl p-5 md:p-6 text-white min-h-[160px] flex flex-col`}
+                >
                   <h3 className="text-lg md:text-xl font-extrabold text-white mb-1">
                     {card.title}
                   </h3>
@@ -420,10 +492,12 @@ export default function FinexMoneyPage() {
           <ScrollReveal>
             <div className="text-center mb-16">
               <h2 className="text-white mb-4">
-                Built for <span className="gradient-text-dark">Real People</span>
+                Built for{" "}
+                <span className="gradient-text-dark">Real People</span>
               </h2>
               <p className="text-base text-white/80 max-w-2xl mx-auto">
-                We solve the daily realities of South Africans — from construction sites to taxi ranks.
+                We solve the daily realities of South Africans — from
+                construction sites to taxi ranks.
               </p>
             </div>
           </ScrollReveal>
@@ -439,15 +513,23 @@ export default function FinexMoneyPage() {
                         <Icon className="w-6 h-6 text-[var(--color-red)]" />
                       </div>
                       <div>
-                        <h3 className="text-lg font-bold mb-1 text-white">{persona.title}</h3>
+                        <h3 className="text-lg font-bold mb-1 text-white">
+                          {persona.title}
+                        </h3>
                         <p className="text-sm font-medium text-[var(--color-red)] mb-3">
                           {persona.subtitle}
                         </p>
                         <p className="text-sm text-white/70 mb-1">
-                          <span className="font-semibold text-white">Challenge:</span> {persona.challenge}
+                          <span className="font-semibold text-white">
+                            Challenge:
+                          </span>{" "}
+                          {persona.challenge}
                         </p>
                         <p className="text-sm text-white/70">
-                          <span className="font-semibold text-white">Solution:</span> {persona.solution}
+                          <span className="font-semibold text-white">
+                            Solution:
+                          </span>{" "}
+                          {persona.solution}
                         </p>
                       </div>
                     </div>
@@ -471,7 +553,9 @@ export default function FinexMoneyPage() {
               <div className="relative w-[200px] md:w-[240px]">
                 {/* TODO: Replace with real app screenshot */}
                 <div className="aspect-[9/19] rounded-3xl bg-gradient-to-b from-[var(--color-navy)] to-[var(--color-black)] border-2 border-white/10 flex items-center justify-center">
-                  <p className="text-white/30 text-xs text-center px-4">App Screen Placeholder</p>
+                  <p className="text-white/30 text-xs text-center px-4">
+                    App Screen Placeholder
+                  </p>
                 </div>
               </div>
             </ScrollReveal>
@@ -492,7 +576,9 @@ export default function FinexMoneyPage() {
               <div className="relative w-[200px] md:w-[240px]">
                 {/* TODO: Replace with real app screenshot */}
                 <div className="aspect-[9/19] rounded-3xl bg-gradient-to-b from-[var(--color-red)] to-[var(--color-black)] border-2 border-white/10 flex items-center justify-center">
-                  <p className="text-white/30 text-xs text-center px-4">App Screen Placeholder</p>
+                  <p className="text-white/30 text-xs text-center px-4">
+                    App Screen Placeholder
+                  </p>
                 </div>
               </div>
             </ScrollReveal>
@@ -508,15 +594,13 @@ export default function FinexMoneyPage() {
         <div className="container-max">
           <ScrollReveal>
             <div className="text-center">
-              <h2 className="text-white mb-4">
-                Ready for Digital Dignity?
-              </h2>
+              <h2 className="text-white mb-4">Ready for Digital Dignity?</h2>
               <p className="text-base text-white/70 max-w-xl mx-auto mb-8">
-                Join thousands of South Africans who trust FinexMoney for simple, secure digital payments. Open your account in minutes.
+                Join thousands of South Africans who trust FinexMoney for
+                simple, secure digital payments. Open your account in minutes.
               </p>
               <CTAButton
                 label="Get Started Today"
-                type="app"
                 href="#download"
                 variant="primary"
                 size="lg"
@@ -537,17 +621,28 @@ export default function FinexMoneyPage() {
         eyebrow="Finex Money"
         headline={
           <>
-            <span className="italic font-light">The</span> <span className="font-extrabold">Finance</span> <span className="font-light">Solution.</span>
+            <span className="italic font-light">The</span>{" "}
+            <span className="font-extrabold">Finance</span>{" "}
+            <span className="font-light">Solution.</span>
           </>
         }
         subline={
           <>
-            <span className="font-bold">Open up</span> <span className="italic font-light">a world full of</span> <span className="font-bold">digital banking possibilities.</span>
+            <span className="font-bold">Open up</span>{" "}
+            <span className="italic font-light">a world full of</span>{" "}
+            <span className="font-bold">digital banking possibilities.</span>
           </>
         }
         body={
           <>
-            Finex Money is an <span className="font-bold text-white">inclusive digital wallet</span> built to empower your everyday hustle. Open an account instantly and step into the <span className="font-bold text-white">digital economy</span> with <span className="font-bold text-white">financial dignity</span>.
+            Finex Money is an{" "}
+            <span className="font-bold text-white">
+              inclusive digital wallet
+            </span>{" "}
+            built to empower your everyday hustle. Open an account instantly and
+            step into the{" "}
+            <span className="font-bold text-white">digital economy</span> with{" "}
+            <span className="font-bold text-white">financial dignity</span>.
           </>
         }
         heroImage="/images/heroes/Hero-2440.jpg"
@@ -568,10 +663,15 @@ export default function FinexMoneyPage() {
           <ScrollReveal>
             <div className="text-center mb-12">
               <h2 className="text-white mb-4">
-                <span className="italic font-light">Everyday</span> <span className="font-extrabold">Utility.</span> <span className="font-light">Zero Hassle.</span>
+                <span className="italic font-light">Everyday</span>{" "}
+                <span className="font-extrabold">Utility.</span>{" "}
+                <span className="font-light">Zero Hassle.</span>
               </h2>
               <p className="text-lg text-white/70 max-w-2xl mx-auto">
-                From <span className="font-bold text-white">airtime top-ups</span> to <span className="font-bold text-white">online shopping</span>, your Finex Money wallet is your all-in-one financial companion.
+                From{" "}
+                <span className="font-bold text-white">airtime top-ups</span> to{" "}
+                <span className="font-bold text-white">online shopping</span>,
+                your Finex Money wallet is your all-in-one financial companion.
               </p>
             </div>
           </ScrollReveal>
@@ -580,13 +680,21 @@ export default function FinexMoneyPage() {
             {everydayFeatures.map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <ScrollReveal key={feature.label} delay={index} className="flex">
+                <ScrollReveal
+                  key={feature.label}
+                  delay={index}
+                  className="flex"
+                >
                   <div className="bg-white/5 rounded-xl p-4 border border-white/10 text-center flex flex-col items-center flex-1 hover:bg-white/10 transition-colors duration-300">
                     <div className="w-16 h-16 mx-auto mb-3 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
                       <Icon className="w-8 h-8 text-[var(--color-red)]" />
                     </div>
-                    <p className="text-base font-bold text-white mb-1">{feature.label}</p>
-                    <p className="text-xs text-white/70">{feature.description}</p>
+                    <p className="text-base font-bold text-white mb-1">
+                      {feature.label}
+                    </p>
+                    <p className="text-xs text-white/70">
+                      {feature.description}
+                    </p>
                   </div>
                 </ScrollReveal>
               );
@@ -604,7 +712,8 @@ export default function FinexMoneyPage() {
           We believe in zero exclusion.
         </p>
         <p className="text-white/70 text-base max-w-2xl mx-auto mb-8">
-          Whether you&apos;re a South African citizen, a foreign national, or an asylum seeker — if you&apos;re here, you deserve financial access.
+          Whether you&apos;re a South African citizen, a foreign national, or an
+          asylum seeker — if you&apos;re here, you deserve financial access.
         </p>
 
         {/* Accepted documents */}
@@ -616,7 +725,9 @@ export default function FinexMoneyPage() {
                   <span className="text-white text-xl">✓</span>
                 </div>
                 <span className="text-white font-semibold">{doc.label}</span>
-                <span className="text-white/60 text-xs text-center">{doc.description}</span>
+                <span className="text-white/60 text-xs text-center">
+                  {doc.description}
+                </span>
               </div>
             </ScrollReveal>
           ))}
@@ -629,14 +740,19 @@ export default function FinexMoneyPage() {
         variant="dark-warm"
         titleContent={
           <>
-            <span className="italic font-light">Three</span> <span className="font-extrabold">Levels.</span> <span className="font-light">Endless Possibilities.</span>
+            <span className="italic font-light">Three</span>{" "}
+            <span className="font-extrabold">Levels.</span>{" "}
+            <span className="font-light">Endless Possibilities.</span>
           </>
         }
         subtitle="Start with Entry FICA and upgrade as your needs grow. No proof of address required to get started."
       />
 
       {/* App Download CTA — heavy red-black bookend matching the hero */}
-      <section id="download" className="relative section-padding overflow-hidden">
+      <section
+        id="download"
+        className="relative section-padding overflow-hidden"
+      >
         {/* Red → black gradient (same as hero) */}
         <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-red)] via-[#1a0a12] to-[var(--color-black)]" />
         {/* Red energy overlays */}
@@ -652,13 +768,20 @@ export default function FinexMoneyPage() {
                 Get Started
               </p>
               <h2 className="text-white mb-2">
-                <span className="italic font-light">Open</span> your account in <span className="font-extrabold">3 minutes.</span>
+                <span className="italic font-light">Open</span> your account in{" "}
+                <span className="font-extrabold">3 minutes.</span>
               </h2>
               <p className="text-white/90 text-xl font-medium mb-4">
-                <span className="font-bold">No branch visits.</span> <span className="italic font-light">No paperwork.</span> <span className="font-bold">No waiting.</span>
+                <span className="font-bold">No branch visits.</span>{" "}
+                <span className="italic font-light">No paperwork.</span>{" "}
+                <span className="font-bold">No waiting.</span>
               </p>
               <p className="text-white/75 text-base mb-8 max-w-xl mx-auto">
-                Download the Finex Money app and complete a <span className="font-bold text-white">quick selfie verification</span> to start transacting immediately.
+                Download the Finex Money app and complete a{" "}
+                <span className="font-bold text-white">
+                  quick selfie verification
+                </span>{" "}
+                to start transacting immediately.
               </p>
               <div className="flex flex-wrap justify-center items-center gap-4">
                 {brand.website && (
