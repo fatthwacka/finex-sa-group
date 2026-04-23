@@ -1,9 +1,9 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { Phone, Mail, MapPin } from 'lucide-react';
-import { GROUP } from '@/config/brands';
-import { FOOTER_NAV } from '@/config/navigation';
-import { getPhoneHref, getEmailHref } from '@/lib/utils';
+import Link from "next/link";
+import Image from "next/image";
+import { Phone, Mail, MapPin } from "lucide-react";
+import { GROUP } from "@/config/brands";
+import { FOOTER_NAV } from "@/config/navigation";
+import { getPhoneHref, getEmailHref } from "@/lib/utils";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -25,8 +25,9 @@ export default function Footer() {
               />
             </Link>
             <p className="text-[var(--color-mid-grey)] mb-6 text-sm leading-relaxed">
-              Financial Power at Every Level. A fully integrated fintech banking ecosystem bringing
-              sophisticated technology and financial inclusion to the African market.
+              Financial Power at Every Level. A fully integrated fintech banking
+              ecosystem bringing sophisticated technology and financial
+              inclusion to the African market.
             </p>
             {/* Regulatory Badges */}
             <div className="space-y-2 text-xs text-[var(--color-mid-grey)]">
@@ -110,8 +111,7 @@ export default function Footer() {
       <div className="border-t border-[var(--color-dark-grey)]">
         <div className="container-max py-4">
           <p className="text-[var(--color-mid-grey)] text-xs text-center">
-            Finex Money (PTY) LTD is a registered credit provider NCRCP27865 — powered by{' '}
-            <span className="text-white font-medium">Bank Zero</span> mutual bank.
+            Finex Money (PTY) LTD is a registered credit provider NCRCP27865
           </p>
         </div>
       </div>
