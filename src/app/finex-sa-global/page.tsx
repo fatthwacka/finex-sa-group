@@ -174,7 +174,7 @@ export default function GlobalPage() {
                   <p>
                     The outsourcing of treasury management functions allows
                     organisations to focus on strategy while benefiting from our
-                    comprehensive service offering. Finex SA Global's close
+                    comprehensive service offering. Finex SA Global&apos;s close
                     integration with Finex SA Treasury provides our clients with
                     <span className="font-bold text-white">
                       {" "}
