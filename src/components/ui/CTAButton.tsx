@@ -63,7 +63,7 @@ export default function CTAButton({
     bronze:
       "bg-gradient-to-r from-[#8B5E28] via-[#C88A3D] to-[#E4A24E] text-white hover:opacity-90 hover:shadow-lg hover:-translate-y-0.5 shadow-md",
     gold: "bg-gradient-to-r from-[#9C7A2E] via-[#D4A844] to-[#F0C76B] text-[#1a0f05] hover:opacity-90 hover:shadow-xl hover:-translate-y-0.5 shadow-md",
-    red: "bg-gradient-to-r from-[var(--color-red)] via-[var(--color-red)] to-[var(--color-orange)] text-white hover:opacity-90 hover:shadow-lg hover:-translate-y-0.5 shadow-md",
+    red: "bg-[#F03A2A] text-white hover:bg-[#DB2E1F] hover:shadow-lg hover:-translate-y-0.5 shadow-md",
   };
 
   const combinedClassName = cn(

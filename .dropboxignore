@@ -1,0 +1,16 @@
+# Project-level Dropbox ignore reference
+# NOTE: Dropbox does NOT read this file. The actual ignore rules live at:
+#   /Volumes/KLEANDOC/Dropbox/rules.dropboxignore (Dropbox root)
+#
+# This file exists as documentation for developers. The real enforcement
+# happens via:
+#   1. rules.dropboxignore at the Dropbox root (new files)
+#   2. xattr flags on existing directories (set by dev-start.sh)
+#
+# Directories that MUST be ignored (platform-specific native binaries):
+node_modules
+.next
+out
+.vercel
+*.log
+.DS_Store

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Shield } from "lucide-react";
+import { Shield, Info } from "lucide-react";
 import HeroSection from "@/components/sections/HeroSection";
 import AccentBand, {
   StatDisplay,
@@ -21,8 +21,8 @@ export default function HomePage() {
       <HeroSection
         variant="gradient-centred"
         heightClass="min-h-[75vh]"
-        heroImage="/images/heroes/glowing-map-africa.png"
-        heroImageAlt="Glowing circuit-board map of Africa"
+        heroImage="/images/backgrounds/Hero-2440-v3.jpg"
+        heroImageAlt="Finex SA Group hero"
         showSwoosh={false}
         showBottomDivider={false}
         logoSrc="/images/logos/finexsa-group-logo-only-no-text.png"
@@ -46,9 +46,15 @@ export default function HomePage() {
         }
       >
         <CTAButton
-          label="Explore Our Brands"
+          label="Explore Our Ecosystem"
           href="#ecosystem"
           variant="white"
+          size="lg"
+        />
+        <CTAButton
+          label="Open an Account"
+          href="#cta"
+          variant="red"
           size="lg"
         />
       </HeroSection>
@@ -62,15 +68,15 @@ export default function HomePage() {
           src="/images/heroes/guy-walking-in-the-street.jpg"
           alt=""
           fill
-          className="object-cover opacity-90"
+          className="object-cover"
           priority
         />
-        {/* Tri-stop overlay: opaque left → medium centre → fully transparent right */}
+        {/* Tri-stop overlay: opaque left → medium centre → fully transparent right (pulled in so the right side shows full image) */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to right, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.45) 50%, transparent 100%)",
+              "linear-gradient(to right, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.35) 40%, transparent 70%)",
           }}
         />
 
@@ -83,12 +89,13 @@ export default function HomePage() {
               <span className="font-extrabold">digital economy.</span>
             </h2>
             <p className="text-lg md:text-xl text-white/90">
-              The global cross-border payments market is projected to reach{" "}
+              The global cross-border payments market moves{" "}
               <span className="font-bold text-white">
-                $320 trillion by 2032
-              </span>
-              . The Finex SA Group is positioned at the forefront of this
-              evolution — a{" "}
+                trillions every year
+              </span>{" "}
+              — and is{" "}
+              <span className="font-bold text-white">growing fast</span>. The
+              Finex SA Group sits at the forefront of this evolution — a{" "}
               <span className="font-bold text-white">
                 fully integrated fintech banking ecosystem
               </span>{" "}
@@ -100,6 +107,14 @@ export default function HomePage() {
               <span className="font-bold text-white">financial inclusion</span>{" "}
               to the African market.
             </p>
+            <div className="mt-14">
+              <CTAButton
+                label="Open an Account Today"
+                href="#cta"
+                variant="red"
+                size="lg"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -115,7 +130,7 @@ export default function HomePage() {
             <div className="text-center mb-12">
               <h2 className="text-white mb-4">
                 <span className="italic font-light">Our</span>{" "}
-                <span className="font-extrabold">Solutions.</span>
+                <span className="font-extrabold">Ecosystem.</span>
               </h2>
               <p className="text-lg text-white/75 max-w-2xl mx-auto">
                 <span className="font-bold text-white">Five solutions.</span>{" "}
@@ -124,7 +139,7 @@ export default function HomePage() {
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5 auto-rows-[240px] md:auto-rows-[260px]">
             {[
               {
                 slug: "/finex-money",
@@ -169,8 +184,8 @@ export default function HomePage() {
               {
                 slug: "/finex-pay-and-technologies",
                 dataBrand: "tech",
-                logo: "/images/logos/finext-technologies-logo.png", // TODO: Add logo asset
-                logoClass: "h-[76px] md:h-[90px]",
+                logo: "/images/logos/finex-technologies-v2.png",
+                logoClass: "h-[88px] md:h-[104px]",
                 name: "Finex Technologies",
                 tagline: "Proprietary Platform",
                 description:
@@ -220,71 +235,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* =============================================
-          16:9 IMAGE BANNER — city-sunset break between ecosystem sections
-          Fixed aspect ratio, full browser width
-          ============================================= */}
-      <section className="relative w-full">
-        <Image
-          src="/images/heroes/glowing-map-africa.png"
-          alt=""
-          width={1920}
-          height={1080}
-          className="w-full h-auto"
-        />
-        {/* Right-darkening overlay for text legibility on the right side */}
-        <div className="absolute inset-0 bg-gradient-to-l from-black/80 via-black/40 to-transparent" />
-
-        {/* Text content — right column */}
-        <div className="absolute inset-0 flex items-center">
-          <div className="container-max w-full">
-            <div className="flex justify-end">
-              <div className="w-full md:w-1/2 lg:w-5/12 pr-4 md:pr-8">
-                <h2 className="text-white mb-4">
-                  <span className="italic font-light">Integrated</span>{" "}
-                  <span className="font-extrabold">
-                    Fintech Banking Ecosystem
-                  </span>
-                  <br />
-                  <span className="italic font-light">for Africa.</span>
-                </h2>
-                <p className="text-sm md:text-base text-white/85 leading-relaxed">
-                  A{" "}
-                  <span className="font-bold text-white">
-                    fully integrated fintech banking ecosystem
-                  </span>{" "}
-                  for Africa — digital wallets, workforce payments, remittance,
-                  forex, and treasury solutions for{" "}
-                  <span className="font-bold text-white">
-                    individuals and corporations
-                  </span>
-                  .
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Market Positioning - Pattern D Accent Band */}
-      {/* <AccentBand variant="blue-grey-cyan">
-        <div className="mb-8">
-          <p className="text-4xl md:text-5xl lg:text-6xl font-extrabold gradient-text mb-4">
-            $320 Trillion
-          </p>
-          <p className="text-lg md:text-xl text-white/80">
-            Global cross-border payments market by 2032
-          </p>
-        </div>
-
-        <StatRow columns={4}>
-          <StatDisplay value="40+" label="Countries Served" />
-          <StatDisplay value="2013" label="Founded" />
-          <StatDisplay value="8" label="Brands" />
-          <StatDisplay value="45242" label="FSP Licensed" />
-        </StatRow>
-      </AccentBand> */}
 
       {/* Trust & Regulation - Pattern B Split (flipped to dark-warm) */}
       <SplitSection
@@ -364,6 +314,78 @@ export default function HomePage() {
           as a forex exchange intermediary. Your trust is our foundation.
         </p>
       </SplitSection>
+
+      {/* Market Positioning - Pattern D Accent Band */}
+      {/* <AccentBand variant="blue-grey-cyan">
+        <div className="mb-8">
+          <p className="text-4xl md:text-5xl lg:text-6xl font-extrabold gradient-text mb-4">
+            $320 Trillion
+          </p>
+          <p className="text-lg md:text-xl text-white/80">
+            Global cross-border payments market by 2032
+          </p>
+        </div>
+
+        <StatRow columns={4}>
+          <StatDisplay value="40+" label="Countries Served" />
+          <StatDisplay value="2013" label="Founded" />
+          <StatDisplay value="8" label="Brands" />
+          <StatDisplay value="45242" label="FSP Licensed" />
+        </StatRow>
+      </AccentBand> */}
+
+      {/* =============================================
+          16:9 IMAGE BANNER — sunset break, full browser width
+          ============================================= */}
+      <section className="relative w-full">
+        <Image
+          src="/images/backgrounds/Premium_advertising_sunset.jpg"
+          alt=""
+          width={2440}
+          height={1204}
+          className="w-full h-auto"
+        />
+        {/* Right-darkening overlay for text legibility on the right side */}
+        <div className="absolute inset-0 bg-gradient-to-l from-black/80 via-black/40 to-transparent" />
+
+        {/* Text content — right column */}
+        <div className="absolute inset-0 flex items-center">
+          <div className="container-max w-full">
+            <div className="flex justify-end">
+              <div className="w-full md:w-1/2 lg:w-5/12 pr-4 md:pr-8">
+                <h2 className="text-white mb-4">
+                  <span className="italic font-light">Integrated</span>{" "}
+                  <span className="font-extrabold">
+                    Fintech Banking Ecosystem
+                  </span>
+                  <br />
+                  <span className="italic font-light">for Africa.</span>
+                </h2>
+                <p className="text-sm md:text-base text-white/85 leading-relaxed">
+                  A{" "}
+                  <span className="font-bold text-white">
+                    fully integrated fintech banking ecosystem
+                  </span>{" "}
+                  for Africa — digital wallets, workforce payments, remittance,
+                  forex, and treasury solutions for{" "}
+                  <span className="font-bold text-white">
+                    individuals and corporations
+                  </span>
+                  .
+                </p>
+                <div className="mt-10">
+                  <CTAButton
+                    label="Open an Account"
+                    href="#cta"
+                    variant="red"
+                    size="lg"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* =============================================
           BRAND DETAIL SHOWCASE — TEMPORARILY HIDDEN
           Wrapped in {false && (...)} to skip rendering.
@@ -729,8 +751,97 @@ export default function HomePage() {
       )}
 
       {/* Final CTA - Pattern F */}
-      <AccentBand variant="dark-warm">
-        <h2 className="text-white mb-4">Ready to Explore?</h2>
+      <AccentBand id="cta" variant="dark-accent-red" className="section-center">
+        {/* Twin mini-CTA cards — Finex Money + iMali Express */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto mb-16 text-left md:text-center">
+          {/* Finex Money mini-CTA */}
+          <div
+            data-brand="finex-money"
+            className="relative flex flex-col h-full rounded-2xl border border-white/10 bg-black/25 backdrop-blur-sm p-6 md:p-8"
+          >
+            <Link
+              href="/finex-money"
+              title="Learn more about Finex Money"
+              aria-label="Learn more about Finex Money"
+              className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 hover:text-white hover:bg-white/15 hover:border-white/30 transition-colors"
+            >
+              <Info className="w-4 h-4" />
+            </Link>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70 mb-3">
+              Finex Money
+            </p>
+            <h3 className="text-white text-xl md:text-2xl mb-2 leading-tight">
+              <span className="italic font-light">Open</span> your account in{" "}
+              <span className="font-extrabold">3 mins.</span>
+            </h3>
+            <p className="text-white/90 text-sm md:text-base font-medium mb-3">
+              <span className="font-bold">No branch visits.</span>{" "}
+              <span className="italic font-light">No paperwork.</span>{" "}
+              <span className="font-bold">No waiting.</span>
+            </p>
+            <p className="text-white/70 text-sm mb-5">
+              Download the Finex Money app and complete a{" "}
+              <span className="font-bold text-white">
+                quick selfie verification
+              </span>{" "}
+              to start transacting immediately.
+            </p>
+            <div className="mt-auto flex flex-wrap md:justify-center items-center gap-3">
+              <AppStoreBadges
+                appStoreUrl={BRANDS.finexMoney.appStore}
+                playStoreUrl={BRANDS.finexMoney.playStore}
+                size="md"
+              />
+            </div>
+          </div>
+
+          {/* iMali Express mini-CTA */}
+          <div
+            data-brand="imali"
+            className="relative flex flex-col h-full rounded-2xl border border-white/10 bg-black/25 backdrop-blur-sm p-6 md:p-8"
+          >
+            <Link
+              href="/imali-express"
+              title="Learn more about iMali"
+              aria-label="Learn more about iMali"
+              className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 hover:text-white hover:bg-white/15 hover:border-white/30 transition-colors"
+            >
+              <Info className="w-4 h-4" />
+            </Link>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70 mb-3">
+              iMali Express
+            </p>
+            <h3 className="text-white text-xl md:text-2xl mb-2 leading-tight">
+              <span className="italic font-light">Start</span>{" "}
+              <span className="font-extrabold">Sending Money</span>{" "}
+              <span className="font-light">Today.</span>
+            </h3>
+            <p className="text-white/90 text-sm md:text-base font-medium mb-3">
+              <span className="font-bold">40+ countries.</span>{" "}
+              <span className="italic font-light">Instant.</span>{" "}
+              <span className="font-bold">Secure.</span>
+            </p>
+            <p className="text-white/70 text-sm mb-5">
+              Download the iMali Remit app or visit one of our{" "}
+              <span className="font-bold text-white">
+                forex branches nationwide
+              </span>
+              .
+            </p>
+            <div className="mt-auto flex flex-wrap md:justify-center items-center gap-3">
+              <AppStoreBadges
+                appStoreUrl={BRANDS.imaliRemit.appStore}
+                playStoreUrl={BRANDS.imaliRemit.playStore}
+                size="md"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Divider between mini-CTA cards and ecosystem CTA */}
+        <div className="w-24 h-px mx-auto mb-12 bg-white/20" />
+
+        <h2 className="text-white mb-4">Explore More</h2>
         <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
           Discover how the Finex SA Group can transform the way you move and
           manage capital.

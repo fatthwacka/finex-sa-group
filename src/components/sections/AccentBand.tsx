@@ -17,9 +17,12 @@ interface AccentBandProps {
     | "orange-blue"
     | "blue-red"
     | "blue-grey-cyan"
-    | "dark-warm";
+    | "dark-warm"
+    | "dark-accent-red";
   /** Additional CSS classes */
   className?: string;
+  /** Optional id for anchor linking (e.g. "cta") */
+  id?: string;
 }
 
 /**
@@ -32,6 +35,7 @@ export default function AccentBand({
   children,
   variant = "gradient",
   className = "",
+  id,
 }: AccentBandProps) {
   // Map variants to gradient section classes
   const bgStyles: Record<string, string> = {
@@ -46,10 +50,11 @@ export default function AccentBand({
     "blue-red": "section-blue-red",
     "blue-grey-cyan": "section-blue-grey-cyan",
     "dark-warm": "section-dark-warm",
+    "dark-accent-red": "section-dark-accent-red",
   };
 
   return (
-    <section className={`section-padding ${bgStyles[variant]} ${className}`}>
+    <section id={id} className={`section-padding ${bgStyles[variant]} ${className}`}>
       <div className="container-max">
         <ScrollReveal>
           <div className="text-center text-white">{children}</div>

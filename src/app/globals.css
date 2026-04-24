@@ -270,6 +270,72 @@ h4 {
 .section-padding {
   padding-top: var(--space-section);
   padding-bottom: var(--space-section);
+  min-height: min(60vh, 60svh);
+}
+
+/* Opt-out for intentional thin strips (stat bands, breadcrumbs, etc.) */
+.section-slim {
+  min-height: 0;
+}
+
+/* Opt-in: vertically centre content when section > content height.
+   Use when a short section (e.g. CTA band) should sit centred in its min-height. */
+.section-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ============================================
+   RAINBOW-BORDER CARD
+   Gentle gradient border + subtly tinted dark fill.
+   Use on sunset / gradient backgrounds for a consistent card aesthetic.
+   Usage:
+     <div class="rainbow-card"><div class="rainbow-card-body">...</div></div>
+   ============================================ */
+.rainbow-card {
+  position: relative;
+  display: flex;
+  flex: 1;
+  border-radius: 0.75rem;
+  padding: 1px;
+  background: linear-gradient(135deg,
+    rgba(0, 169, 224, 0.95) 0%,
+    rgba(137, 40, 144, 0.95) 33%,
+    rgba(238, 39, 55, 0.95) 66%,
+    rgba(255, 122, 26, 0.95) 100%);
+  transition: background 0.4s ease;
+}
+
+.rainbow-card:hover {
+  background: rgba(226, 232, 240, 0.7);
+}
+
+.rainbow-card-body {
+  width: 100%;
+  height: 100%;
+  border-radius: calc(0.75rem - 1px);
+  padding: 1rem;
+  background:
+    linear-gradient(135deg,
+      rgba(0, 169, 224, 0.18) 0%,
+      rgba(137, 40, 144, 0.15) 33%,
+      rgba(238, 39, 55, 0.15) 66%,
+      rgba(255, 122, 26, 0.18) 100%),
+    rgba(18, 10, 24, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: background 0.4s ease;
+}
+
+.rainbow-card:hover .rainbow-card-body {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04)),
+    rgba(28, 22, 34, 0.72);
 }
 
 /* ============================================
@@ -400,6 +466,14 @@ h4 {
 /* Near-black with purple → black → red gradient (visible but very dark) */
 .section-dark-warm {
   background: linear-gradient(135deg, #3a0e2d 0%, #0a0508 50%, #3a0e14 100%);
+  color: var(--color-text-on-dark);
+}
+
+/* Dark base with a strong central red wash — use to make CTAs / accent sections pop */
+.section-dark-accent-red {
+  background:
+    radial-gradient(ellipse 90% 80% at 50% 50%, rgba(238, 39, 55, 0.55) 0%, rgba(196, 18, 48, 0.22) 45%, transparent 75%),
+    linear-gradient(135deg, #2a0810 0%, #0a0508 50%, #2a0810 100%);
   color: var(--color-text-on-dark);
 }
 

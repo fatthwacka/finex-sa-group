@@ -20,6 +20,10 @@ interface SteppedTiersProps {
   variant?: 'light' | 'dark-warm';
   /** Render title with inline JSX for italic/bold formatting (overrides `title`) */
   titleContent?: React.ReactNode;
+  /** When true, skip the outer <section> + container-max wrappers so this can be embedded inside an existing section */
+  bare?: boolean;
+  /** When true, use smaller card widths/padding/text — for embedding in narrow columns */
+  compact?: boolean;
 }
 
 /**
@@ -28,30 +32,31 @@ interface SteppedTiersProps {
  * Cards increase in visual weight left to right.
  * Used for FICA levels, pricing tiers, etc.
  */
-export default function SteppedTiers({ tiers, title, subtitle, variant = 'light', titleContent }: SteppedTiersProps) {
+export default function SteppedTiers({ tiers, title, subtitle, variant = 'light', titleContent, bare = false, compact = false }: SteppedTiersProps) {
   const isDark = variant === 'dark-warm';
-  return (
-    <section className={`section-padding ${isDark ? 'section-dark-warm' : 'section-light-cool'}`}>
-      <div className="container-max">
-        {(title || titleContent || subtitle) && (
-          <ScrollReveal>
-            <div className="text-center mb-12">
-              {(titleContent || title) && (
-                <h2 className={`mb-4 ${isDark ? 'text-white' : ''}`}>
-                  {titleContent || title}
-                </h2>
-              )}
-              {subtitle && (
-                <p className={`text-lg max-w-2xl mx-auto ${isDark ? 'text-white/70' : 'text-[var(--color-text-secondary)]'}`}>
-                  {subtitle}
-                </p>
-              )}
-            </div>
-          </ScrollReveal>
-        )}
 
-        {/* Desktop: Horizontal stepped layout with proper spacing */}
-        <div className="hidden lg:flex items-stretch gap-6 justify-center">
+  const content = (
+    <>
+      {(title || titleContent || subtitle) && (
+        <ScrollReveal>
+          <div className={`text-center ${compact ? 'mb-8' : 'mb-12'}`}>
+            {(titleContent || title) && (
+              <h2 className={`mb-4 ${isDark ? 'text-white' : ''}`}>
+                {titleContent || title}
+              </h2>
+            )}
+            {subtitle && (
+              <p className={`text-lg max-w-2xl mx-auto ${isDark ? 'text-white/70' : 'text-[var(--color-text-secondary)]'}`}>
+                {subtitle}
+              </p>
+            )}
+          </div>
+        </ScrollReveal>
+      )}
+
+      {compact ? (
+        /* Compact: single responsive grid, cards stretch to fill — matches sibling split-column card grids */
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {tiers.map((tier, index) => (
             <ScrollReveal key={tier.level} delay={index * 0.15} className="flex">
               <TierCard
@@ -60,30 +65,58 @@ export default function SteppedTiers({ tiers, title, subtitle, variant = 'light'
                 total={tiers.length}
                 layout="horizontal"
                 isDark={isDark}
+                compact
               />
             </ScrollReveal>
           ))}
         </div>
-
-        {/* Mobile/Tablet: Vertical stack with connecting line */}
-        <div className="lg:hidden relative">
-          {/* Connecting line */}
-          <div className={`absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b ${isDark ? 'from-white/20 via-[var(--brand-primary)] to-[var(--brand-primary)]' : 'from-[var(--color-light-grey)] via-[var(--brand-primary)] to-[var(--brand-primary)]'}`} />
-
-          <div className="space-y-6">
+      ) : (
+        <>
+          {/* Desktop: Horizontal stepped layout with proper spacing */}
+          <div className="hidden lg:flex items-stretch justify-center gap-6">
             {tiers.map((tier, index) => (
-              <ScrollReveal key={tier.level} delay={index * 0.1}>
+              <ScrollReveal key={tier.level} delay={index * 0.15} className="flex">
                 <TierCard
                   tier={tier}
                   index={index}
                   total={tiers.length}
-                  layout="vertical"
+                  layout="horizontal"
                   isDark={isDark}
                 />
               </ScrollReveal>
             ))}
           </div>
-        </div>
+
+          {/* Mobile/Tablet: Vertical stack with connecting line */}
+          <div className="lg:hidden relative">
+            {/* Connecting line */}
+            <div className={`absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b ${isDark ? 'from-white/20 via-[var(--brand-primary)] to-[var(--brand-primary)]' : 'from-[var(--color-light-grey)] via-[var(--brand-primary)] to-[var(--brand-primary)]'}`} />
+
+            <div className="space-y-6">
+              {tiers.map((tier, index) => (
+                <ScrollReveal key={tier.level} delay={index * 0.1}>
+                  <TierCard
+                    tier={tier}
+                    index={index}
+                    total={tiers.length}
+                    layout="vertical"
+                    isDark={isDark}
+                  />
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
+    </>
+  );
+
+  if (bare) return content;
+
+  return (
+    <section className={`section-padding ${isDark ? 'section-dark-warm' : 'section-light-cool'}`}>
+      <div className="container-max">
+        {content}
       </div>
     </section>
   );
@@ -95,9 +128,10 @@ interface TierCardProps {
   total: number;
   layout: 'horizontal' | 'vertical';
   isDark?: boolean;
+  compact?: boolean;
 }
 
-function TierCard({ tier, index, total, layout, isDark = false }: TierCardProps) {
+function TierCard({ tier, index, total, layout, isDark = false, compact = false }: TierCardProps) {
   const intensity = (index + 1) / total; // 0.33, 0.66, 1.0 for 3 tiers
 
   // Progressive styling based on tier level + variant
@@ -130,7 +164,8 @@ function TierCard({ tier, index, total, layout, isDark = false }: TierCardProps)
     return (
       <motion.div
         className={`
-          relative w-72 p-6 rounded-2xl ${bgIntensity} ${shadowIntensity} flex flex-col
+          relative rounded-2xl ${bgIntensity} ${shadowIntensity} flex flex-col
+          ${compact ? 'flex-1 p-4' : 'w-72 p-6'}
         `}
         style={{
           zIndex: index + 1,
@@ -138,7 +173,7 @@ function TierCard({ tier, index, total, layout, isDark = false }: TierCardProps)
         whileHover={{ y: -8, zIndex: 10 }}
         transition={{ duration: 0.3, ease: 'easeOut' }}
       >
-        <TierCardContent tier={tier} isHighlighted={tier.highlight} isDark={isDark} />
+        <TierCardContent tier={tier} isHighlighted={tier.highlight} isDark={isDark} compact={compact} />
       </motion.div>
     );
   }
@@ -154,21 +189,22 @@ function TierCard({ tier, index, total, layout, isDark = false }: TierCardProps)
         `}
       />
 
-      <div className={`p-6 rounded-2xl ${bgIntensity} ${shadowIntensity}`}>
-        <TierCardContent tier={tier} isHighlighted={tier.highlight} isDark={isDark} />
+      <div className={`rounded-2xl ${bgIntensity} ${shadowIntensity} ${compact ? 'p-4' : 'p-6'}`}>
+        <TierCardContent tier={tier} isHighlighted={tier.highlight} isDark={isDark} compact={compact} />
       </div>
     </div>
   );
 }
 
-function TierCardContent({ tier, isHighlighted, isDark = false }: { tier: Tier; isHighlighted?: boolean; isDark?: boolean }) {
+function TierCardContent({ tier, isHighlighted, isDark = false, compact = false }: { tier: Tier; isHighlighted?: boolean; isDark?: boolean; compact?: boolean }) {
   const onDark = isDark && !isHighlighted;
   return (
     <>
       {/* Level badge */}
       <div
         className={`
-          inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold mb-4
+          inline-flex items-center gap-2 rounded-full font-semibold
+          ${compact ? 'px-2 py-0.5 text-[10px] mb-2' : 'px-3 py-1 text-xs mb-4'}
           ${isHighlighted ? 'bg-white/20 text-white' : onDark ? 'bg-white/10 text-white' : 'bg-[var(--brand-primary)]/10 text-[var(--brand-primary)]'}
         `}
       >
@@ -177,7 +213,7 @@ function TierCardContent({ tier, isHighlighted, isDark = false }: { tier: Tier; 
 
       {/* Tier name */}
       <h3
-        className={`text-xl font-semibold mb-2 ${
+        className={`font-semibold ${compact ? 'text-sm mb-1' : 'text-xl mb-2'} ${
           isHighlighted ? 'text-white' : onDark ? 'text-white' : 'text-[var(--color-text-primary)]'
         }`}
       >
@@ -186,7 +222,7 @@ function TierCardContent({ tier, isHighlighted, isDark = false }: { tier: Tier; 
 
       {/* Limit */}
       <div
-        className={`text-2xl font-bold mb-4 ${
+        className={`font-bold ${compact ? 'text-base mb-2' : 'text-2xl mb-4'} ${
           isHighlighted ? 'text-white' : 'text-[var(--brand-primary)]'
         }`}
       >
@@ -196,7 +232,7 @@ function TierCardContent({ tier, isHighlighted, isDark = false }: { tier: Tier; 
       {/* Description */}
       {tier.description && (
         <p
-          className={`text-sm mb-4 ${
+          className={`${compact ? 'text-[11px] mb-2 leading-snug' : 'text-sm mb-4'} ${
             isHighlighted ? 'text-white/80' : onDark ? 'text-white/70' : 'text-[var(--color-text-secondary)]'
           }`}
         >
@@ -205,11 +241,11 @@ function TierCardContent({ tier, isHighlighted, isDark = false }: { tier: Tier; 
       )}
 
       {/* Requirements list */}
-      <ul className="space-y-2">
+      <ul className={compact ? 'space-y-1' : 'space-y-2'}>
         {tier.requirements.map((req, i) => (
           <li
             key={i}
-            className={`text-sm flex items-start gap-2 ${
+            className={`flex items-start gap-2 ${compact ? 'text-[11px] leading-snug' : 'text-sm'} ${
               isHighlighted ? 'text-white/90' : onDark ? 'text-white/70' : 'text-[var(--color-text-secondary)]'
             }`}
           >
