@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, Shield } from "lucide-react";
 import { GROUP } from "@/config/brands";
 import { FOOTER_NAV } from "@/config/navigation";
 import { getPhoneHref, getEmailHref } from "@/lib/utils";
@@ -12,9 +12,9 @@ export default function Footer() {
     <footer className="bg-[var(--color-black)] text-[var(--color-text-on-dark)]">
       {/* Main Footer */}
       <div className="container-max section-padding">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Brand Column */}
-          <div className="lg:col-span-1">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
+          {/* Brand Column — full width on mobile, 1 col at lg */}
+          <div className="col-span-2 lg:col-span-1">
             <Link href="/" className="inline-block mb-6">
               <Image
                 src="/images/logos/finexsa-group-logo-web-navbar.png"
@@ -29,15 +29,45 @@ export default function Footer() {
               ecosystem bringing sophisticated technology and financial
               inclusion to the African market.
             </p>
-            {/* Regulatory Badges */}
-            <div className="space-y-2 text-xs text-[var(--color-mid-grey)]">
-              <p>{GROUP.fsp}</p>
-              <p>{GROUP.sarb}</p>
+            <p className="text-[var(--color-mid-grey)] mb-5 text-xs leading-relaxed italic">
+              We operate with absolute transparency and rigorous compliance.
+            </p>
+            {/* Regulatory badges — compact bordered stack */}
+            <div className="space-y-2.5">
+              <div className="flex items-start gap-2.5 rounded-lg border border-white/10 px-3 py-2">
+                <Shield className="w-4 h-4 text-[var(--color-cyan)] flex-shrink-0 mt-0.5" />
+                <div className="text-xs leading-tight">
+                  <div className="text-[10px] uppercase tracking-[0.1em] text-[var(--color-mid-grey)]">
+                    Financial Service Provider
+                  </div>
+                  <div className="text-white/80 font-semibold">{GROUP.fsp}</div>
+                </div>
+              </div>
+              <div className="flex items-start gap-2.5 rounded-lg border border-white/10 px-3 py-2">
+                <Shield className="w-4 h-4 text-[var(--color-cyan)] flex-shrink-0 mt-0.5" />
+                <div className="text-xs leading-tight">
+                  <div className="text-[10px] uppercase tracking-[0.1em] text-[var(--color-mid-grey)]">
+                    SARB Authorised
+                  </div>
+                  <div className="text-white/80 font-semibold">{GROUP.sarb}</div>
+                </div>
+              </div>
+              <div className="flex items-start gap-2.5 rounded-lg border border-white/10 px-3 py-2">
+                <Shield className="w-4 h-4 text-[var(--color-cyan)] flex-shrink-0 mt-0.5" />
+                <div className="text-xs leading-tight">
+                  <div className="text-[10px] uppercase tracking-[0.1em] text-[var(--color-mid-grey)]">
+                    Authorised Dealer
+                  </div>
+                  <div className="text-white/80 font-semibold">
+                    {GROUP.category}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
           {/* Our Brands */}
-          <div>
+          <div className="text-center">
             <h4 className="font-semibold mb-6 text-white">Our Brands</h4>
             <ul className="space-y-3">
               {FOOTER_NAV.brands.map((item) => (
@@ -54,7 +84,7 @@ export default function Footer() {
           </div>
 
           {/* Company */}
-          <div>
+          <div className="text-center">
             <h4 className="font-semibold mb-6 text-white">Company</h4>
             <ul className="space-y-3">
               {FOOTER_NAV.company.map((item) => (
@@ -70,8 +100,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
-          <div>
+          {/* Contact — full width on mobile, 1 col at lg */}
+          <div className="col-span-2 lg:col-span-1">
             <h4 className="font-semibold mb-6 text-white">Contact</h4>
             <ul className="space-y-4">
               <li>
@@ -107,7 +137,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bank Zero Partnership */}
+      {/* Credit Provider notice */}
       <div className="border-t border-[var(--color-dark-grey)]">
         <div className="container-max py-4">
           <p className="text-[var(--color-mid-grey)] text-xs text-center">

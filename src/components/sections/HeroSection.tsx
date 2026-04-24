@@ -123,20 +123,7 @@ export default function HeroSection({
             className="object-cover"
             priority
           />
-          {/* Sunset-radial overlay — matches section-hero-sunset-radial but semi-transparent to let image show */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `
-                radial-gradient(ellipse 55% 50% at 50% 50%, rgba(201, 32, 48, 0.3) 0%, rgba(201, 32, 48, 0.08) 35%, transparent 75%),
-                radial-gradient(circle at 0% 0%, rgba(122, 16, 32, 0.25) 0%, transparent 18%),
-                radial-gradient(circle at 100% 0%, rgba(122, 16, 32, 0.25) 0%, transparent 18%),
-                radial-gradient(circle at 0% 100%, rgba(122, 16, 32, 0.25) 0%, transparent 18%),
-                radial-gradient(circle at 100% 100%, rgba(122, 16, 32, 0.25) 0%, transparent 18%),
-                rgba(42, 16, 34, 0.3)
-              `,
-            }}
-          />
+          {/* Overlay disabled — hero image renders without darkening */}
         </>
       )}
 
@@ -183,8 +170,8 @@ export default function HeroSection({
         />
       )}
 
-      {/* Radial vignette for gradient-centred */}
-      {variant === "gradient-centred" && (
+      {/* Radial vignette for gradient-centred — only when no hero image (image variant uses the tri-stop overlay instead) */}
+      {variant === "gradient-centred" && !heroImage && (
         <div
           className="absolute inset-0 pointer-events-none"
           style={{

@@ -1,18 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Shield, Info } from "lucide-react";
+import { Info } from "lucide-react";
 import HeroSection from "@/components/sections/HeroSection";
 import AccentBand, {
   StatDisplay,
   StatRow,
 } from "@/components/sections/AccentBand";
-import SplitSection, {
-  SectionHeading,
-} from "@/components/sections/SplitSection";
 import ScrollReveal from "@/components/effects/ScrollReveal";
 import CTAButton from "@/components/ui/CTAButton";
 import AppStoreBadges from "@/components/ui/AppStoreBadges";
-import { BRANDS, GROUP } from "@/config/brands";
+import SendMoneyCalculator from "@/components/calculators/SendMoneyCalculator";
+import { BRANDS } from "@/config/brands";
 
 export default function HomePage() {
   return (
@@ -20,8 +18,8 @@ export default function HomePage() {
       {/* Hero - Pattern A Centred, gradient background */}
       <HeroSection
         variant="gradient-centred"
-        heightClass="min-h-[75vh]"
-        heroImage="/images/backgrounds/Hero-2440-v3.jpg"
+        heightClass="min-h-[90vh]"
+        heroImage="/images/backgrounds/Hero-2440-red.jpg"
         heroImageAlt="Finex SA Group hero"
         showSwoosh={false}
         showBottomDivider={false}
@@ -45,75 +43,69 @@ export default function HomePage() {
           </>
         }
       >
-        <CTAButton
-          label="Explore Our Ecosystem"
-          href="#ecosystem"
-          variant="white"
-          size="lg"
-        />
-        <CTAButton
-          label="Open an Account"
-          href="#cta"
-          variant="red"
-          size="lg"
-        />
+        <Link
+          href="#get-started"
+          className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-full bg-[#E32626] text-white hover:opacity-90 hover:shadow-lg hover:-translate-y-0.5 shadow-md transition-all duration-300"
+        >
+          Open an Account
+        </Link>
+        <Link
+          href="#get-started"
+          className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-full bg-[#003973] text-white hover:opacity-90 hover:shadow-lg hover:-translate-y-0.5 shadow-md transition-all duration-300"
+        >
+          Send Money
+        </Link>
       </HeroSection>
 
       {/* =============================================
           ATMOSPHERIC IMAGE BREAK — centred body paragraph
           City-street image, 60vh, gradient overlay
           ============================================= */}
-      <section className="relative flex items-center h-[90vh] overflow-hidden">
+      <section className="relative overflow-hidden min-h-[90vh] flex items-center py-10 md:py-14">
         <Image
-          src="/images/heroes/guy-walking-in-the-street.jpg"
+          src="/images/backgrounds/guy-walking-in-the-street-sunset.jpg"
           alt=""
           fill
           className="object-cover"
           priority
         />
-        {/* Tri-stop overlay: opaque left → medium centre → fully transparent right (pulled in so the right side shows full image) */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to right, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.35) 40%, transparent 70%)",
-          }}
-        />
+        {/* Dark overlay for text legibility */}
+        <div className="absolute inset-0 bg-black/30" />
 
-        <div className="relative z-10 pl-8 md:pl-20 lg:pl-32">
-          <div className="max-w-[480px]">
-            <h2 className="text-white mb-6">
-              <span className="italic font-light">Step</span> into{" "}
-              <span className="font-normal">the</span>
-              <br />
-              <span className="font-extrabold">digital economy.</span>
-            </h2>
-            <p className="text-lg md:text-xl text-white/90">
-              The global cross-border payments market moves{" "}
-              <span className="font-bold text-white">
-                trillions every year
-              </span>{" "}
-              — and is{" "}
-              <span className="font-bold text-white">growing fast</span>. The
-              Finex SA Group sits at the forefront of this evolution — a{" "}
-              <span className="font-bold text-white">
-                fully integrated fintech banking ecosystem
-              </span>{" "}
-              bringing{" "}
-              <span className="font-bold text-white">
-                sophisticated technology
-              </span>{" "}
-              and{" "}
-              <span className="font-bold text-white">financial inclusion</span>{" "}
-              to the African market.
-            </p>
-            <div className="mt-14">
-              <CTAButton
-                label="Open an Account Today"
-                href="#cta"
-                variant="red"
-                size="lg"
-              />
+        <div className="relative z-10 w-full px-8 md:px-12">
+          <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-16 w-full max-w-[1440px] mx-auto">
+            {/* Left column: title + paragraph */}
+            <div className="w-full lg:w-1/2 text-center lg:text-left">
+              <h2 className="text-white mb-6">
+                <span className="italic font-light">Step</span> into{" "}
+                <span className="font-normal">the</span>
+                <br />
+                <span className="font-extrabold">digital economy.</span>
+              </h2>
+              <p className="text-lg md:text-xl text-white/90 max-w-md mx-auto lg:mx-0">
+                The global cross-border payments market moves{" "}
+                <span className="font-bold text-white">
+                  trillions every year
+                </span>{" "}
+                — and is{" "}
+                <span className="font-bold text-white">growing fast</span>. The
+                Finex SA Group sits at the forefront of this evolution — a{" "}
+                <span className="font-bold text-white">
+                  fully integrated fintech banking ecosystem
+                </span>{" "}
+                bringing{" "}
+                <span className="font-bold text-white">
+                  sophisticated technology
+                </span>{" "}
+                and{" "}
+                <span className="font-bold text-white">financial inclusion</span>{" "}
+                to the African market.
+              </p>
+            </div>
+
+            {/* Send Money calculator — right 50% on lg+, centred both horizontally and vertically */}
+            <div className="w-full lg:w-1/2 flex items-center justify-center">
+              <SendMoneyCalculator ctaHref="#get-started" />
             </div>
           </div>
         </div>
@@ -124,7 +116,11 @@ export default function HomePage() {
           5 hover-to-flip cards (front: logo + tagline, back: description + link)
           Click anywhere to navigate to brand page
           ============================================= */}
-      <section id="ecosystem" className="section-padding section-dark-warm">
+      <section
+        id="ecosystem"
+        className="section-padding section-dark-warm"
+        style={{ minHeight: "80vh" }}
+      >
         <div className="container-max">
           <ScrollReveal>
             <div className="text-center mb-12">
@@ -133,7 +129,7 @@ export default function HomePage() {
                 <span className="font-extrabold">Ecosystem.</span>
               </h2>
               <p className="text-lg text-white/75 max-w-2xl mx-auto">
-                <span className="font-bold text-white">Five solutions.</span>{" "}
+                <span className="font-bold text-white">Five divisions.</span>{" "}
                 <span className="italic font-light">One vision.</span>
               </p>
             </div>
@@ -233,87 +229,24 @@ export default function HomePage() {
               </Link>
             ))}
           </div>
+
+          {/* Short ecosystem summary paragraph — migrated from the Integrated Fintech Banking Ecosystem banner */}
+          <div className="mt-20 md:mt-28 text-center max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+              A{" "}
+              <span className="font-bold text-white">
+                fully integrated fintech banking ecosystem
+              </span>{" "}
+              for Africa — digital wallets, workforce payments, remittance,
+              forex, and treasury solutions for{" "}
+              <span className="font-bold text-white">
+                individuals and corporations
+              </span>
+              .
+            </p>
+          </div>
         </div>
       </section>
-
-      {/* Trust & Regulation - Pattern B Split (flipped to dark-warm) */}
-      <SplitSection
-        bgVariant="dark-warm"
-        imagePosition="right"
-        visualContent={
-          <div className="flex flex-col gap-4 w-full">
-            {/* FSP Badge — full width */}
-            <div className="flex items-center gap-3 w-full p-4 bg-white rounded-xl border border-[var(--color-border)]">
-              <Shield className="w-5 h-5 text-[var(--color-cyan)] flex-shrink-0" />
-              <div>
-                <div className="text-xs text-[var(--color-text-secondary)]">
-                  Financial Service Provider
-                </div>
-                <div className="text-sm font-semibold text-[var(--color-text-primary)]">
-                  {GROUP.fsp}
-                </div>
-              </div>
-            </div>
-            {/* SARB Badge — full width */}
-            <div className="flex items-center gap-3 w-full p-4 bg-white rounded-xl border border-[var(--color-border)]">
-              <Shield className="w-5 h-5 text-[var(--color-cyan)] flex-shrink-0" />
-              <div>
-                <div className="text-xs text-[var(--color-text-secondary)]">
-                  SARB Authorised
-                </div>
-                <div className="text-sm font-semibold text-[var(--color-text-primary)]">
-                  {GROUP.sarb}
-                </div>
-              </div>
-            </div>
-            {/* SARB Badge — full width */}
-            <div className="flex items-center gap-3 w-full p-4 bg-white rounded-xl border border-[var(--color-border)]">
-              <Shield className="w-5 h-5 text-[var(--color-cyan)] flex-shrink-0" />
-              <div>
-                <div className="text-xs text-[var(--color-text-secondary)]">
-                  Authorised Dealer
-                </div>
-                <div className="text-sm font-semibold text-[var(--color-text-primary)]">
-                  {GROUP.category}
-                </div>
-              </div>
-            </div>
-            {/* Category description — full width, dark translucent to match section bg */}
-            {/* <div className="w-full p-4 bg-white/5 rounded-xl border border-white/10">
-              <p className="text-sm text-white/75">{GROUP.category}</p>
-            </div> */}
-          </div>
-        }
-      >
-        <SectionHeading
-          light
-          title={
-            <>
-              <span className="italic font-light">Safe,</span>{" "}
-              <span className="font-extrabold">Regulated,</span>{" "}
-              <span className="font-normal">and</span>
-              <br />
-              <span className="font-light">Fully Licensed.</span>
-            </>
-          }
-          description="We operate with absolute transparency and rigorous compliance."
-        />
-        <p className="text-white/75 mt-4">
-          As a{" "}
-          <span className="font-bold text-white">
-            Category Two Authorised Dealer
-          </span>{" "}
-          in Foreign Exchange with Limited Authority, we are regulated by the{" "}
-          <span className="font-bold text-white">
-            Financial Sector Conduct Authority
-          </span>{" "}
-          as a financial service provider, and by the{" "}
-          <span className="font-bold text-white">
-            South African Reserve Bank
-          </span>{" "}
-          as a forex exchange intermediary. Your trust is our foundation.
-        </p>
-      </SplitSection>
 
       {/* Market Positioning - Pattern D Accent Band */}
       {/* <AccentBand variant="blue-grey-cyan">
@@ -337,23 +270,24 @@ export default function HomePage() {
       {/* =============================================
           16:9 IMAGE BANNER — sunset break, full browser width
           ============================================= */}
-      <section className="relative w-full">
+      <section
+        id="get-started"
+        className="relative w-full min-h-[88vh] overflow-hidden flex flex-col justify-center"
+      >
         <Image
           src="/images/backgrounds/Premium_advertising_sunset.jpg"
           alt=""
-          width={2440}
-          height={1204}
-          className="w-full h-auto"
+          fill
+          className="object-cover"
         />
         {/* Right-darkening overlay for text legibility on the right side */}
         <div className="absolute inset-0 bg-gradient-to-l from-black/80 via-black/40 to-transparent" />
 
-        {/* Text content — right column */}
-        <div className="absolute inset-0 flex items-center">
-          <div className="container-max w-full">
-            <div className="flex justify-end">
+        {/* Right column: title + two brand cards under it — in-flow so section grows with content */}
+        <div className="relative z-10 container-max w-full py-16 md:py-20">
+          <div className="flex justify-end">
               <div className="w-full md:w-1/2 lg:w-5/12 pr-4 md:pr-8">
-                <h2 className="text-white mb-4">
+                <h2 className="text-white mb-10 md:mb-14">
                   <span className="italic font-light">Integrated</span>{" "}
                   <span className="font-extrabold">
                     Fintech Banking Ecosystem
@@ -361,30 +295,97 @@ export default function HomePage() {
                   <br />
                   <span className="italic font-light">for Africa.</span>
                 </h2>
-                <p className="text-sm md:text-base text-white/85 leading-relaxed">
-                  A{" "}
-                  <span className="font-bold text-white">
-                    fully integrated fintech banking ecosystem
-                  </span>{" "}
-                  for Africa — digital wallets, workforce payments, remittance,
-                  forex, and treasury solutions for{" "}
-                  <span className="font-bold text-white">
-                    individuals and corporations
-                  </span>
-                  .
-                </p>
-                <div className="mt-10">
-                  <CTAButton
-                    label="Open an Account"
-                    href="#cta"
-                    variant="red"
-                    size="lg"
-                  />
+
+                <div className="flex flex-col gap-6 md:gap-8">
+                  {/* Finex Money mini-CTA */}
+                  <div
+                    data-brand="finex-money"
+                    className="relative flex flex-col w-full rounded-2xl border border-white/10 bg-[#E32626]/90 p-6 md:p-7"
+                  >
+                    <Link
+                      href="/finex-money"
+                      title="Learn more about Finex Money"
+                      aria-label="Learn more about Finex Money"
+                      className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full border border-white/30 bg-white/10 text-white/80 hover:text-white hover:bg-white/20 hover:border-white/50 transition-colors"
+                    >
+                      <Info className="w-4 h-4" />
+                    </Link>
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80 mb-3">
+                      Finex Money
+                    </p>
+                    <h3 className="text-white text-xl md:text-2xl mb-2 leading-tight">
+                      <span className="italic font-light">Open</span> your
+                      account in{" "}
+                      <span className="font-extrabold">3 mins.</span>
+                    </h3>
+                    <p className="text-white text-sm font-medium mb-3">
+                      <span className="font-bold">No branch visits.</span>{" "}
+                      <span className="italic font-light">No paperwork.</span>{" "}
+                      <span className="font-bold">No waiting.</span>
+                    </p>
+                    <p className="text-white/85 text-sm mb-5">
+                      Download the Finex Money app and complete a{" "}
+                      <span className="font-bold text-white">
+                        quick selfie verification
+                      </span>{" "}
+                      to start transacting immediately.
+                    </p>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <CTAButton
+                        label="Open an Account Today"
+                        href="/finex-money#download"
+                        variant="white"
+                        size="md"
+                      />
+                    </div>
+                  </div>
+
+                  {/* iMali Express Remit mini-CTA */}
+                  <div
+                    data-brand="imali"
+                    className="relative flex flex-col w-full rounded-2xl border border-white/10 bg-[#003973]/90 p-6 md:p-7"
+                  >
+                    <Link
+                      href="/imali-express"
+                      title="Learn more about iMali"
+                      aria-label="Learn more about iMali"
+                      className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full border border-white/30 bg-white/10 text-white/80 hover:text-white hover:bg-white/20 hover:border-white/50 transition-colors"
+                    >
+                      <Info className="w-4 h-4" />
+                    </Link>
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80 mb-3">
+                      iMali Express Remit
+                    </p>
+                    <h3 className="text-white text-xl md:text-2xl mb-2 leading-tight">
+                      <span className="italic font-light">Start</span>{" "}
+                      <span className="font-extrabold">Sending Money</span>{" "}
+                      <span className="font-light">Today.</span>
+                    </h3>
+                    <p className="text-white text-sm font-medium mb-3">
+                      <span className="font-bold">40+ countries.</span>{" "}
+                      <span className="italic font-light">Instant.</span>{" "}
+                      <span className="font-bold">Secure.</span>
+                    </p>
+                    <p className="text-white/85 text-sm mb-5">
+                      Download the iMali Remit app or visit one of our{" "}
+                      <span className="font-bold text-white">
+                        forex branches nationwide
+                      </span>
+                      .
+                    </p>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <CTAButton
+                        label="Start Sending Money"
+                        href="/imali-express#download"
+                        variant="white"
+                        size="md"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
       </section>
       {/* =============================================
           BRAND DETAIL SHOWCASE — TEMPORARILY HIDDEN
@@ -752,95 +753,6 @@ export default function HomePage() {
 
       {/* Final CTA - Pattern F */}
       <AccentBand id="cta" variant="dark-accent-red" className="section-center">
-        {/* Twin mini-CTA cards — Finex Money + iMali Express */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto mb-16 text-left md:text-center">
-          {/* Finex Money mini-CTA */}
-          <div
-            data-brand="finex-money"
-            className="relative flex flex-col h-full rounded-2xl border border-white/10 bg-black/25 backdrop-blur-sm p-6 md:p-8"
-          >
-            <Link
-              href="/finex-money"
-              title="Learn more about Finex Money"
-              aria-label="Learn more about Finex Money"
-              className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 hover:text-white hover:bg-white/15 hover:border-white/30 transition-colors"
-            >
-              <Info className="w-4 h-4" />
-            </Link>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70 mb-3">
-              Finex Money
-            </p>
-            <h3 className="text-white text-xl md:text-2xl mb-2 leading-tight">
-              <span className="italic font-light">Open</span> your account in{" "}
-              <span className="font-extrabold">3 mins.</span>
-            </h3>
-            <p className="text-white/90 text-sm md:text-base font-medium mb-3">
-              <span className="font-bold">No branch visits.</span>{" "}
-              <span className="italic font-light">No paperwork.</span>{" "}
-              <span className="font-bold">No waiting.</span>
-            </p>
-            <p className="text-white/70 text-sm mb-5">
-              Download the Finex Money app and complete a{" "}
-              <span className="font-bold text-white">
-                quick selfie verification
-              </span>{" "}
-              to start transacting immediately.
-            </p>
-            <div className="mt-auto flex flex-wrap md:justify-center items-center gap-3">
-              <AppStoreBadges
-                appStoreUrl={BRANDS.finexMoney.appStore}
-                playStoreUrl={BRANDS.finexMoney.playStore}
-                size="md"
-              />
-            </div>
-          </div>
-
-          {/* iMali Express mini-CTA */}
-          <div
-            data-brand="imali"
-            className="relative flex flex-col h-full rounded-2xl border border-white/10 bg-black/25 backdrop-blur-sm p-6 md:p-8"
-          >
-            <Link
-              href="/imali-express"
-              title="Learn more about iMali"
-              aria-label="Learn more about iMali"
-              className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 hover:text-white hover:bg-white/15 hover:border-white/30 transition-colors"
-            >
-              <Info className="w-4 h-4" />
-            </Link>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70 mb-3">
-              iMali Express
-            </p>
-            <h3 className="text-white text-xl md:text-2xl mb-2 leading-tight">
-              <span className="italic font-light">Start</span>{" "}
-              <span className="font-extrabold">Sending Money</span>{" "}
-              <span className="font-light">Today.</span>
-            </h3>
-            <p className="text-white/90 text-sm md:text-base font-medium mb-3">
-              <span className="font-bold">40+ countries.</span>{" "}
-              <span className="italic font-light">Instant.</span>{" "}
-              <span className="font-bold">Secure.</span>
-            </p>
-            <p className="text-white/70 text-sm mb-5">
-              Download the iMali Remit app or visit one of our{" "}
-              <span className="font-bold text-white">
-                forex branches nationwide
-              </span>
-              .
-            </p>
-            <div className="mt-auto flex flex-wrap md:justify-center items-center gap-3">
-              <AppStoreBadges
-                appStoreUrl={BRANDS.imaliRemit.appStore}
-                playStoreUrl={BRANDS.imaliRemit.playStore}
-                size="md"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Divider between mini-CTA cards and ecosystem CTA */}
-        <div className="w-24 h-px mx-auto mb-12 bg-white/20" />
-
         <h2 className="text-white mb-4">Explore More</h2>
         <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
           Discover how the Finex SA Group can transform the way you move and

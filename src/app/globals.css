@@ -286,6 +286,20 @@ h4 {
   justify-content: center;
 }
 
+/* Brand fill utilities — shared between CTA buttons and brand-card backgrounds */
+.bg-finex-red {
+  background-color: #E32626;
+}
+.hover\:bg-finex-red-dark:hover {
+  background-color: #B51818;
+}
+.bg-imali-blue {
+  background-color: #003973;
+}
+.hover\:bg-imali-blue-dark:hover {
+  background-color: #00264d;
+}
+
 /* ============================================
    RAINBOW-BORDER CARD
    Gentle gradient border + subtly tinted dark fill.
