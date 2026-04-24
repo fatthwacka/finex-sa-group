@@ -68,7 +68,7 @@ export default function ImaliExpressPage() {
             <div className="max-w-2xl">
               {/* iMali Express logo — pure white, large */}
               <Image
-                src="/images/logos/imali-express-logo.png"
+                src="/images/logos/imali_express.png"
                 alt="iMali Express"
                 width={440}
                 height={192}

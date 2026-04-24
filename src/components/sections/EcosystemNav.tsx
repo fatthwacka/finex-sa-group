@@ -37,7 +37,7 @@ const BRAND_ITEMS: BrandItem[] = [
     name: 'iMali Express',
     slug: 'imali-express',
     dataBrand: 'imali',
-    logo: '/images/logos/imali-express-logo.png',
+    logo: '/images/logos/imali_express.png',
     heroImage: '/images/heroes/imali-hero-mama.webp',
   },
   {
