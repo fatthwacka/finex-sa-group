@@ -81,7 +81,7 @@ export default function GlobalPage() {
                 <span className="font-bold text-white">
                   comprehensive tactical and operational outsourcing
                 </span>{" "}
-                solutions — structured to help{" "}
+                solutions, structured to help{" "}
                 <span className="font-bold text-white">mid-cap companies</span>{" "}
                 expand their markets, secure supply chains, and protect their
                 wealth far beyond South Africa. Built on{" "}

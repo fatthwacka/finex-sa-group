@@ -46,8 +46,8 @@ export default function AboutPage() {
             The Finex SA Group unites a{" "}
             <span className="font-bold text-white">
               powerhouse of specialised companies
-            </span>{" "}
-            — merging decades of trusted financial heritage with{" "}
+            </span>
+            , merging decades of trusted financial heritage with{" "}
             <span className="font-bold text-white">
               cutting-edge digital payment technology
             </span>

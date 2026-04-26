@@ -3,13 +3,17 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
 import { MAIN_NAV } from '@/config/navigation';
 import { cn } from '@/lib/utils';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
+  const [activeMobileSubmenu, setActiveMobileSubmenu] = useState<string | null>(
+    null,
+  );
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--color-surface)]/95 backdrop-blur-sm border-b border-[var(--color-border)]">
@@ -34,7 +38,10 @@ export default function Navbar() {
                 key={item.label}
                 className="relative"
                 onMouseEnter={() => item.children && setActiveDropdown(item.label)}
-                onMouseLeave={() => setActiveDropdown(null)}
+                onMouseLeave={() => {
+                  setActiveDropdown(null);
+                  setActiveSubmenu(null);
+                }}
               >
                 {item.children ? (
                   <button
@@ -60,15 +67,42 @@ export default function Navbar() {
                 {/* Dropdown */}
                 {item.children && activeDropdown === item.label && (
                   <div className="absolute top-full left-0 pt-2">
-                    <div className="bg-[var(--color-surface)] rounded-lg shadow-lg border border-[var(--color-border)] py-2 min-w-[200px]">
+                    <div className="bg-[var(--color-surface)] rounded-lg shadow-lg border border-[var(--color-border)] py-2 min-w-[220px]">
                       {item.children.map((child) => (
-                        <Link
+                        <div
                           key={child.label}
-                          href={child.href}
-                          className="block px-4 py-2 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-alt)] transition-colors"
+                          className="relative"
+                          onMouseEnter={() =>
+                            child.children && setActiveSubmenu(child.label)
+                          }
+                          onMouseLeave={() => setActiveSubmenu(null)}
                         >
-                          {child.label}
-                        </Link>
+                          <Link
+                            href={child.href}
+                            className="flex items-center justify-between gap-3 px-4 py-2 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-alt)] transition-colors"
+                          >
+                            <span>{child.label}</span>
+                            {child.children && (
+                              <ChevronRight className="w-3.5 h-3.5 text-[var(--color-text-secondary)]" />
+                            )}
+                          </Link>
+                          {/* 2nd-level submenu — flies out to the right */}
+                          {child.children && activeSubmenu === child.label && (
+                            <div className="absolute left-full top-0 pl-1">
+                              <div className="bg-[var(--color-surface)] rounded-lg shadow-lg border border-[var(--color-border)] py-2 min-w-[200px]">
+                                {child.children.map((grandchild) => (
+                                  <Link
+                                    key={grandchild.label}
+                                    href={grandchild.href}
+                                    className="block px-4 py-2 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-alt)] transition-colors"
+                                  >
+                                    {grandchild.label}
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
                       ))}
                     </div>
                   </div>
@@ -121,14 +155,60 @@ export default function Navbar() {
                     {activeDropdown === item.label && (
                       <div className="pl-4 py-2 space-y-2">
                         {item.children.map((child) => (
-                          <Link
-                            key={child.label}
-                            href={child.href}
-                            className="block py-2 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
-                            onClick={() => setMobileMenuOpen(false)}
-                          >
-                            {child.label}
-                          </Link>
+                          <div key={child.label}>
+                            {child.children ? (
+                              <>
+                                <button
+                                  className="flex items-center justify-between w-full py-2 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+                                  onClick={() =>
+                                    setActiveMobileSubmenu(
+                                      activeMobileSubmenu === child.label
+                                        ? null
+                                        : child.label,
+                                    )
+                                  }
+                                >
+                                  <span>{child.label}</span>
+                                  <ChevronDown
+                                    className={cn(
+                                      'w-4 h-4 transition-transform',
+                                      activeMobileSubmenu === child.label &&
+                                        'rotate-180',
+                                    )}
+                                  />
+                                </button>
+                                {activeMobileSubmenu === child.label && (
+                                  <div className="pl-4 py-1 space-y-1">
+                                    <Link
+                                      href={child.href}
+                                      className="block py-1.5 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+                                      onClick={() => setMobileMenuOpen(false)}
+                                    >
+                                      Overview
+                                    </Link>
+                                    {child.children.map((grandchild) => (
+                                      <Link
+                                        key={grandchild.label}
+                                        href={grandchild.href}
+                                        className="block py-1.5 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+                                        onClick={() => setMobileMenuOpen(false)}
+                                      >
+                                        {grandchild.label}
+                                      </Link>
+                                    ))}
+                                  </div>
+                                )}
+                              </>
+                            ) : (
+                              <Link
+                                href={child.href}
+                                className="block py-2 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+                                onClick={() => setMobileMenuOpen(false)}
+                              >
+                                {child.label}
+                              </Link>
+                            )}
+                          </div>
                         ))}
                       </div>
                     )}

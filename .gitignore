@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Claude Code (local session metadata + per-user settings)
+.claude/
+
+# Photoshop / design source files (large binaries, not needed in repo)
+*.psd

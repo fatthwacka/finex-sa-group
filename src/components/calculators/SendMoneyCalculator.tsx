@@ -63,7 +63,7 @@ export default function SendMoneyCalculator({
             className="w-full bg-transparent text-2xl font-extrabold tracking-tight text-white outline-none"
             aria-label="Send amount in ZAR"
           />
-          <div className="flex items-center gap-2 border-l border-white/15 pl-3">
+          <div className="flex items-center gap-2 border-l border-white/15 pl-3 pr-7">
             <span className="text-xl leading-none" aria-hidden>
               🇿🇦
             </span>
@@ -191,14 +191,14 @@ export default function SendMoneyCalculator({
       <div className="flex gap-3">
         <Link
           href={ctaHref}
-          className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-[#E32626] hover:opacity-90 text-white font-semibold py-3 px-4 text-base transition-opacity shadow-lg"
+          className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-finex-green hover:bg-finex-green-dark text-white font-semibold py-3 px-4 text-base transition-colors shadow-lg"
         >
           Send Money
           <ArrowRight className="w-4 h-4" />
         </Link>
         <Link
           href={ctaHref}
-          className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-white hover:bg-white/90 text-[#003973] font-semibold py-3 px-4 text-base transition-colors shadow-lg"
+          className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-finex-red hover:bg-finex-red-dark text-white font-semibold py-3 px-4 text-base transition-colors shadow-lg"
         >
           Open an Account
         </Link>

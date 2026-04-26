@@ -102,8 +102,8 @@ export default function TreasuryPage() {
                 regulatory misstep can cost you opportunity. We apply a{" "}
                 <span className="font-bold text-white">
                   merchant bank approach
-                </span>{" "}
-                — designing treasury systems built exactly around your
+                </span>
+                , designing treasury systems built exactly around your
                 operational realities for multinational corporations and
                 high-volume importers and exporters.
               </p>

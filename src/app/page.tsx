@@ -19,7 +19,7 @@ export default function HomePage() {
       <HeroSection
         variant="gradient-centred"
         heightClass="min-h-[90vh]"
-        heroImage="/images/backgrounds/Hero-2440-red.jpg"
+        heroImage="/images/backgrounds/Hero-2440-v3.jpg"
         heroImageAlt="Finex SA Group hero"
         showSwoosh={false}
         showBottomDivider={false}
@@ -45,13 +45,13 @@ export default function HomePage() {
       >
         <Link
           href="#get-started"
-          className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-full bg-[#E32626] text-white hover:opacity-90 hover:shadow-lg hover:-translate-y-0.5 shadow-md transition-all duration-300"
+          className="inline-flex items-center justify-center min-w-[14rem] px-8 py-4 text-lg font-semibold rounded-full bg-[#E32626] text-white hover:opacity-90 hover:shadow-lg hover:-translate-y-0.5 shadow-md transition-all duration-300"
         >
-          Open an Account
+          Open Account
         </Link>
         <Link
           href="#get-started"
-          className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-full bg-[#003973] text-white hover:opacity-90 hover:shadow-lg hover:-translate-y-0.5 shadow-md transition-all duration-300"
+          className="inline-flex items-center justify-center min-w-[14rem] px-8 py-4 text-lg font-semibold rounded-full bg-[#003973] text-white hover:opacity-90 hover:shadow-lg hover:-translate-y-0.5 shadow-md transition-all duration-300"
         >
           Send Money
         </Link>
@@ -69,8 +69,9 @@ export default function HomePage() {
           className="object-cover"
           priority
         />
-        {/* Dark overlay for text legibility */}
-        <div className="absolute inset-0 bg-black/30" />
+        {/* Directional overlay: heavy on the left for text legibility,
+            fading to transparent on the right so the image breathes */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/5 to-transparent" />
 
         <div className="relative z-10 w-full px-8 md:px-12">
           <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-16 w-full max-w-[1440px] mx-auto">
@@ -82,14 +83,14 @@ export default function HomePage() {
                 <br />
                 <span className="font-extrabold">digital economy.</span>
               </h2>
-              <p className="text-lg md:text-xl text-white/90 max-w-md mx-auto lg:mx-0">
+              <p className="text-sm md:text-base text-white/90 max-w-md mx-auto lg:mx-0">
                 The global cross-border payments market moves{" "}
                 <span className="font-bold text-white">
                   trillions every year
-                </span>{" "}
-                — and is{" "}
+                </span>
+                , and is{" "}
                 <span className="font-bold text-white">growing fast</span>. The
-                Finex SA Group sits at the forefront of this evolution — a{" "}
+                Finex SA Group sits at the forefront of this evolution: a{" "}
                 <span className="font-bold text-white">
                   fully integrated fintech banking ecosystem
                 </span>{" "}
@@ -230,14 +231,17 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* Short ecosystem summary paragraph — migrated from the Integrated Fintech Banking Ecosystem banner */}
+          {/* Ecosystem summary — heading above descriptive paragraph */}
           <div className="mt-20 md:mt-28 text-center max-w-3xl mx-auto">
-            <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+            <h3 className="text-white mb-4">
+              Integrated Fintech Banking Ecosystem for Africa.
+            </h3>
+            <p className="text-sm md:text-base text-white/90 leading-relaxed">
               A{" "}
               <span className="font-bold text-white">
                 fully integrated fintech banking ecosystem
               </span>{" "}
-              for Africa — digital wallets, workforce payments, remittance,
+              for Africa: digital wallets, workforce payments, remittance,
               forex, and treasury solutions for{" "}
               <span className="font-bold text-white">
                 individuals and corporations
@@ -280,23 +284,26 @@ export default function HomePage() {
           fill
           className="object-cover"
         />
-        {/* Right-darkening overlay for text legibility on the right side */}
-        <div className="absolute inset-0 bg-gradient-to-l from-black/80 via-black/40 to-transparent" />
+        {/* Uniform dark overlay so centred text reads across full width */}
+        <div className="absolute inset-0 bg-black/55" />
 
-        {/* Right column: title + two brand cards under it — in-flow so section grows with content */}
+        {/* Centred title + two brand cards side-by-side */}
         <div className="relative z-10 container-max w-full py-16 md:py-20">
-          <div className="flex justify-end">
-              <div className="w-full md:w-1/2 lg:w-5/12 pr-4 md:pr-8">
-                <h2 className="text-white mb-10 md:mb-14">
-                  <span className="italic font-light">Integrated</span>{" "}
-                  <span className="font-extrabold">
-                    Fintech Banking Ecosystem
-                  </span>
-                  <br />
-                  <span className="italic font-light">for Africa.</span>
-                </h2>
+          <div className="text-center mb-10 md:mb-14 max-w-2xl mx-auto">
+            <h2 className="text-white mb-4">
+              <span className="italic font-light">Get</span>{" "}
+              <span className="font-extrabold">started today.</span>
+            </h2>
+            <p className="text-lg text-white/85 max-w-xl mx-auto">
+              Open an account or send money home,{" "}
+              <span className="font-bold text-white">
+                in minutes, not days.
+              </span>
+            </p>
+          </div>
 
-                <div className="flex flex-col gap-6 md:gap-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                   {/* Finex Money mini-CTA */}
                   <div
                     data-brand="finex-money"
@@ -330,7 +337,7 @@ export default function HomePage() {
                       </span>{" "}
                       to start transacting immediately.
                     </p>
-                    <div className="flex flex-wrap items-center gap-3">
+                    <div className="card-actions">
                       <CTAButton
                         label="Open an Account Today"
                         href="/finex-money#download"
@@ -373,7 +380,7 @@ export default function HomePage() {
                       </span>
                       .
                     </p>
-                    <div className="flex flex-wrap items-center gap-3">
+                    <div className="card-actions">
                       <CTAButton
                         label="Start Sending Money"
                         href="/imali-express#download"
@@ -385,7 +392,6 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-          </div>
       </section>
       {/* =============================================
           BRAND DETAIL SHOWCASE — TEMPORARILY HIDDEN
@@ -759,19 +765,53 @@ export default function HomePage() {
           manage capital.
         </p>
 
-        <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-8">
+        <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-8">
           {[
-            { label: "Finex Money", href: "/finex-money" },
-            { label: "iMali Express", href: "/imali-express" },
-            { label: "SA Treasury", href: "/finex-sa-treasury" },
-            { label: "Global", href: "/finex-sa-global" },
-            { label: "Technologies", href: "/finex-pay-and-technologies" },
+            {
+              label: "Finex Money",
+              href: "/finex-money",
+              logo: BRANDS.finexMoney.logo!,
+              logoClass: "h-5 md:h-6",
+            },
+            {
+              label: "iMali Express",
+              href: "/imali-express",
+              logo: BRANDS.imaliRemit.logo!,
+              logoClass: "h-5 md:h-6",
+            },
+            {
+              label: "SA Treasury",
+              href: "/finex-sa-treasury",
+              logo: BRANDS.treasury.logo!,
+              logoClass: "h-[26px] md:h-[32px]",
+            },
+            {
+              label: "Global",
+              href: "/finex-sa-global",
+              logo: BRANDS.global.logo!,
+              logoClass: "h-[26px] md:h-[32px]",
+            },
+            {
+              label: "Technologies",
+              href: "/finex-pay-and-technologies",
+              logo: "/images/logos/finex-technologies-v2.png",
+              logoClass: "h-[28px] md:h-[33px]",
+            },
           ].map((brand) => (
             <Link
               key={brand.href}
               href={brand.href}
-              className="inline-flex items-center px-4 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs md:text-sm font-medium transition-colors"
+              className="inline-flex flex-col items-center gap-2 px-4 py-3 rounded-2xl bg-gradient-to-br from-zinc-800 via-[#2a0a10] to-[#5a1820] hover:from-zinc-700 hover:via-[#4a1218] hover:to-[#8b1f2a] border border-white/20 text-white text-xs md:text-sm font-medium transition-colors"
             >
+              <span className="flex items-center justify-center h-9 md:h-10">
+                <Image
+                  src={brand.logo}
+                  alt=""
+                  width={80}
+                  height={40}
+                  className={`w-auto object-contain ${brand.logoClass}`}
+                />
+              </span>
               {brand.label}
             </Link>
           ))}

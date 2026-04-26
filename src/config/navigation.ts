@@ -9,7 +9,14 @@ export const MAIN_NAV: NavItem[] = [
     label: "Solutions",
     href: "#",
     children: [
-      { label: "Finex Money", href: "/finex-money" },
+      {
+        label: "Finex Money",
+        href: "/finex-money",
+        children: [
+          { label: "Finex Money", href: "/finex-money/individual" },
+          { label: "Finex Flow", href: "/finex-money/finexflow" },
+        ],
+      },
       { label: "iMali Express", href: "/imali-express" },
       { label: "Finex SA Treasury", href: "/finex-sa-treasury" },
       { label: "Finex SA Global", href: "/finex-sa-global" },

@@ -82,7 +82,7 @@ export default function TechnologyPage() {
           <>
             Finex Pay and Finex Technologies represent the{" "}
             <span className="font-bold text-white">innovative engine room</span>{" "}
-            of the Finex SA Group — ensuring our ecosystem remains{" "}
+            of the Finex SA Group, ensuring our ecosystem remains{" "}
             <span className="font-bold text-white">
               secure, scalable, and ahead of the curve
             </span>

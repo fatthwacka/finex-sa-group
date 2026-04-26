@@ -239,6 +239,31 @@ h4 {
   font-weight: var(--weight-semibold);
 }
 
+/* Default paragraph size — kept smaller than browser default to preserve
+   visual hierarchy against H2 headings. Tailwind text-* utilities still win. */
+p {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+/* ============================================
+   CARD ACTIONS ROW
+   Pushes the action row to the bottom of any
+   flex-column card so cards in a grid align their
+   CTAs horizontally regardless of body-copy length.
+   Card must be `display: flex; flex-direction: column`
+   and the grid/parent must stretch heights (CSS grid
+   does this by default).
+   ============================================ */
+.card-actions {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
+  padding-top: var(--space-md);
+}
+
 /* ============================================
    UTILITY CLASSES
    ============================================ */
@@ -298,6 +323,14 @@ h4 {
 }
 .hover\:bg-imali-blue-dark:hover {
   background-color: #00264d;
+}
+/* Action green — used for "go / transact" CTAs (e.g. Send Money).
+   Matches the WhatsApp brand green for instant familiarity. */
+.bg-finex-green {
+  background-color: #25D366;
+}
+.hover\:bg-finex-green-dark:hover {
+  background-color: #1FB158;
 }
 
 /* ============================================

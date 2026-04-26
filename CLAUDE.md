@@ -145,3 +145,12 @@ npm run lint         # ESLint check
 ## Spelling & Locale
 - All copy uses British English spelling (colour, organisation, licence, etc.)
 - Code identifiers (variables, CSS properties) use American spelling where it is the technical convention (e.g., `color` in CSS is correct, `colour` is not valid CSS)
+
+## Punctuation
+- **Avoid em dashes (—) in copy.** Default to one of these instead, based on context:
+  - **Comma** for soft pauses, parenthetical phrases, or appositives within a sentence
+  - **Colon** when introducing a definition, list, or expansion of what came before
+  - **Period** when the segments could stand as separate sentences
+- **Em dashes are reserved** for cases where the emphatic break is genuinely useful and no other punctuation reads as cleanly. Use sparingly: typically no more than once per page.
+- **Hyphens (-)** are for compound words (e.g., "cross-border", "first-class"), never for sentence breaks.
+- This applies to all user-facing copy: page content, headings, alt text, metadata descriptions, button labels, etc. Code comments are exempt but should follow the same convention where practical.
