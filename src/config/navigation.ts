@@ -17,7 +17,14 @@ export const MAIN_NAV: NavItem[] = [
           { label: "Finex Flow", href: "/finex-money/finexflow" },
         ],
       },
-      { label: "iMali Express", href: "/imali-express" },
+      {
+        label: "iMali Express",
+        href: "/imali-express",
+        children: [
+          { label: "iMali Remit", href: "/imali-express/remit" },
+          { label: "iMali Forex", href: "/imali-express/forex" },
+        ],
+      },
       { label: "Finex SA Treasury", href: "/finex-sa-treasury" },
       { label: "Finex SA Global", href: "/finex-sa-global" },
       { label: "Finex Technologies", href: "/finex-pay-and-technologies" },
