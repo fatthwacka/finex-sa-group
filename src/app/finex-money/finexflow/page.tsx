@@ -7,8 +7,9 @@ import {
   CreditCard,
   Zap,
   Users,
-  Building2,
+  Briefcase,
   Shield,
+  ShieldCheck,
   FileCheck,
   Factory,
   HardHat,
@@ -16,6 +17,7 @@ import {
   Scale,
   AlertTriangle,
   UserX,
+  UserPlus,
   Files,
   Clock,
 } from "lucide-react";
@@ -33,29 +35,6 @@ export const metadata: Metadata = {
     "FINEXflow",
   ],
 };
-
-const coreFeatures = [
-  {
-    title: "On-Site Onboarding",
-    description:
-      "We come to you. Workers are verified, enrolled and payment-ready within days with zero disruption to your operations.",
-  },
-  {
-    title: "Compliance Embedded",
-    description:
-      "Every worker is verified through automated KYC, digital identity checks, and real-time liveness checks with selfie matching at enrolment.",
-  },
-  {
-    title: "100% Real-Time Success Rate",
-    description:
-      "Every payment instruction is executed instantly. No batch delays. No failed transactions.",
-  },
-  {
-    title: "Self-Service Dashboard",
-    description:
-      "Total geographic freedom. Execute payments and manage compliance from anywhere in the world.",
-  },
-];
 
 export default function FinexFlowPage() {
   return (
@@ -162,20 +141,20 @@ export default function FinexFlowPage() {
       {/* =============================================
           THE CHALLENGE: colorful sunset + image + bullet list
           ============================================= */}
-      <section className="section-padding section-sunset relative overflow-hidden">
-        <div className="container-max">
+      <section className="section-padding section-sunset relative overflow-hidden min-h-[85vh] flex items-center">
+        <div className="mx-auto w-full max-w-[1600px] px-6 sm:px-8 lg:px-12">
           <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
             <ScrollReveal
               type="slide"
               direction="left"
               className="w-full lg:w-1/2"
             >
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/20 shadow-2xl">
+              <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/20 shadow-2xl">
                 <Image
-                  src="/images/backgrounds/finexflow-challenge.jpg"
+                  src="/images/backgrounds/finexflow-blind-payment.jpg"
                   alt="High-volume workforce payment friction"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                 />
               </div>
             </ScrollReveal>
@@ -242,9 +221,97 @@ export default function FinexFlowPage() {
       </section>
 
       {/* =============================================
-          THE SEAMLESS SOLUTION: full-bleed image background
+          THE SEAMLESS SOLUTION:
+          dark mode mirror of Challenge — image right + bullet list
           ============================================= */}
-      <section className="relative min-h-[88vh] flex items-center overflow-hidden">
+      <section className="section-padding section-navy relative overflow-hidden min-h-[85vh] flex items-center">
+        <div className="mx-auto w-full max-w-[1600px] px-6 sm:px-8 lg:px-12">
+          <div className="flex flex-col lg:flex-row-reverse items-center gap-10 lg:gap-16">
+            <ScrollReveal
+              type="slide"
+              direction="right"
+              className="w-full lg:w-1/2"
+            >
+              <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/20 shadow-2xl">
+                <Image
+                  src="/images/backgrounds/finexflow-thesolution.jpg"
+                  alt="The seamless solution: real-time worker payments"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            </ScrollReveal>
+            <ScrollReveal className="w-full lg:w-1/2 text-white">
+              <h2 className="text-white mb-4">
+                <span className="italic font-light">The</span>{" "}
+                <span className="font-extrabold">Seamless</span>{" "}
+                <span className="font-light">Solution.</span>
+              </h2>
+              <p className="text-lg text-white/90 leading-relaxed mb-8">
+                FINEXflow acts as the{" "}
+                <span className="font-bold text-white">
+                  secure final layer
+                </span>{" "}
+                between your payroll and the bank:{" "}
+                <span className="font-bold text-white">enterprise-grade</span>{" "}
+                infrastructure that scales with{" "}
+                <span className="font-bold text-white">full compliance</span>{" "}
+                built in from day one.
+              </p>
+              <ul className="space-y-4">
+                {[
+                  {
+                    Icon: Zap,
+                    title: "Speed of Execution",
+                    body: "real-time payments executed at any scale.",
+                  },
+                  {
+                    Icon: ShieldCheck,
+                    title: "Identity Verified",
+                    body: "via automated KYC, digital ID, and liveness selfie matching.",
+                  },
+                  {
+                    Icon: CreditCard,
+                    title: "Branded Debit Card",
+                    body: "Mastercard for ATM and point-of-sale access.",
+                  },
+                  {
+                    Icon: Shield,
+                    title: "Guaranteed Stability",
+                    body: "with 100% uptime and zero downtime.",
+                  },
+                  {
+                    Icon: Briefcase,
+                    title: "Corporate & Enterprise",
+                    body: "24/7 payments and seamless integration.",
+                  },
+                  {
+                    Icon: Factory,
+                    title: "Factory & Manufacturing",
+                    body: "instant pay without leaving the line.",
+                  },
+                ].map(({ Icon, title, body }) => (
+                  <li key={title} className="flex items-start gap-4">
+                    <span className="shrink-0 w-10 h-10 rounded-full bg-white/15 backdrop-blur flex items-center justify-center border border-white/20">
+                      <Icon className="w-5 h-5 text-white" />
+                    </span>
+                    <span className="leading-relaxed">
+                      <span className="font-bold text-white">{title}</span>
+                      <span className="text-white/85"> {body}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* =============================================
+          CORE FEATURES & BENEFITS:
+          full-bleed image (brighter), compact cards pushed to bottom
+          ============================================= */}
+      <section className="relative min-h-[95vh] flex flex-col overflow-hidden">
         <Image
           src="/images/backgrounds/finexflow-collaborative.jpeg"
           alt=""
@@ -255,246 +322,66 @@ export default function FinexFlowPage() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to right, rgba(10, 51, 71, 0.88) 0%, rgba(15, 18, 26, 0.7) 45%, rgba(20, 45, 75, 0.45) 100%)",
+              "linear-gradient(to right, rgba(10, 51, 71, 0.4) 0%, rgba(15, 18, 26, 0.3) 50%, rgba(20, 45, 75, 0.2) 100%)",
           }}
         />
-        <div className="container-max relative z-10 py-24 md:py-32">
+        <div className="container-max relative z-10 flex flex-col flex-1 py-12 md:py-16">
           <ScrollReveal>
-            <div className="max-w-2xl text-white mb-12">
-              <h2 className="text-white mb-6">
-                <span className="italic font-light">The</span>{" "}
-                <span className="font-extrabold">Seamless</span>{" "}
-                <span className="font-light">Solution.</span>
-              </h2>
-              <p className="text-xl text-white/90 leading-relaxed">
-                FINEXflow acts as the{" "}
-                <span className="font-bold text-white">
-                  secure final layer
-                </span>{" "}
-                between your payroll and the bank:{" "}
-                <span className="font-bold text-white">enterprise-grade</span>{" "}
-                infrastructure with{" "}
-                <span className="font-bold text-white">full compliance</span>{" "}
-                built in from day one.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-5xl">
-              {[
-                {
-                  Icon: Building2,
-                  title: "Employer Dashboard",
-                  body: "Real-time payment management in one secure portal.",
-                },
-                {
-                  Icon: Users,
-                  title: "Worker App & Wallet",
-                  body: "Instant notifications and financial tools for every worker.",
-                },
-                {
-                  Icon: CreditCard,
-                  title: "Branded Debit Card",
-                  body: "Physical Mastercard for ATM and point-of-sale access.",
-                },
-              ].map(({ Icon, title, body }) => (
-                <div key={title} className="text-white">
-                  <div className="w-12 h-12 rounded-xl bg-white/15 backdrop-blur border border-white/25 flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h4 className="text-lg font-bold text-white mb-2">
-                    {title}
-                  </h4>
-                  <p className="text-white/80 leading-relaxed">{body}</p>
-                </div>
-              ))}
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* =============================================
-          STRATEGIC PILLARS: clean cards on light-warm
-          ============================================= */}
-      <section className="section-padding section-light-warm">
-        <div className="container-max">
-          <ScrollReveal>
-            <div className="text-center max-w-2xl mx-auto mb-14">
-              <h2 className="mb-4">
-                <span className="italic font-light">The</span>{" "}
-                <span className="font-extrabold">Strategic Pillars.</span>
-              </h2>
-              <p className="text-lg text-[var(--color-text-secondary)] leading-relaxed">
-                Engineered for{" "}
-                <span className="font-bold text-[var(--color-text-primary)]">
-                  absolute operational flow
-                </span>
-                .
-              </p>
-            </div>
-          </ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {[
-              {
-                Icon: Shield,
-                title: "Guaranteed Stability",
-                body: "100% uptime, zero downtime: verifiable for enterprise clients.",
-              },
-              {
-                Icon: Zap,
-                title: "Speed of Execution",
-                body: "Real-time payments at any scale to maintain project momentum.",
-              },
-              {
-                Icon: FileCheck,
-                title: "Efficiencies & Compliance",
-                body: "Regulatory adherence without the manual burden: SMS payslips silence HR queries.",
-              },
-            ].map(({ Icon, title, body }, i) => (
-              <ScrollReveal key={title} delay={i}>
-                <div className="h-full bg-white rounded-2xl p-7 border border-black/5 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, var(--color-cyan), var(--color-purple) 50%, var(--color-orange))",
-                    }}
-                  >
-                    <Icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">{title}</h3>
-                  <p className="text-[var(--color-text-secondary)] leading-relaxed">
-                    {body}
-                  </p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* =============================================
-          UNIVERSAL APPLICATION: dark navy + image + bullet list
-          ============================================= */}
-      <section className="section-padding section-blue-grey-cyan">
-        <div className="container-max">
-          <div className="flex flex-col lg:flex-row-reverse items-center gap-10 lg:gap-16">
-            <ScrollReveal
-              type="slide"
-              direction="right"
-              className="w-full lg:w-1/2"
-            >
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-                <Image
-                  src="/images/heroes/mali-yami-geting-paid-on-construction-site.jpg"
-                  alt="Workers receiving real-time payments on a construction site"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </ScrollReveal>
-            <ScrollReveal className="w-full lg:w-1/2 text-white">
-              <h2 className="text-white mb-4">
-                <span className="italic font-light">Engineered for</span>{" "}
-                <span className="font-extrabold">Universal Application.</span>
-              </h2>
-              <p className="text-lg text-white/85 leading-relaxed mb-8">
-                FINEXflow is a{" "}
-                <span className="font-bold text-white">universal engine</span>{" "}
-                built for any industry that relies on a wage-based or
-                shift-based workforce.
-              </p>
-              <ul className="space-y-5">
-                {[
-                  {
-                    Icon: Building2,
-                    title: "Corporate & Enterprise",
-                    body: "24/7 payments and seamless integration.",
-                  },
-                  {
-                    Icon: Factory,
-                    title: "Factory & Manufacturing",
-                    body: "Instant pay without leaving the line.",
-                  },
-                  {
-                    Icon: HardHat,
-                    title: "Agriculture & Construction",
-                    body: "Cashless pay for harvests, sites, and ad-hoc workers.",
-                  },
-                ].map(({ Icon, title, body }) => (
-                  <li key={title} className="flex items-start gap-4">
-                    <span
-                      className="shrink-0 w-12 h-12 rounded-xl flex items-center justify-center"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, var(--color-cyan), var(--color-purple))",
-                      }}
-                    >
-                      <Icon className="w-5 h-5 text-white" />
-                    </span>
-                    <span>
-                      <span className="block font-bold text-white text-lg mb-1">
-                        {title}
-                      </span>
-                      <span className="text-white/80 leading-relaxed">
-                        {body}
-                      </span>
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Core Features: 2x2 cards + image */}
-      <section className="section-padding section-dark-warm">
-        <div className="container-max">
-          <ScrollReveal>
-            <div className="text-center mb-12">
+            <div className="text-center max-w-3xl mx-auto">
               <h2 className="text-white mb-4">
                 <span className="italic font-light">Core</span>{" "}
                 <span className="font-extrabold">Features</span>{" "}
                 <span className="font-light">&amp; Benefits.</span>
               </h2>
-              <p className="text-lg text-white/75">
-                Built to solve the problems that{" "}
-                <span className="font-bold text-white">
-                  keep you up at night
-                </span>
-                .
+              <p className="text-lg text-white/90 leading-relaxed">
+                Everything to keep your workforce paid: a{" "}
+                <span className="font-bold text-white">unified platform</span>,{" "}
+                <span className="font-bold text-white">hands-on onboarding</span>
+                , and{" "}
+                <span className="font-bold text-white">full compliance</span>{" "}
+                across every wage-based industry.
               </p>
             </div>
           </ScrollReveal>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            {/* 2x2 compact cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {coreFeatures.map((feature, i) => (
-                <ScrollReveal key={feature.title} delay={i * 1.5}>
-                  <div className="h-full bg-white/5 rounded-xl p-4 border border-white/10 hover:bg-white/10 transition-colors duration-300">
-                    <h3 className="text-base font-bold mb-2 text-white">
-                      {feature.title}
-                    </h3>
-                    <p className="text-white/70 text-sm leading-relaxed">
-                      {feature.description}
-                    </p>
+          <ScrollReveal className="mt-auto pt-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+              {[
+                {
+                  Icon: Users,
+                  title: "Dashboard & Worker App",
+                  body: "Employer portal and worker mobile wallet, end-to-end.",
+                },
+                {
+                  Icon: UserPlus,
+                  title: "On-Site Onboarding",
+                  body: "We come to you. Workers payment-ready in days.",
+                },
+                {
+                  Icon: HardHat,
+                  title: "Agriculture & Construction",
+                  body: "Cashless pay for harvests, sites, ad-hoc workers.",
+                },
+                {
+                  Icon: FileCheck,
+                  title: "Efficiencies & Compliance",
+                  body: "Regulatory adherence without the manual burden.",
+                },
+              ].map(({ Icon, title, body }) => (
+                <div
+                  key={title}
+                  className="text-white bg-black/35 backdrop-blur-md rounded-xl p-4 border border-white/10"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-white/15 backdrop-blur border border-white/25 flex items-center justify-center mb-3">
+                    <Icon className="w-5 h-5 text-white" />
                   </div>
-                </ScrollReveal>
+                  <h4 className="text-base font-bold text-white mb-1.5">
+                    {title}
+                  </h4>
+                  <p className="text-white/80 text-sm leading-snug">{body}</p>
+                </div>
               ))}
             </div>
-
-            {/* Image */}
-            <ScrollReveal type="slide" direction="right">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10">
-                <Image
-                  src="/images/backgrounds/finexflow-collaborative.jpeg"
-                  alt="FINEXflow collaborative workforce solution"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </ScrollReveal>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -556,7 +443,6 @@ export default function FinexFlowPage() {
               </p>
               <CTAButton
                 label="Speak to a FINEXflow Expert"
-                type="contact"
                 href="/contact"
                 variant="white"
                 size="lg"

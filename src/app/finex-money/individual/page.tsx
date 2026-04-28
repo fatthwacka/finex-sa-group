@@ -319,12 +319,6 @@ export default function FinexMoneyPage() {
                   variant="red"
                   size="lg"
                 />
-                <CTAButton
-                  label="FINEXflow"
-                  href="#finexflow"
-                  variant="gradient"
-                  size="lg"
-                />
               </div>
             </div>
           </div>
@@ -332,145 +326,178 @@ export default function FinexMoneyPage() {
       </section>
 
       {/* =============================================
-          SECTIONS 2 / 4 / 5 (MERGED): POCKET + VISION + PERSONAS
-          Single dark-warm section containing three sub-groups:
-            1. Everything You Need, In Your Pocket (feature cards)
-            2. Moving Beyond "Bank-Poor" (vision cards)
-            3. Built for Real People (persona cards)
-          Sub-groups separated by mt-24 md:mt-32 for vertical breathing room.
+          POCKET FEATURES: split — image left + bullet list
           ============================================= */}
-      <section className="section-padding section-dark-warm">
-        <div className="container-max">
-          {/* Sub-group 1: Everything You Need, In Your Pocket — title LEFT, cards RIGHT */}
+      <section className="section-padding section-dark-warm relative overflow-hidden min-h-[80vh] flex items-center">
+        <div className="mx-auto w-full max-w-[1600px] px-6 sm:px-8 lg:px-12">
           <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
-            <ScrollReveal className="w-full lg:w-5/12">
-              <div className="text-center lg:text-left">
-                <h2 className="mb-4">
-                  Everything You Need,
-                  <br />
-                  <span className="text-[var(--color-red)]">In Your Pocket</span>
-                </h2>
-                <p className="text-lg text-white/70 max-w-md mx-auto lg:mx-0">
-                  A complete digital finance ecosystem built for the way Africa
-                  moves money.
-                </p>
+            <ScrollReveal
+              type="slide"
+              direction="left"
+              className="w-full lg:w-1/2"
+            >
+              <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/15 shadow-2xl">
+                <Image
+                  src="/images/lifestyle/finex-money-man-card-phone.webp"
+                  alt="Finex Money on phone and card"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </ScrollReveal>
-            <div className="w-full lg:w-7/12 grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {pocketFeatures.map((feature, index) => {
-                const Icon = feature.icon;
-                return (
-                  <ScrollReveal key={feature.title} delay={index}>
-                    <div className="h-full bg-white/5 rounded-xl p-4 border border-white/10 hover:bg-white/10 transition-colors duration-300">
-                      <div className="w-8 h-8 rounded-lg bg-[var(--color-red)]/15 flex items-center justify-center mb-2">
-                        <Icon className="w-4 h-4 text-[var(--color-red)]" />
-                      </div>
-                      <h4 className="font-bold mb-1 text-sm">
-                        {feature.title}
-                      </h4>
-                      <p className="text-xs text-white/70 leading-snug">
-                        {feature.description}
-                      </p>
-                    </div>
-                  </ScrollReveal>
-                );
-              })}
-            </div>
+            <ScrollReveal className="w-full lg:w-1/2 text-white">
+              <h2 className="text-white mb-4">
+                <span className="italic font-light">Everything You Need,</span>
+                <br />
+                <span className="font-extrabold text-[var(--color-red)]">
+                  In Your Pocket.
+                </span>
+              </h2>
+              <p className="text-lg text-white/85 leading-relaxed mb-8">
+                A complete{" "}
+                <span className="font-bold text-white">
+                  digital finance ecosystem
+                </span>{" "}
+                built for the way Africa moves money.
+              </p>
+              <ul className="space-y-4">
+                {pocketFeatures.map((feature) => {
+                  const Icon = feature.icon;
+                  return (
+                    <li key={feature.title} className="flex items-start gap-4">
+                      <span className="shrink-0 w-10 h-10 rounded-full bg-[var(--color-red)]/20 backdrop-blur flex items-center justify-center border border-white/20">
+                        <Icon className="w-5 h-5 text-[var(--color-red)]" />
+                      </span>
+                      <span className="leading-relaxed">
+                        <span className="font-bold text-white">
+                          {feature.title}
+                        </span>
+                        <span className="text-white/85">
+                          {" "}
+                          — {feature.description}
+                        </span>
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </ScrollReveal>
           </div>
+        </div>
+      </section>
 
-          {/* Sub-group 2: Moving Beyond "Bank-Poor" — title RIGHT, cards LEFT */}
-          <div className="mt-32 md:mt-48 flex flex-col lg:flex-row-reverse items-center gap-10 lg:gap-16">
-            <ScrollReveal className="w-full lg:w-5/12">
-              <div className="text-center lg:text-left">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-red)] mb-4">
-                  Our Vision
-                </p>
-                <h2 className="text-white mb-6">
-                  Moving Beyond{" "}
-                  <span className="text-[var(--color-red)]">
-                    &ldquo;Bank-Poor&rdquo;
-                  </span>
-                </h2>
-                <p className="text-base text-white/70 max-w-md mx-auto lg:mx-0">
-                  From &lsquo;Cash-Rich but Bank-Poor&rsquo; to Digital Dignity.
-                  We&apos;re building South Africa&apos;s premier unified fintech
-                  ecosystem, a trusted, reliable Digital Safe Haven for every
-                  South African.
-                </p>
-              </div>
-            </ScrollReveal>
-            <div className="w-full lg:w-7/12 grid grid-cols-2 gap-3">
-              {visionCards.map((card, index) => (
-                <ScrollReveal key={card.title} delay={index}>
-                  <div
-                    className={`${card.color} rounded-xl p-4 text-white min-h-[130px] flex flex-col h-full`}
-                  >
-                    <h3 className="text-base md:text-lg font-extrabold text-white mb-0.5">
-                      {card.title}
-                    </h3>
-                    <p className="text-xs font-medium text-white/80 mb-2 italic">
-                      {card.subtitle}
-                    </p>
-                    <p className="text-xs text-white/70 leading-snug mt-auto">
-                      {card.description}
-                    </p>
-                  </div>
-                </ScrollReveal>
+      {/* =============================================
+          VISION: full-bleed image background + cards on top
+          ============================================= */}
+      <section className="relative min-h-[80vh] flex items-center overflow-hidden">
+        <Image
+          src="/images/backgrounds/african-cityscape-01.jpg"
+          alt=""
+          fill
+          className="object-cover"
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(135deg, rgba(42, 8, 16, 0.85) 0%, rgba(10, 5, 8, 0.7) 50%, rgba(42, 8, 16, 0.85) 100%)",
+          }}
+        />
+        <div className="container-max relative z-10 py-20 md:py-24">
+          <ScrollReveal>
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-red)] mb-4">
+                Our Vision
+              </p>
+              <h2 className="text-white mb-4">
+                Moving Beyond{" "}
+                <span className="text-[var(--color-red)]">
+                  &ldquo;Bank-Poor&rdquo;
+                </span>
+              </h2>
+              <p className="text-lg text-white/85 leading-relaxed">
+                From{" "}
+                <span className="italic">
+                  &lsquo;Cash-Rich but Bank-Poor&rsquo;
+                </span>{" "}
+                to{" "}
+                <span className="font-bold text-white">Digital Dignity</span>:
+                building South Africa&apos;s premier unified fintech ecosystem.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+              {visionCards.map((card) => (
+                <div
+                  key={card.title}
+                  className="bg-black/40 backdrop-blur-md rounded-xl p-5 border border-white/10 text-white"
+                >
+                  <h3 className="text-lg md:text-xl font-extrabold text-white mb-1">
+                    {card.title}
+                  </h3>
+                  <p className="text-sm font-medium text-[var(--color-red)] mb-3 italic">
+                    {card.subtitle}
+                  </p>
+                  <p className="text-sm text-white/80 leading-snug">
+                    {card.description}
+                  </p>
+                </div>
               ))}
             </div>
-          </div>
+          </ScrollReveal>
+        </div>
+      </section>
 
-          {/* Sub-group 3: Built for Real People — title LEFT, cards RIGHT */}
-          <div className="mt-32 md:mt-48 flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
-            <ScrollReveal className="w-full lg:w-5/12">
-              <div className="text-center lg:text-left">
-                <h2 className="text-white mb-4">
-                  Built for{" "}
-                  <span className="text-[var(--color-red)]">Real People</span>
-                </h2>
-                <p className="text-base text-white/80 max-w-md mx-auto lg:mx-0">
-                  We solve the daily realities of South Africans, from
-                  construction sites to taxi ranks.
-                </p>
-              </div>
-            </ScrollReveal>
-            <div className="w-full lg:w-7/12 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
-              {personaCards.map((persona, index) => {
+      {/* =============================================
+          PERSONAS: centered card grid on dark-warm
+          ============================================= */}
+      <section className="section-padding section-dark-warm relative overflow-hidden">
+        <div className="container-max">
+          <ScrollReveal>
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <h2 className="text-white mb-4">
+                Built for{" "}
+                <span className="text-[var(--color-red)]">Real People.</span>
+              </h2>
+              <p className="text-lg text-white/85 leading-relaxed">
+                We solve the daily realities of South Africans, from{" "}
+                <span className="font-bold text-white">construction sites</span>{" "}
+                to <span className="font-bold text-white">taxi ranks</span>.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto">
+              {personaCards.map((persona) => {
                 const Icon = persona.icon;
                 return (
-                  <ScrollReveal key={persona.title} delay={index}>
-                    <div className="h-full bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/15">
-                      <div className="flex items-start gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-[var(--color-red)]/20 flex items-center justify-center flex-shrink-0">
-                          <Icon className="w-5 h-5 text-[var(--color-red)]" />
-                        </div>
-                        <div>
-                          <h3 className="text-base font-bold mb-1 text-white">
-                            {persona.title}
-                          </h3>
-                          <p className="text-xs font-medium text-[var(--color-red)] mb-2">
-                            {persona.subtitle}
-                          </p>
-                          <p className="text-xs text-white/70 mb-1">
-                            <span className="font-semibold text-white">
-                              Challenge:
-                            </span>{" "}
-                            {persona.challenge}
-                          </p>
-                          <p className="text-xs text-white/70">
-                            <span className="font-semibold text-white">
-                              Solution:
-                            </span>{" "}
-                            {persona.solution}
-                          </p>
-                        </div>
-                      </div>
+                  <div
+                    key={persona.title}
+                    className="bg-white/5 backdrop-blur-sm rounded-xl p-5 border border-white/10 hover:bg-white/10 transition-colors duration-300"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-[var(--color-red)]/20 flex items-center justify-center mb-4">
+                      <Icon className="w-6 h-6 text-[var(--color-red)]" />
                     </div>
-                  </ScrollReveal>
+                    <h3 className="text-lg font-bold mb-1 text-white">
+                      {persona.title}
+                    </h3>
+                    <p className="text-sm font-medium text-[var(--color-red)] mb-3 italic">
+                      {persona.subtitle}
+                    </p>
+                    <p className="text-sm text-white/75 mb-1">
+                      <span className="font-semibold text-white">
+                        Challenge:
+                      </span>{" "}
+                      {persona.challenge}
+                    </p>
+                    <p className="text-sm text-white/75">
+                      <span className="font-semibold text-white">
+                        Solution:
+                      </span>{" "}
+                      {persona.solution}
+                    </p>
+                  </div>
                 );
               })}
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -552,136 +579,160 @@ export default function FinexMoneyPage() {
           ============================================= */}
 
       {/* =============================================
-          UTILITY + BELONGING + FICA TIERS (MERGED)
-          Single dark-warm section containing three sub-groups:
-            1. Everyday Utility. Zero Hassle. (6 icon cards)
-            2. You Belong Here. (accepted docs row)
-            3. Three Levels. Endless Possibilities. (FICA tier cards)
-          Sub-groups separated by mt-32 md:mt-48 for vertical breathing room.
+          EVERYDAY UTILITY: split — bullets left + image right
           ============================================= */}
-      <section className="section-padding section-dark-warm">
-        <div className="container-max">
-          {/* Sub-group 1: Everyday Utility. Zero Hassle. — title LEFT, cards RIGHT */}
-          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
-            <ScrollReveal className="w-full lg:w-5/12">
-              <div className="text-center lg:text-left">
-                <h2 className="text-white mb-4">
-                  <span className="italic font-light">Everyday</span>{" "}
-                  <span className="font-extrabold">Utility.</span>
-                  <br />
-                  <span className="font-light">Zero Hassle.</span>
-                </h2>
-                <p className="text-lg text-white/70 max-w-md mx-auto lg:mx-0">
-                  From{" "}
-                  <span className="font-bold text-white">airtime top-ups</span>{" "}
-                  to{" "}
-                  <span className="font-bold text-white">online shopping</span>,
-                  your Finex Money wallet is your all-in-one financial
-                  companion.
-                </p>
+      <section className="section-padding section-dark-warm relative overflow-hidden min-h-[80vh] flex items-center">
+        <div className="mx-auto w-full max-w-[1600px] px-6 sm:px-8 lg:px-12">
+          <div className="flex flex-col lg:flex-row-reverse items-center gap-10 lg:gap-16">
+            <ScrollReveal
+              type="slide"
+              direction="right"
+              className="w-full lg:w-1/2"
+            >
+              <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/15 shadow-2xl">
+                <Image
+                  src="/images/backgrounds/finexmoney-card-in-hand-01.jpg"
+                  alt="Finex Money card in hand"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </ScrollReveal>
-            <div className="w-full lg:w-7/12 grid grid-cols-2 md:grid-cols-3 gap-3">
-              {everydayFeatures.map((feature, index) => {
-                const Icon = feature.icon;
-                return (
-                  <ScrollReveal
-                    key={feature.label}
-                    delay={index}
-                    className="flex"
-                  >
-                    <div className="bg-white/5 rounded-xl p-3 border border-white/10 text-center flex flex-col items-center flex-1 hover:bg-white/10 transition-colors duration-300">
-                      <div className="w-10 h-10 mx-auto mb-1.5 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
+            <ScrollReveal className="w-full lg:w-1/2 text-white">
+              <h2 className="text-white mb-4">
+                <span className="italic font-light">Everyday</span>{" "}
+                <span className="font-extrabold text-[var(--color-red)]">
+                  Utility.
+                </span>
+                <br />
+                <span className="font-light">Zero Hassle.</span>
+              </h2>
+              <p className="text-lg text-white/85 leading-relaxed mb-8">
+                From{" "}
+                <span className="font-bold text-white">airtime top-ups</span> to{" "}
+                <span className="font-bold text-white">online shopping</span>,
+                your Finex Money wallet is your all-in-one financial companion.
+              </p>
+              <ul className="space-y-4">
+                {everydayFeatures.map((feature) => {
+                  const Icon = feature.icon;
+                  return (
+                    <li key={feature.label} className="flex items-start gap-4">
+                      <span className="shrink-0 w-10 h-10 rounded-full bg-[var(--color-red)]/20 backdrop-blur flex items-center justify-center border border-white/20">
                         <Icon className="w-5 h-5 text-[var(--color-red)]" />
-                      </div>
-                      <p className="text-xs font-bold text-white mb-0.5">
-                        {feature.label}
-                      </p>
-                      <p className="text-[11px] text-white/70 leading-snug">
-                        {feature.description}
-                      </p>
-                    </div>
-                  </ScrollReveal>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Sub-group 2: Three Levels. Endless Possibilities. — title LEFT, compact tier cards RIGHT */}
-          <div className="mt-32 md:mt-48 flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
-            <ScrollReveal className="w-full lg:w-5/12">
-              <div className="text-center lg:text-left">
-                <h2 className="text-white mb-4">
-                  <span className="italic font-light">Three</span>{" "}
-                  <span className="font-extrabold">Levels.</span>
-                  <br />
-                  <span className="font-light">Endless Possibilities.</span>
-                </h2>
-                <p className="text-base text-white/70 max-w-md mx-auto lg:mx-0">
-                  Start with{" "}
-                  <span className="font-bold text-white">Entry FICA</span> and
-                  upgrade as your needs grow.{" "}
-                  <span className="font-bold text-white">
-                    No proof of address
-                  </span>{" "}
-                  required to get started.
-                </p>
-              </div>
+                      </span>
+                      <span className="leading-relaxed">
+                        <span className="font-bold text-white">
+                          {feature.label}
+                        </span>
+                        <span className="text-white/85">
+                          {" "}
+                          — {feature.description}
+                        </span>
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
             </ScrollReveal>
-            <div className="w-full lg:w-7/12">
-              <SteppedTiers
-                bare
-                compact
-                tiers={ficaTiers}
-                variant="dark-warm"
-              />
-            </div>
           </div>
+        </div>
+      </section>
 
-          {/* Sub-group 3: You Belong Here. — title LEFT, cards RIGHT (aligned with Utility) */}
-          <div className="mt-32 md:mt-48 flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
-            <ScrollReveal className="w-full lg:w-5/12">
-              <div className="text-center lg:text-left text-white">
-                <h2 className="text-white mb-4">
-                  <span className="font-extrabold">You Belong</span>{" "}
-                  <span className="font-light">Here.</span>
-                </h2>
-                <p className="text-white/90 text-lg font-medium mb-3">
-                  We believe in{" "}
-                  <span className="text-[var(--color-red)]">
-                    zero exclusion
-                  </span>
-                  .
-                </p>
-                <p className="text-white/70 text-base max-w-md mx-auto lg:mx-0">
-                  Whether you&apos;re a South African citizen, a foreign
-                  national, or an asylum seeker: if you&apos;re here, you
-                  deserve financial access.
-                </p>
-              </div>
-            </ScrollReveal>
-            <div className="w-full lg:w-7/12 grid grid-cols-2 md:grid-cols-3 gap-3">
-              {acceptedDocs.map((doc, index) => (
-                <ScrollReveal
+      {/* =============================================
+          FICA TIERS: full-bleed image background + tiers on top
+          ============================================= */}
+      <section className="relative overflow-hidden">
+        <Image
+          src="/images/heroes/finex-money-hero-woman.webp"
+          alt=""
+          fill
+          className="object-cover"
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(135deg, rgba(42, 8, 16, 0.9) 0%, rgba(10, 5, 8, 0.85) 50%, rgba(42, 8, 16, 0.9) 100%)",
+          }}
+        />
+        <div className="container-max relative z-10 py-20 md:py-28">
+          <ScrollReveal>
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <h2 className="text-white mb-4">
+                <span className="italic font-light">Three</span>{" "}
+                <span className="font-extrabold text-[var(--color-red)]">
+                  Levels.
+                </span>
+                <br />
+                <span className="font-light">Endless Possibilities.</span>
+              </h2>
+              <p className="text-base text-white/85 leading-relaxed">
+                Start with{" "}
+                <span className="font-bold text-white">Entry FICA</span> and
+                upgrade as your needs grow.{" "}
+                <span className="font-bold text-white">
+                  No proof of address
+                </span>{" "}
+                required to get started.
+              </p>
+            </div>
+          </ScrollReveal>
+          <div className="max-w-6xl mx-auto">
+            <SteppedTiers
+              bare
+              compact
+              tiers={ficaTiers}
+              variant="dark-warm"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* =============================================
+          BELONGING: centered cards on dark-accent-red wash
+          ============================================= */}
+      <section className="section-padding section-dark-accent-red relative overflow-hidden">
+        <div className="container-max">
+          <ScrollReveal>
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <h2 className="text-white mb-4">
+                <span className="font-extrabold text-[var(--color-red)]">
+                  You Belong
+                </span>{" "}
+                <span className="font-light">Here.</span>
+              </h2>
+              <p className="text-white/90 text-lg font-medium mb-3">
+                We believe in{" "}
+                <span className="text-[var(--color-red)]">zero exclusion</span>.
+              </p>
+              <p className="text-white/85 text-base leading-relaxed">
+                Whether you&apos;re a South African citizen, a foreign national,
+                or an asylum seeker: if you&apos;re here, you deserve financial
+                access.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
+              {acceptedDocs.map((doc) => (
+                <div
                   key={doc.label}
-                  delay={index}
-                  className="flex"
+                  className="bg-black/40 backdrop-blur-md rounded-xl p-5 border border-white/15 text-center"
                 >
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/15 text-center flex flex-col items-center flex-1">
-                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mb-1.5">
-                      <span className="text-white text-base">✓</span>
-                    </div>
-                    <p className="text-xs font-bold text-white mb-0.5">
-                      {doc.label}
-                    </p>
-                    <p className="text-[11px] text-white/70 leading-snug">
-                      {doc.description}
-                    </p>
+                  <div className="w-12 h-12 mx-auto rounded-full bg-[var(--color-red)]/20 flex items-center justify-center mb-3">
+                    <span className="text-[var(--color-red)] text-xl font-bold">
+                      ✓
+                    </span>
                   </div>
-                </ScrollReveal>
+                  <p className="text-base font-bold text-white mb-1">
+                    {doc.label}
+                  </p>
+                  <p className="text-sm text-white/80 leading-snug">
+                    {doc.description}
+                  </p>
+                </div>
               ))}
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
