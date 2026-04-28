@@ -160,109 +160,125 @@ export default function FinexFlowPage() {
       </section>
 
       {/* =============================================
-          MEGA SECTION (SUNSET):
-          Challenge + Seamless Solution + Strategic Pillars + Universal Application
+          THE CHALLENGE: colorful sunset + image + bullet list
           ============================================= */}
-      <section className="section-padding section-sunset">
+      <section className="section-padding section-sunset relative overflow-hidden">
         <div className="container-max">
-          {/* Sub-group 1: The Challenge */}
           <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
-            <ScrollReveal className="w-full lg:w-5/12">
-              <div className="text-center lg:text-left text-white">
-                <h2 className="text-white mb-4">
-                  <span className="italic font-light">The</span>{" "}
-                  <span className="font-extrabold">Challenge.</span>
-                </h2>
-                <p className="text-base text-white/90 leading-relaxed max-w-md mx-auto lg:mx-0">
-                  The friction high-volume employers experience is{" "}
-                  <span className="font-bold text-white">
-                    expensive and invisible
-                  </span>
-                  , until it becomes{" "}
-                  <span className="font-bold text-white">catastrophic</span>.
-                </p>
+            <ScrollReveal
+              type="slide"
+              direction="left"
+              className="w-full lg:w-1/2"
+            >
+              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/20 shadow-2xl">
+                <Image
+                  src="/images/backgrounds/finexflow-challenge.jpg"
+                  alt="High-volume workforce payment friction"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </ScrollReveal>
-            <div className="w-full lg:w-7/12 grid grid-cols-2 md:grid-cols-3 gap-3">
-              {[
-                {
-                  Icon: ShieldAlert,
-                  title: "Security Exposure",
-                  body: "from cash wage runs.",
-                },
-                {
-                  Icon: Scale,
-                  title: "Legislative Risks",
-                  body: "from unverified worker identities.",
-                },
-                {
-                  Icon: AlertTriangle,
-                  title: "Batch Payment Failures",
-                  body: "that only surface after the fact.",
-                },
-                {
-                  Icon: UserX,
-                  title: "Ghost Workers",
-                  body: "and identity fraud eroding margins.",
-                },
-                {
-                  Icon: Files,
-                  title: "Administrative Burden",
-                  body: "growing with every new hire.",
-                },
-                {
-                  Icon: Clock,
-                  title: "Late Payments",
-                  body: "eroding worker trust and retention.",
-                },
-              ].map((card, i) => {
-                const { Icon } = card;
-                return (
-                  <ScrollReveal key={card.title} delay={i} className="flex">
-                    <div className="rainbow-card">
-                      <div className="rainbow-card-body">
-                        <div className="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center mb-2">
-                          <Icon className="w-5 h-5 text-white" />
-                        </div>
-                        <h4 className="text-sm font-bold text-white mb-1">
-                          {card.title}
-                        </h4>
-                        <p className="text-xs text-white/80 leading-snug">
-                          {card.body}
-                        </p>
-                      </div>
-                    </div>
-                  </ScrollReveal>
-                );
-              })}
-            </div>
+            <ScrollReveal className="w-full lg:w-1/2 text-white">
+              <h2 className="text-white mb-4">
+                <span className="italic font-light">The</span>{" "}
+                <span className="font-extrabold">Challenge.</span>
+              </h2>
+              <p className="text-lg text-white/90 leading-relaxed mb-8">
+                The friction high-volume employers experience is{" "}
+                <span className="font-bold text-white">
+                  expensive and invisible
+                </span>
+                , until it becomes{" "}
+                <span className="font-bold text-white">catastrophic</span>.
+              </p>
+              <ul className="space-y-4">
+                {[
+                  {
+                    Icon: ShieldAlert,
+                    title: "Security Exposure",
+                    body: "from cash wage runs.",
+                  },
+                  {
+                    Icon: Scale,
+                    title: "Legislative Risks",
+                    body: "from unverified worker identities.",
+                  },
+                  {
+                    Icon: AlertTriangle,
+                    title: "Batch Payment Failures",
+                    body: "that only surface after the fact.",
+                  },
+                  {
+                    Icon: UserX,
+                    title: "Ghost Workers",
+                    body: "and identity fraud eroding margins.",
+                  },
+                  {
+                    Icon: Files,
+                    title: "Administrative Burden",
+                    body: "growing with every new hire.",
+                  },
+                  {
+                    Icon: Clock,
+                    title: "Late Payments",
+                    body: "eroding worker trust and retention.",
+                  },
+                ].map(({ Icon, title, body }) => (
+                  <li key={title} className="flex items-start gap-4">
+                    <span className="shrink-0 w-10 h-10 rounded-full bg-white/15 backdrop-blur flex items-center justify-center border border-white/20">
+                      <Icon className="w-5 h-5 text-white" />
+                    </span>
+                    <span className="leading-relaxed">
+                      <span className="font-bold text-white">{title}</span>
+                      <span className="text-white/85"> {body}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </ScrollReveal>
           </div>
+        </div>
+      </section>
 
-          {/* Sub-group 2: The Seamless Solution */}
-          <div className="mt-32 md:mt-48 flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
-            <ScrollReveal className="w-full lg:w-5/12">
-              <div className="text-center lg:text-left text-white">
-                <h2 className="text-white mb-4">
-                  <span className="italic font-light">The</span>{" "}
-                  <span className="font-extrabold">Seamless</span>{" "}
-                  <span className="font-light">Solution.</span>
-                </h2>
-                <p className="text-base text-white/90 leading-relaxed max-w-md mx-auto lg:mx-0">
-                  FINEXflow acts as the{" "}
-                  <span className="font-bold text-white">
-                    secure final layer
-                  </span>{" "}
-                  between your payroll and the bank:{" "}
-                  <span className="font-bold text-white">
-                    enterprise-grade
-                  </span>{" "}
-                  infrastructure with{" "}
-                  <span className="font-bold text-white">full compliance</span>{" "}
-                  built in from day one.
-                </p>
-              </div>
-            </ScrollReveal>
-            <div className="w-full lg:w-7/12 grid grid-cols-2 md:grid-cols-3 gap-3">
+      {/* =============================================
+          THE SEAMLESS SOLUTION: full-bleed image background
+          ============================================= */}
+      <section className="relative min-h-[88vh] flex items-center overflow-hidden">
+        <Image
+          src="/images/backgrounds/finexflow-collaborative.jpeg"
+          alt=""
+          fill
+          className="object-cover"
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to right, rgba(10, 51, 71, 0.88) 0%, rgba(15, 18, 26, 0.7) 45%, rgba(20, 45, 75, 0.45) 100%)",
+          }}
+        />
+        <div className="container-max relative z-10 py-24 md:py-32">
+          <ScrollReveal>
+            <div className="max-w-2xl text-white mb-12">
+              <h2 className="text-white mb-6">
+                <span className="italic font-light">The</span>{" "}
+                <span className="font-extrabold">Seamless</span>{" "}
+                <span className="font-light">Solution.</span>
+              </h2>
+              <p className="text-xl text-white/90 leading-relaxed">
+                FINEXflow acts as the{" "}
+                <span className="font-bold text-white">
+                  secure final layer
+                </span>{" "}
+                between your payroll and the bank:{" "}
+                <span className="font-bold text-white">enterprise-grade</span>{" "}
+                infrastructure with{" "}
+                <span className="font-bold text-white">full compliance</span>{" "}
+                built in from day one.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-5xl">
               {[
                 {
                   Icon: Building2,
@@ -279,144 +295,153 @@ export default function FinexFlowPage() {
                   title: "Branded Debit Card",
                   body: "Physical Mastercard for ATM and point-of-sale access.",
                 },
-              ].map((card, i) => {
-                const { Icon } = card;
-                return (
-                  <ScrollReveal key={card.title} delay={i} className="flex">
-                    <div className="rainbow-card">
-                      <div className="rainbow-card-body">
-                        <div className="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center mb-2">
-                          <Icon className="w-5 h-5 text-white" />
-                        </div>
-                        <h4 className="text-sm font-bold text-white mb-1">
-                          {card.title}
-                        </h4>
-                        <p className="text-xs text-white/80 leading-snug">
-                          {card.body}
-                        </p>
-                      </div>
-                    </div>
-                  </ScrollReveal>
-                );
-              })}
+              ].map(({ Icon, title, body }) => (
+                <div key={title} className="text-white">
+                  <div className="w-12 h-12 rounded-xl bg-white/15 backdrop-blur border border-white/25 flex items-center justify-center mb-4">
+                    <Icon className="w-6 h-6 text-white" />
+                  </div>
+                  <h4 className="text-lg font-bold text-white mb-2">
+                    {title}
+                  </h4>
+                  <p className="text-white/80 leading-relaxed">{body}</p>
+                </div>
+              ))}
             </div>
-          </div>
+          </ScrollReveal>
+        </div>
+      </section>
 
-          {/* Sub-group 3: The Strategic Pillars */}
-          <div className="mt-32 md:mt-48 flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
-            <ScrollReveal className="w-full lg:w-5/12">
-              <div className="text-center lg:text-left text-white">
-                <h2 className="text-white mb-4">
-                  <span className="italic font-light">The</span>{" "}
-                  <span className="font-extrabold">Strategic Pillars.</span>
-                </h2>
-                <p className="text-base text-white/90 leading-relaxed max-w-md mx-auto lg:mx-0">
-                  Engineered for{" "}
-                  <span className="font-bold text-white">
-                    absolute operational flow
-                  </span>
-                  .
-                </p>
+      {/* =============================================
+          STRATEGIC PILLARS: clean cards on light-warm
+          ============================================= */}
+      <section className="section-padding section-light-warm">
+        <div className="container-max">
+          <ScrollReveal>
+            <div className="text-center max-w-2xl mx-auto mb-14">
+              <h2 className="mb-4">
+                <span className="italic font-light">The</span>{" "}
+                <span className="font-extrabold">Strategic Pillars.</span>
+              </h2>
+              <p className="text-lg text-[var(--color-text-secondary)] leading-relaxed">
+                Engineered for{" "}
+                <span className="font-bold text-[var(--color-text-primary)]">
+                  absolute operational flow
+                </span>
+                .
+              </p>
+            </div>
+          </ScrollReveal>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {[
+              {
+                Icon: Shield,
+                title: "Guaranteed Stability",
+                body: "100% uptime, zero downtime: verifiable for enterprise clients.",
+              },
+              {
+                Icon: Zap,
+                title: "Speed of Execution",
+                body: "Real-time payments at any scale to maintain project momentum.",
+              },
+              {
+                Icon: FileCheck,
+                title: "Efficiencies & Compliance",
+                body: "Regulatory adherence without the manual burden: SMS payslips silence HR queries.",
+              },
+            ].map(({ Icon, title, body }, i) => (
+              <ScrollReveal key={title} delay={i}>
+                <div className="h-full bg-white rounded-2xl p-7 border border-black/5 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, var(--color-cyan), var(--color-purple) 50%, var(--color-orange))",
+                    }}
+                  >
+                    <Icon className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">{title}</h3>
+                  <p className="text-[var(--color-text-secondary)] leading-relaxed">
+                    {body}
+                  </p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* =============================================
+          UNIVERSAL APPLICATION: dark navy + image + bullet list
+          ============================================= */}
+      <section className="section-padding section-blue-grey-cyan">
+        <div className="container-max">
+          <div className="flex flex-col lg:flex-row-reverse items-center gap-10 lg:gap-16">
+            <ScrollReveal
+              type="slide"
+              direction="right"
+              className="w-full lg:w-1/2"
+            >
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                <Image
+                  src="/images/heroes/mali-yami-geting-paid-on-construction-site.jpg"
+                  alt="Workers receiving real-time payments on a construction site"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </ScrollReveal>
-            <div className="w-full lg:w-7/12 grid grid-cols-2 md:grid-cols-3 gap-3">
-              {[
-                {
-                  Icon: Shield,
-                  title: "Guaranteed Stability",
-                  body: "100% uptime, zero downtime: verifiable for enterprise clients.",
-                },
-                {
-                  Icon: Zap,
-                  title: "Speed of Execution",
-                  body: "Real-time payments at any scale to maintain project momentum.",
-                },
-                {
-                  Icon: FileCheck,
-                  title: "Efficiencies & Compliance",
-                  body: "Regulatory adherence without the manual burden: SMS payslips silence HR queries.",
-                },
-              ].map((card, i) => {
-                const { Icon } = card;
-                return (
-                  <ScrollReveal key={card.title} delay={i} className="flex">
-                    <div className="rainbow-card">
-                      <div className="rainbow-card-body">
-                        <div className="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center mb-2">
-                          <Icon className="w-5 h-5 text-white" />
-                        </div>
-                        <h4 className="text-sm font-bold text-white mb-1">
-                          {card.title}
-                        </h4>
-                        <p className="text-xs text-white/80 leading-snug">
-                          {card.body}
-                        </p>
-                      </div>
-                    </div>
-                  </ScrollReveal>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Sub-group 4: Engineered for Universal Application */}
-          <div className="mt-32 md:mt-48 flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
-            <ScrollReveal className="w-full lg:w-5/12">
-              <div className="text-center lg:text-left text-white">
-                <h2 className="text-white mb-4">
-                  <span className="italic font-light">Engineered for</span>{" "}
-                  <span className="font-extrabold">
-                    Universal Application.
-                  </span>
-                </h2>
-                <p className="text-base text-white/90 leading-relaxed max-w-md mx-auto lg:mx-0">
-                  FINEXflow is a{" "}
-                  <span className="font-bold text-white">
-                    universal engine
-                  </span>{" "}
-                  built for any industry that relies on a wage-based or
-                  shift-based workforce.
-                </p>
-              </div>
+            <ScrollReveal className="w-full lg:w-1/2 text-white">
+              <h2 className="text-white mb-4">
+                <span className="italic font-light">Engineered for</span>{" "}
+                <span className="font-extrabold">Universal Application.</span>
+              </h2>
+              <p className="text-lg text-white/85 leading-relaxed mb-8">
+                FINEXflow is a{" "}
+                <span className="font-bold text-white">universal engine</span>{" "}
+                built for any industry that relies on a wage-based or
+                shift-based workforce.
+              </p>
+              <ul className="space-y-5">
+                {[
+                  {
+                    Icon: Building2,
+                    title: "Corporate & Enterprise",
+                    body: "24/7 payments and seamless integration.",
+                  },
+                  {
+                    Icon: Factory,
+                    title: "Factory & Manufacturing",
+                    body: "Instant pay without leaving the line.",
+                  },
+                  {
+                    Icon: HardHat,
+                    title: "Agriculture & Construction",
+                    body: "Cashless pay for harvests, sites, and ad-hoc workers.",
+                  },
+                ].map(({ Icon, title, body }) => (
+                  <li key={title} className="flex items-start gap-4">
+                    <span
+                      className="shrink-0 w-12 h-12 rounded-xl flex items-center justify-center"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, var(--color-cyan), var(--color-purple))",
+                      }}
+                    >
+                      <Icon className="w-5 h-5 text-white" />
+                    </span>
+                    <span>
+                      <span className="block font-bold text-white text-lg mb-1">
+                        {title}
+                      </span>
+                      <span className="text-white/80 leading-relaxed">
+                        {body}
+                      </span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </ScrollReveal>
-            <div className="w-full lg:w-7/12 grid grid-cols-2 md:grid-cols-3 gap-3">
-              {[
-                {
-                  Icon: Building2,
-                  title: "Corporate & Enterprise",
-                  body: "24/7 payments and seamless integration.",
-                },
-                {
-                  Icon: Factory,
-                  title: "Factory & Manufacturing",
-                  body: "Instant pay without leaving the line.",
-                },
-                {
-                  Icon: HardHat,
-                  title: "Agriculture & Construction",
-                  body: "Cashless pay for harvests, sites, and ad-hoc workers.",
-                },
-              ].map((card, i) => {
-                const { Icon } = card;
-                return (
-                  <ScrollReveal key={card.title} delay={i} className="flex">
-                    <div className="rainbow-card">
-                      <div className="rainbow-card-body">
-                        <div className="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center mb-2">
-                          <Icon className="w-5 h-5 text-white" />
-                        </div>
-                        <h4 className="text-sm font-bold text-white mb-1">
-                          {card.title}
-                        </h4>
-                        <p className="text-xs text-white/80 leading-snug">
-                          {card.body}
-                        </p>
-                      </div>
-                    </div>
-                  </ScrollReveal>
-                );
-              })}
-            </div>
           </div>
         </div>
       </section>
