@@ -76,7 +76,7 @@ export default function ImaliRemitPage() {
                 <span className="font-bold">future</span>.
               </p>
               <CTAButton
-                label="Download the App"
+                label="Get the App Now"
                 type="app"
                 href="#download"
                 variant="white"
@@ -113,7 +113,7 @@ export default function ImaliRemitPage() {
                 <span className="font-extrabold">funds,</span>{" "}
                 <span className="italic font-light">fast.</span>
               </h2>
-              <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+              <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-8">
                 iMali Remit is a{" "}
                 <span className="font-bold text-white">
                   fast, safe, and low-cost
@@ -125,6 +125,13 @@ export default function ImaliRemitPage() {
                 </span>
                 , we are fully authorised to deal in foreign exchange.
               </p>
+              <CTAButton
+                label="Get the App Now"
+                type="app"
+                href="#download"
+                variant="red"
+                size="lg"
+              />
             </div>
           </div>
         </div>

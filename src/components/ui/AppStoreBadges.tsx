@@ -59,7 +59,7 @@ export default function AppStoreBadges({
           href={appStoreUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className={`inline-flex items-center gap-2 bg-white text-[var(--color-black)] rounded-lg hover:opacity-90 transition-opacity ${sizeStyles[size]}`}
+          className={`inline-flex items-center gap-2 bg-[var(--color-black)] text-white border border-white/15 rounded-lg hover:opacity-90 transition-opacity ${sizeStyles[size]}`}
         >
           <Apple className={iconSizes[size]} />
           <div className="text-left">
@@ -73,7 +73,7 @@ export default function AppStoreBadges({
           href={playStoreUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className={`inline-flex items-center gap-2 bg-white text-[var(--color-black)] rounded-lg hover:opacity-90 transition-opacity ${sizeStyles[size]}`}
+          className={`inline-flex items-center gap-2 bg-[var(--color-black)] text-white border border-white/15 rounded-lg hover:opacity-90 transition-opacity ${sizeStyles[size]}`}
         >
           <Play className={iconSizes[size]} />
           <div className="text-left">
