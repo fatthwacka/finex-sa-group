@@ -238,7 +238,7 @@ export default function TechnologyPage() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(135deg, rgba(13, 59, 112, 0.85) 0%, rgba(10, 20, 35, 0.75) 50%, rgba(57, 64, 77, 0.85) 100%)",
+              "linear-gradient(to right, rgba(13, 59, 112, 0.25) 0%, rgba(10, 20, 35, 0.45) 45%, rgba(57, 64, 77, 0.68) 100%)",
           }}
         />
         <div className="container-max relative z-10 py-20 md:py-24">
@@ -387,7 +387,7 @@ export default function TechnologyPage() {
             >
               <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/15 shadow-2xl">
                 <Image
-                  src="/images/backgrounds/Premium_advertising_sunset.jpg"
+                  src="/images/backgrounds/always-on.jpg"
                   alt="Finex Technologies secure infrastructure"
                   fill
                   className="object-cover"
@@ -452,46 +452,33 @@ export default function TechnologyPage() {
           STATS: tech stats on teal-navy gradient
           ============================================= */}
       <section
-        className="section-padding"
+        className="py-12 md:py-16"
         style={{
           background:
             "linear-gradient(135deg, var(--color-tech-teal) 0%, #0a8a87 50%, var(--color-tech-navy) 100%)",
         }}
       >
         <div className="container-max">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <ScrollReveal delay={0}>
-              <div className="text-center text-white">
-                <div className="text-4xl md:text-5xl font-extrabold mb-2">
-                  5.8M+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { value: "35", label: "Product Features", accent: "from-[var(--color-tech-teal)] to-blue-500" },
+              { value: "10", label: "Solution Pillars", accent: "from-blue-500 to-[var(--color-tech-teal)]" },
+              { value: "87+", label: "API Controllers", accent: "from-[var(--color-tech-teal)] to-amber-400" },
+              { value: "5", label: "Wallet Solutions", accent: "from-amber-400 to-rose-400" },
+            ].map(({ value, label, accent }, i) => (
+              <ScrollReveal key={label} delay={i * 0.1}>
+                <div
+                  className="relative text-center text-white border border-white/15 rounded-2xl px-5 py-10 overflow-hidden flex flex-col items-center justify-center"
+                  style={{ background: "linear-gradient(to bottom, rgba(55, 65, 81, 0.7), rgba(25, 30, 40, 0.75))" }}
+                >
+                  <div className={`absolute top-0 left-4 right-4 h-[2px] bg-gradient-to-r ${accent} opacity-60 rounded-full`} />
+                  <div className="text-5xl md:text-6xl font-extrabold mb-2">
+                    {value}
+                  </div>
+                  <div className="text-xs md:text-sm uppercase tracking-[0.15em] text-white/60 font-medium">{label}</div>
                 </div>
-                <div className="text-white/80">Crypto Users in SA</div>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={0.1}>
-              <div className="text-center text-white">
-                <div className="text-4xl md:text-5xl font-extrabold mb-2">
-                  24/7
-                </div>
-                <div className="text-white/80">System Uptime</div>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={0.2}>
-              <div className="text-center text-white">
-                <div className="text-4xl md:text-5xl font-extrabold mb-2">
-                  100%
-                </div>
-                <div className="text-white/80">In-House Development</div>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={0.3}>
-              <div className="text-center text-white">
-                <div className="text-4xl md:text-5xl font-extrabold mb-2">
-                  Real
-                </div>
-                <div className="text-white/80">Time Processing</div>
-              </div>
-            </ScrollReveal>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
