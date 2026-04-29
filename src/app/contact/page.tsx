@@ -106,7 +106,7 @@ export default function ContactPage() {
           ============================================= */}
       <section className="relative flex items-center min-h-[75vh] overflow-hidden">
         <Image
-          src="/images/lifestyle/finex-money-man-card-phone.webp"
+          src="/images/backgrounds/FinexFlow-Adverts-1b.jpg"
           alt=""
           fill
           className="object-cover"
@@ -318,7 +318,7 @@ export default function ContactPage() {
             >
               <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/15 shadow-2xl">
                 <Image
-                  src="/images/backgrounds/finexflow-collaborative.jpeg"
+                  src="/images/backgrounds/contact-us-to-stop-the-friction.jpg"
                   alt="Get in touch with our team"
                   fill
                   className="object-cover"
@@ -332,9 +332,20 @@ export default function ContactPage() {
                   message.
                 </span>
               </h2>
+              <p className="text-lg text-white/85 leading-relaxed mb-3">
+                Skip the queue. While others wait in line for traditional
+                banking, you can step into the{" "}
+                <span className="font-bold text-white">
+                  new digital finance world
+                </span>{" "}
+                right now.
+              </p>
               <p className="text-lg text-white/85 leading-relaxed mb-8">
-                Fill out the form and we will get back to you as soon as
-                possible.
+                Fill out the form and{" "}
+                <span className="font-bold text-white">
+                  stop the friction, today
+                </span>
+                .
               </p>
 
               {submitted ? (
