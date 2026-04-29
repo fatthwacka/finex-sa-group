@@ -28,14 +28,14 @@ export const metadata: Metadata = {
 };
 
 const subsidiaries = [
-  { name: "Finex Money", dataBrand: "finex-money" },
-  { name: "FINEXflow SaaS", dataBrand: "finexflow" },
-  { name: "iMali Express Remit", dataBrand: "imali" },
-  { name: "iMali Express Forex", dataBrand: "imali" },
-  { name: "Finex SA Treasury", dataBrand: "treasury" },
-  { name: "Finex SA Global", dataBrand: "global" },
-  { name: "Finex Pay", dataBrand: "tech" },
-  { name: "Finex Technologies", dataBrand: "tech" },
+  { name: "Finex Money", description: "Inclusive digital wallet", dataBrand: "finex-money" },
+  { name: "FINEXflow", description: "Payroll disbursement SaaS", dataBrand: "finexflow" },
+  { name: "iMali Remit", description: "Cross-border remittance", dataBrand: "imali" },
+  { name: "iMali Forex", description: "Retail currency exchange", dataBrand: "imali" },
+  { name: "Finex SA Treasury", description: "Corporate cash management", dataBrand: "treasury" },
+  { name: "Finex SA Global", description: "International expansion", dataBrand: "global" },
+  { name: "Finex Pay", description: "Alternative payment gateways", dataBrand: "tech" },
+  { name: "Finex Technologies", description: "Proprietary tech backbone", dataBrand: "tech" },
 ] as const;
 
 export default function AboutPage() {
@@ -107,7 +107,7 @@ export default function AboutPage() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to right, transparent 0%, rgba(12, 6, 20, 0.5) 50%, rgba(12, 6, 20, 0.95) 100%)",
+              "linear-gradient(to right, transparent 0%, rgba(12, 6, 20, 0.25) 50%, rgba(12, 6, 20, 0.88) 100%)",
           }}
         />
         <div className="container-max relative z-10">
@@ -235,12 +235,12 @@ export default function AboutPage() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(135deg, rgba(42, 8, 32, 0.85) 0%, rgba(10, 5, 8, 0.75) 50%, rgba(42, 8, 16, 0.85) 100%)",
+              "linear-gradient(135deg, rgba(42, 8, 32, 0.55) 0%, rgba(10, 5, 8, 0.45) 50%, rgba(42, 8, 16, 0.55) 100%)",
           }}
         />
         <div className="container-max relative z-10 py-20 md:py-24">
           <ScrollReveal>
-            <div className="text-center max-w-3xl mx-auto mb-12">
+            <div className="text-center max-w-3xl mx-auto mb-16">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-cyan)] mb-4">
                 Our Journey
               </p>
@@ -284,7 +284,7 @@ export default function AboutPage() {
               ].map(({ Icon, year, title, body, color }) => (
                 <div
                   key={year}
-                  className="bg-black/40 backdrop-blur-md rounded-xl p-6 border border-white/10 text-white"
+                  className="bg-black/50 backdrop-blur-md rounded-xl p-6 border border-white/15 text-white"
                 >
                   <div
                     className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
@@ -324,8 +324,8 @@ export default function AboutPage() {
             >
               <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/15 shadow-2xl">
                 <Image
-                  src="/images/backgrounds/bg-colour-swirl.jpg"
-                  alt="Finex SA Group brand ecosystem"
+                  src="/images/backgrounds/finex-sa-group-overview-structure.jpg"
+                  alt="Finex SA Group corporate structure"
                   fill
                   className="object-cover"
                 />
@@ -345,18 +345,17 @@ export default function AboutPage() {
                 </span>{" "}
                 working together under one group.
               </p>
-              <ul className="space-y-4">
+              <div className="grid grid-cols-2 gap-3">
                 {subsidiaries.map((sub) => (
-                  <li key={sub.name} className="flex items-start gap-4">
-                    <span className="shrink-0 w-10 h-10 rounded-full bg-[var(--color-orange)]/20 backdrop-blur flex items-center justify-center border border-white/20">
-                      <Building className="w-5 h-5 text-[var(--color-orange)]" />
-                    </span>
-                    <span className="leading-relaxed">
-                      <span className="font-bold text-white">{sub.name}</span>
-                    </span>
-                  </li>
+                  <div
+                    key={sub.name}
+                    className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 hover:bg-white/10 transition-colors duration-300"
+                  >
+                    <p className="font-bold text-white text-sm mb-1">{sub.name}</p>
+                    <p className="text-xs text-white/60">{sub.description}</p>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </ScrollReveal>
           </div>
         </div>
@@ -366,38 +365,38 @@ export default function AboutPage() {
           STATS: sunset gradient stats bar
           ============================================= */}
       <section className="section-padding section-sunset">
-        <div className="container-max">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="max-w-5xl mx-auto px-6 sm:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <ScrollReveal delay={0}>
               <div className="text-center text-white">
-                <div className="text-4xl md:text-5xl font-extrabold mb-2">
+                <div className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-2">
                   {GROUP.founded}
                 </div>
-                <div className="text-white/80">Founded</div>
+                <div className="text-white/80 text-base md:text-lg">Founded</div>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
               <div className="text-center text-white">
-                <div className="text-4xl md:text-5xl font-extrabold mb-2">
+                <div className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-2">
                   8
                 </div>
-                <div className="text-white/80">Subsidiaries</div>
+                <div className="text-white/80 text-base md:text-lg">Subsidiaries</div>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
               <div className="text-center text-white">
-                <div className="text-4xl md:text-5xl font-extrabold mb-2">
+                <div className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-2">
                   40+
                 </div>
-                <div className="text-white/80">Countries Served</div>
+                <div className="text-white/80 text-base md:text-lg">Countries Served</div>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={0.3}>
               <div className="text-center text-white">
-                <div className="text-4xl md:text-5xl font-extrabold mb-2">
+                <div className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-2">
                   100%
                 </div>
-                <div className="text-white/80">Regulated</div>
+                <div className="text-white/80 text-base md:text-lg">Regulated</div>
               </div>
             </ScrollReveal>
           </div>
