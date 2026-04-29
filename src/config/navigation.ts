@@ -27,9 +27,9 @@ export const MAIN_NAV: NavItem[] = [
       },
       { label: "Finex SA Treasury", href: "/finex-sa-treasury" },
       { label: "Finex SA Global", href: "/finex-sa-global" },
-      { label: "Finex Technologies", href: "/finex-pay-and-technologies" },
     ],
   },
+  { label: "Finex Technologies", href: "/finex-technologies" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -40,7 +40,7 @@ export const FOOTER_NAV = {
     { label: "iMali Express", href: "/imali-express" },
     { label: "Finex SA Treasury", href: "/finex-sa-treasury" },
     { label: "Finex SA Global", href: "/finex-sa-global" },
-    { label: "Finex Technologies", href: "/finex-pay-and-technologies" },
+    { label: "Finex Technologies", href: "/finex-technologies" },
   ],
   company: [
     { label: "Homepage", href: "/" },

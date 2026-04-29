@@ -129,7 +129,7 @@ export const BRANDS = {
   finexPay: {
     name: "Finex Pay",
     tagline: "Pioneering alternative payments.",
-    slug: "finex-pay-and-technologies",
+    slug: "finex-technologies",
     dataBrand: "tech",
     website: null,
     appStore: null,
@@ -140,8 +140,9 @@ export const BRANDS = {
   finexTech: {
     name: "Finex Technologies",
     tagline: "The proprietary backbone.",
-    slug: "finex-pay-and-technologies",
+    slug: "finex-technologies",
     dataBrand: "tech",
+    logo: "/images/logos/finex-technologies-v2.png",
     website: null,
     appStore: null,
     playStore: null,

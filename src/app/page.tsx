@@ -179,7 +179,7 @@ export default function HomePage() {
                   "Strategic global partnerships and tactical outsourcing. Scale your business beyond South Africa with confidence.",
               },
               {
-                slug: "/finex-pay-and-technologies",
+                slug: "/finex-technologies",
                 dataBrand: "tech",
                 logo: "/images/logos/finex-technologies-v2.png",
                 logoClass: "h-[88px] md:h-[104px]",
@@ -793,7 +793,7 @@ export default function HomePage() {
             },
             {
               label: "Technologies",
-              href: "/finex-pay-and-technologies",
+              href: "/finex-technologies",
               logo: "/images/logos/finex-technologies-v2.png",
               logoClass: "h-[28px] md:h-[33px]",
             },

@@ -18,6 +18,12 @@
   --color-imali-red: #C41230;
   --color-imali-navy: #1A1A4E;
 
+  /* Finex Technologies Palette */
+  --color-tech-charcoal: #39404d;
+  --color-tech-navy: #0d3b70;
+  --color-tech-teal: #36d6d1;
+  --color-tech-red: #e7383b;
+
   /* Neutrals */
   --color-white: #FFFFFF;
   --color-off-white: #F8F9FA;
@@ -184,8 +190,8 @@
 }
 
 [data-brand="tech"] {
-  --brand-primary: var(--color-black);
-  --brand-accent: var(--color-cyan);
+  --brand-primary: var(--color-tech-navy);
+  --brand-accent: var(--color-tech-teal);
 }
 
 /* ============================================
@@ -198,7 +204,7 @@
 .brand-imali { --this-brand: var(--color-imali-red); }
 .brand-treasury { --this-brand: var(--color-navy); }
 .brand-global { --this-brand: var(--color-navy); }
-.brand-tech { --this-brand: var(--color-black); }
+.brand-tech { --this-brand: var(--color-tech-navy); }
 
 /* ============================================
    BASE TYPOGRAPHY RULES
@@ -506,7 +512,7 @@ p {
 
 /* Dark tech gradient (for Technology page) */
 .section-dark-tech {
-  background: linear-gradient(135deg, #0a1a20 0%, var(--color-black) 50%, #1a0a20 100%);
+  background: linear-gradient(135deg, var(--color-tech-charcoal) 0%, #1a2535 50%, var(--color-tech-navy) 100%);
   color: var(--color-text-on-dark);
 }
 
