@@ -133,8 +133,8 @@ export default function ImaliForexPage() {
             >
               <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/15 shadow-2xl">
                 <Image
-                  src="/images/lifestyle/imali-market-woman-p1.webp"
-                  alt="iMali Forex customer"
+                  src="/images/backgrounds/imali-forex-where-and-when-square.jpg"
+                  alt="iMali Forex done right"
                   fill
                   className="object-cover"
                 />
@@ -259,7 +259,7 @@ export default function ImaliForexPage() {
             >
               <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/15 shadow-2xl">
                 <Image
-                  src="/images/lifestyle/imali-market-woman-p2.webp"
+                  src="/images/backgrounds/omnibus-travel-allowance.jpg"
                   alt="iMali Forex Omnibus Corporate Travel"
                   fill
                   className="object-cover"

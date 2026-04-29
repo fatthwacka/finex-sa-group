@@ -338,8 +338,8 @@ export default function FinexMoneyPage() {
             >
               <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/15 shadow-2xl">
                 <Image
-                  src="/images/lifestyle/finex-money-man-card-phone.webp"
-                  alt="Finex Money on phone and card"
+                  src="/images/backgrounds/finex-everyting-in-your-pocket.jpg"
+                  alt="Everything you need in your pocket"
                   fill
                   className="object-cover"
                 />
@@ -450,7 +450,7 @@ export default function FinexMoneyPage() {
       {/* =============================================
           PERSONAS: centered card grid on dark-warm
           ============================================= */}
-      <section className="section-padding section-dark-warm relative overflow-hidden">
+      <section className="section-padding section-dark-warm relative overflow-hidden min-h-[80vh] flex items-center">
         <div className="container-max">
           <ScrollReveal>
             <div className="text-center max-w-3xl mx-auto mb-12">
@@ -581,7 +581,7 @@ export default function FinexMoneyPage() {
       {/* =============================================
           EVERYDAY UTILITY: split — bullets left + image right
           ============================================= */}
-      <section className="section-padding section-dark-warm relative overflow-hidden min-h-[80vh] flex items-center">
+      <section className="section-padding section-dark-warm relative overflow-hidden min-h-[95vh] flex items-center">
         <div className="mx-auto w-full max-w-[1600px] px-6 sm:px-8 lg:px-12">
           <div className="flex flex-col lg:flex-row-reverse items-center gap-10 lg:gap-16">
             <ScrollReveal
@@ -642,9 +642,9 @@ export default function FinexMoneyPage() {
       {/* =============================================
           FICA TIERS: full-bleed image background + tiers on top
           ============================================= */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden min-h-[80vh] flex items-center">
         <Image
-          src="/images/heroes/finex-money-hero-woman.webp"
+          src="/images/heroes/mali-yami-geting-paid-on-construction-site.jpg"
           alt=""
           fill
           className="object-cover"
