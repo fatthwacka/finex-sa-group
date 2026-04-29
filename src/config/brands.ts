@@ -143,7 +143,7 @@ export const BRANDS = {
     slug: "finex-technologies",
     dataBrand: "tech",
     logo: "/images/logos/finex-technologies-v2.png",
-    website: null,
+    website: "https://finextechnologies.co.za",
     appStore: null,
     playStore: null,
     support: { phone: "", email: "" },

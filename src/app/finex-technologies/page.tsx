@@ -103,11 +103,11 @@ export default function TechnologyPage() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to right, transparent 0%, rgba(13, 59, 112, 0.45) 50%, rgba(10, 25, 40, 0.9) 100%)",
+              "linear-gradient(to left, transparent 0%, rgba(13, 59, 112, 0.45) 50%, rgba(10, 25, 40, 0.92) 100%)",
           }}
         />
         <div className="container-max relative z-10">
-          <div className="flex justify-end">
+          <div className="flex justify-start">
             <div className="w-full md:w-1/2 lg:w-5/12">
               <h2 className="text-white mb-4">
                 <span className="italic font-light">Powering the</span>{" "}
@@ -130,9 +130,9 @@ export default function TechnologyPage() {
                 evolving market demands.
               </p>
               <CTAButton
-                label="Speak to Our Team"
-                href="/contact"
-                variant="white"
+                label="Visit Finex Technologies"
+                href="https://finextechnologies.co.za"
+                variant="secondary"
                 size="lg"
               />
             </div>
@@ -229,7 +229,7 @@ export default function TechnologyPage() {
           ============================================= */}
       <section className="relative min-h-[80vh] flex items-center overflow-hidden">
         <Image
-          src="/images/heroes/glowing-map-africa-with-madagascar.jpg"
+          src="/images/backgrounds/Imali-Remit-image00012.jpg"
           alt=""
           fill
           className="object-cover"
@@ -527,11 +527,20 @@ export default function TechnologyPage() {
                 explore partnership opportunities, our technology team is ready
                 to help.
               </p>
-              <CTAButton
-                label="Speak to Our Technology Team"
-                href="/contact"
-                size="lg"
-              />
+              <div className="flex flex-wrap justify-center gap-4">
+                <CTAButton
+                  label="Contact Us"
+                  href="/contact"
+                  variant="white"
+                  size="lg"
+                />
+                <CTAButton
+                  label="Explore Finex Technologies"
+                  href="https://finextechnologies.co.za"
+                  variant="secondary"
+                  size="lg"
+                />
+              </div>
             </ScrollReveal>
           </div>
         </div>
