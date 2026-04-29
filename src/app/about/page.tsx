@@ -364,9 +364,9 @@ export default function AboutPage() {
       {/* =============================================
           STATS: sunset gradient stats bar
           ============================================= */}
-      <section className="section-padding section-sunset">
+      <section className="py-10 md:py-12 section-sunset">
         <div className="max-w-5xl mx-auto px-6 sm:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 items-center">
             <ScrollReveal delay={0}>
               <div className="text-center text-white">
                 <div className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-2">
@@ -394,9 +394,9 @@ export default function AboutPage() {
             <ScrollReveal delay={0.3}>
               <div className="text-center text-white">
                 <div className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-2">
-                  100%
+                  5.8M+
                 </div>
-                <div className="text-white/80 text-base md:text-lg">Regulated</div>
+                <div className="text-white/80 text-base md:text-lg">Crypto Users in SA</div>
               </div>
             </ScrollReveal>
           </div>
